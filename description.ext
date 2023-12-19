@@ -1,0 +1,3965 @@
+class Header
+{
+  gameType = Coop;
+  minPlayers = 1;
+  maxPlayers = 500;
+};
+
+
+// Mission info
+
+
+
+
+title = "$STR_TAG_missionName";
+author = "$STR_TAG_missionAuthor";
+onLoadName = "$STR_TAG_missionName";
+onLoadMission = "$STR_TAG_missionDescription";
+loadScreen = "loadScreen.paa";
+
+DisabledAI = 1;
+
+corpseManagerMode = 1;
+corpseLimit = 50;
+corpseRemovalMinTime = 300;
+corpseRemovalMaxTime = 900;
+
+wreckLimit = 10;
+wreckRemovalMinTime = 300;
+wreckRemovalMaxTime = 900;
+
+Respawn = 3;
+respawnButton = 0;
+respawnDelay = 7;
+respawnVehicleDelay = 600;
+
+respawnDialog = 0;
+respawnOnStart = 0;
+
+enableDebugConsole = 1;
+
+allowFunctionsLog = 1;
+allowFunctionsRecompile = 0;
+disableAI = 1;
+skipLobby = 0;
+joinUnassigned = 0;
+disableChannels[]={{0,false,false},{5,false,false}};
+briefing = 0;
+debriefing = 0;
+
+taskManagement_markers2D = 1;
+taskManagement_markers3D = 1;
+taskManagement_propagate = 1;
+taskManagement_drawDist = 1000;
+
+
+
+
+
+#define MODULES_DIRECTORY modules
+
+// CHVD
+#include "scripts\CHVD\dialog.hpp"
+
+// Dynamic lootsystem
+// #include "modules\lootsystem\config.cpp"
+
+// GRAD
+// GRAD Money
+#include "modules\grad-moneymenu\grad_moneymenu.hpp"
+
+// GRAD Traders
+#include "modules\grad-listBuymenu\grad_listBuymenu.hpp"
+
+// GRAD Notes
+// #include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
+
+// GRAD passport
+#include "modules\grad-passport\grad_passport.hpp"
+
+class CfgFunctions {
+    #include "modules\furniture\func.hpp"
+    #include "modules\grad-passport\cfgFunctions.hpp"
+    // #include "modules\grad-leaveNotes\cfgFunctions.hpp"
+    #include "modules\grad-moneymenu\cfgFunctions.hpp"
+    #include "modules\grad-listBuymenu\cfgFunctions.hpp"
+    #include "scripts\CHVD\CfgFunctions.hpp"
+    #include "modules\grad-persistence\cfgFunctions.hpp"
+    #include "modules\ws_fnc\config.hpp"
+    #include "modules\homelessmage\config.hpp"
+    #include "modules\INC_undercover\cfgFunctions.hpp"
+    #include "modules\LARs\spawnSector\functions\spawnSector.fncs"
+};
+
+class Extended_PreInit_EventHandlers {
+    class tinter_furniture_pre_init {
+        init = "call compile preprocessFileLineNumbers 'modules\furniture\XEH_preInit.sqf'";
+    };
+    // Инкогнито скрипт
+     class CAManBase {
+		init = "_this call (compile preprocessFileLineNumbers 'postInitXEH.sqf')";
+	};    
+};
+
+class CfgRemoteExec
+{
+   class Functions
+   {
+       mode = 2;
+       jip = 1;
+       #include "modules\INC_undercover\functionsWhitelist.hpp"
+   };
+};
+
+
+
+
+
+
+// class CfgSounds
+// {
+// 	sounds[] = {};
+//   #include "modules\grad-leaveNotes\cfgSounds.hpp"
+// };
+
+
+// GRAD Persistence
+class CfgGradPersistence {
+    loadOnMissionStart = 1;
+    missionWaitCondition = "true";
+    playerWaitCondition = "true";
+
+    saveUnits = 0;
+    saveVehicles = 3;
+    saveContainers = 2;
+    saveStatics = 0;
+    saveGradFortificationsStatics = 0;
+    saveMarkers = 0;
+    saveTasks = 0;
+    saveTriggers = 0;
+
+    savePlayerInventory = 1;
+    savePlayerDamage = 0;
+    savePlayerPosition = 0;
+    savePlayerMoney = 1;
+
+    saveTeamAccounts = 1;
+
+    class customVariables {
+    };
+
+
+};
+
+
+
+
+class CfgSounds
+{
+    sounds[] = {};
+    class deathmusic
+    {
+    name = "deathmusic";
+    sound[] = {"sounds\deathmusic.ogg", db+10, 1.0};
+    titles[] = {0,""};
+    };
+};
+
+
+
+
+
+
+
+class CfgGradMoneymenu {
+    canGiveDefault = 1;                                                    
+    canTransferToSidesDefault[] = {"east","west","independent","civilian"};
+    canTakeFromDeadDefault = 1;        
+    canSendDirectlyDefault = 0;                                    
+    canTakeFromSurrenderedDefault = 1;                                     
+    startMoney = 50;                                                       
+    startBankBalance = 0;                                                  
+    playersLoseMoneyOnDeath = 1;
+    atmObjects[] = {"Land_Atm_01_F"};                                      
+};
+
+// "Weapons" (for any type of weapon - primary, handgun or launcher)
+// "Items" (for any inventory item including magazines, grenades, etc.)
+// "Wearables" (for uniforms, vests, backpacks, helmets)
+// "Vehicles" (for cars, trucks, helicopters, tanks, etc.)
+// "Units" (for AI units)
+// "Other" (for anything else - nothing will spawn, only code will be called)
+
+
+class CfgGradBuymenu {
+    vehicleMarkers = 1;
+    tracking = 0;
+    trackingTag = "Chernarus";
+    class independentShop {
+        class independentWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class rhs_weap_makarov_pm {
+                displayName = "ПМ";
+                description = "Советский самозарядный пистолет, разработанный советским конструктором Николаем Фёдоровичем Макаровым в 1948 году. Принят на вооружение в 1951 году. Является личным оружием нападения и защиты, предназначенным для поражения противника на коротких расстояниях, в вооружённых силах и правоохранительных органах.";
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_weap_akmn_npz {
+                displayName = "АКМ (Планка Пикатинни)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 100;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akm_zenitco01_b33 {
+                displayName = "АКМ (Зенитка)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 125;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akmm_gp25 {
+                displayName = "АКМ (Ласточкин хвост, ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 150;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akmn_gp25_npz {
+                displayName = "АКМ (Планка Пикатинни, ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_ak74m_camo {
+                displayName = "АК-74М (Ласточкин хвост)";
+                description = "АК-74М — АК-74 модернизированный. Оснащён складывающимся на левый бок полимерным прикладом и универсальным креплением (планка «ласточкин хвост») для крепления прицелов, как оптических, так и ночных, на левой стороне ствольной коробки. Камуфлированная модификация.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak74n_gp25 {
+                displayName = "АК-74Н (Ласточкин хвост, ГП-25)";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103 {
+                displayName = "АК-103 (Ласточкин хвост)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103_gp25 {
+                displayName = "АК-103 (Ласточкин хвост, ГП-25)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_rpk74m {
+                displayName = "РПК-74М (Ласточкин хвост)";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 300;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_rpk74m_npz {
+                displayName = "РПК-74М (Планка Пикатинни)";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_svdp {
+                displayName = "СВД";
+                description = "Советская самозарядная снайперская винтовка. Поставляется вместе с оптическим прицелом ПСО-1.";
+                price = 500;
+                stock = 1000;
+                opticsItem = "rhs_acc_pso1m2";
+            };
+            class rhs_weap_pkm {
+                displayName = "ПКМ";
+                description = "Советский пулемёт, разработанный М. Т. Калашниковым в качестве единого пулемёта для Вооружённых Сил СССР.";
+                price = 600;
+                stock = 1000;
+            };
+            class rhs_weap_t5000 {
+                displayName = "Т-5000 (Планка Пикатинни)";
+                description = "Магазинная высокоточная снайперская винтовка с продольно скользящим затвором. Поставляется вместе с оптическим прицелом DH 5-20×56.";
+                price = 1000;
+                stock = 1000;
+                opticsItem = "rhs_acc_dh520x56";
+            };
+        };
+        class independentLaunchers {
+            kindOf = "Weapons";
+            displayName = "Пусковые установки";
+            class rhs_weap_rpg26 {
+                displayName = "РПГ-26";
+                description = "";
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_weap_rpg7 {
+                displayName = "РПГ-7В2";
+                description = "";
+                price = 200;
+                stock = 1000;
+            };   
+            class rhs_weap_igla {
+                displayName = "9K38 «Игла»";
+                description = "«Игла» — советский и российский переносной зенитный ракетный комплекс, предназначенный для поражения низколетящих воздушных целей на встречных и догонных курсах в условиях тепловых помех.";
+                price = 400;
+                stock = 1000;
+            };
+        };
+        class independentAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class rhs_mag_9x18_8_57N181S {
+                displayName = "Магазин на 8 патронов 9x18";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231)";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm_tracer {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231П)";
+                description = "7.62x39";
+                amount = 1;
+                price = 23;
+                stock = 1000;
+            };            
+            class rhs_30Rnd_545x39_7N22_AK {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Н22)";
+                description = "5.45x39";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_545x39_AK_plum_green {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Т3М)";
+                description = "5.45x39";
+                amount = 1;
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_60Rnd_545X39_7N10_AK {
+                displayName = "Магазин на 60 патронов 5.45x39 (7Н10)";
+                description = "5.45x39";
+                amount = 1;
+                price = 55;
+                stock = 1000;
+            };                        
+            class rhs_100Rnd_762x54mmR {
+                displayName = "Короб на 100 патронов 7.62x54 (57-Н-323С)";
+                description = "7.62x54";
+                amount = 1;
+                price = 120;
+                stock = 1000;
+            };
+            class rhs_10Rnd_762x54mmR_7N1 {
+                displayName = "Магазин на 10 патронов 7.62x54 (7Н1)";
+                description = "7.62x54";
+                amount = 1;
+                price = 40;
+                stock = 1000;
+            };
+            class rhs_5Rnd_338lapua_t5000 {
+                displayName = "Магазин на 5 патронов .338 Lapua";
+                description = ".338 Lapua";
+                amount = 1;
+                price = 60;
+                stock = 1000;
+            };
+            class rhs_VOG25 {
+                displayName = "ВОГ-25";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_VG40OP_white {
+                displayName = "ВГ-40ОП (белый)";
+                description = "";
+                amount = 1;
+                price = 80;
+                stock = 1000;
+            };
+            class rhs_mag_rgd5 {
+                displayName = "РГД-5";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_mag_rgd2_white {
+                displayName = "РДГ-2";
+                description = "";
+                amount = 1;
+                price = 10;
+                stock = 1000;
+            };
+            class rhs_rpg7_OG7V_mag {
+                displayName = "ОГ-7В «Карандаш»";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class rhs_rpg7_PG7VL_mag {
+                displayName = "ПГ-7ВЛ";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_rpg7_TBG7V_mag {
+                displayName = "ТБГ-7В";
+                description = "";
+                amount = 1;
+                price = 760;
+                stock = 1000;
+            };
+            class rhs_mine_tm62m_mag {
+                displayName = "ТМ-62М";
+                description = "";
+                amount = 1;
+                price = 560;
+                stock = 1000;
+            };
+            class rhssaf_mine_pma3_mag {
+                displayName = "ПМА-3";
+                description = "";
+                amount = 1;
+                price = 340;
+                stock = 1000;
+            };
+            class rhs_mag_9k38_rocket {
+                displayName = "Ракета 9К38";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+        };
+        class independentAccessories {
+            kindOf = "Items";
+            displayName = "Аксессуары";
+            class U_O_PilotCoveralls {
+                displayName = "Летный комбинезон";
+                description = "";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+            };
+            class H_PilotHelmetFighter_O {
+                displayName = "Летный шлем";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };                        
+            class rhs_acc_dh520x56 {
+                displayName = "DH 5-20×56";
+                description = "Прицел DH 5-20x56 предназначен для установки на оружие с целью наблюдения, распознавания цели и ведения прицельной стрельбы на средних и больших дистанциях.";
+                amount = 1;
+                price = 800;
+                stock = 1000;
+            };
+            class rhs_acc_okp7_dovetail {
+                displayName = "ОКП-7";
+                description = "Коллиматорный прицел ОКП-7 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_acc_pso1m2 {
+                displayName = "ПСО-1М2";
+                description = "Прицел снайперский оптический — один из основных прицелов советского и российского снайперского вооружения.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };
+            class rhs_acc_1p63 {
+                displayName = "1П63";
+                description = "Коллиматорный прицел 1П63 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+            };
+            class rhs_acc_dtk {
+                displayName = "ДТК (АК-74)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_acc_dtkakm {
+                displayName = "ДТК (АКМ)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class Item_O_UavTerminal {
+                displayName = "Терминал БПЛА";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };                                    
+        };
+        class independentVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class rhssaf_vest_md98_woodland {
+                displayName = "PBB M-98 (Woodland)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhssaf_vest_md99_woodland {
+                displayName = "PBB M-99T (Woodland)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhssaf_vest_md99_woodland_radio {
+                displayName = "PBB M-99T (Woodland, Radio)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhssaf_vest_md98_rifleman {
+                displayName = "PBB M-98 (Woodland, Rifleman)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhssaf_vest_md99_woodland_rifleman {
+                displayName = "PBB M-99T (Woodland, Rifleman)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhssaf_vest_md99_woodland_rifleman_radio {
+                displayName = "PBB M-99T (Woodland, Rifleman, Radio)";
+                description = "";
+                amount = 1;
+                price = 125;
+                stock = 1000;
+            };
+        };
+        class independentHelmets {
+            kindOf = "Wearables";
+            displayName = "Шлемы";
+            class UK3CB_ANA_B_H_6b27m_WDL {
+                displayName = "6Б27М (Woodland)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_ANA_B_H_6b27m_ESS_WDL {
+                displayName = "6Б27М (Woodland, ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };            
+            class UK3CB_CW_US_B_LATE_H_PASGT_01_WDL {
+                displayName = "PASGT (Woodland)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_CW_US_B_LATE_H_PASGT_02_WDL {
+                displayName = "PASGT (Woodland)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhsgref_helmet_pasgt_woodland {
+                displayName = "PASGT (Woodland)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };            
+            class rhsgref_helmet_pasgt_woodland_rhino {
+                displayName = "PASGT (Woodland, Rhino)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhssaf_helmet_m97_woodland {
+                displayName = "M97 (Woodland)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhssaf_helmet_m97_woodland_black_ess {
+                displayName = "M97 (Woodland, ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhssaf_helmet_m97_woodland_black_ess_bare {
+                displayName = "M97 (Woodland, ESS, Bare)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+        };
+        class independentCivilianVehicles {
+            kindOf = "Vehicles";
+            displayName = "Гражданская техника";
+            class UK3CB_CHC_C_Gaz24 {
+                displayName = "ГАЗ-24 «Волга»";
+                description = "ГАЗ-24 «Волга» — советский автомобиль среднего класса, серийно производившийся на Горьковском автомобильном заводе с 1968 по 1986 год.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_Lada {
+                displayName = "ВАЗ-2106 «Жигули»";
+                description = "Советский и российский заднеприводный автомобиль III группы малого класса с кузовом типа седан, являющийся модернизацией ВАЗ-2103 и выпускавшийся Волжским автомобильным заводом с 1976 по 2001 год.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_UAZ_Closed {
+                displayName = "УАЗ-469";
+                description = "5-дверный легковой внедорожник. Выпускался с 1972 по 2007 год.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_Skoda {
+                displayName = "Škoda 105";
+                description = "Чехословацкий легковой автомобиль малого класса с заднемоторной компоновкой, производившиеся компанией в 1976-1990 гг.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_Landcruiser {
+                displayName = "Toyota Landcruiser 100";
+                description = "Внедорожник, выпускаемый японской компанией Toyota Motor Corporation в 1997-2008 гг.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class independentServiceVehicles {
+            kindOf = "Vehicles";
+            displayName = "Служебная техника";
+            class UK3CB_NAP_I_Ural_Fuel {
+                displayName = "Урал-4320 (Бензовоз)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_NAP_I_Ural_Repair {
+                displayName = "Урал-4320 (Ремонтный)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_NAP_I_Ural_Ammo {
+                displayName = "Урал-4320 (Боеприпасы)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class independentLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            class UK3CB_O_G_UAZ_SPG9 {
+                displayName = "УАЗ-3151 (СПГ-9)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_tigr_3camo_vv {
+                displayName = "ГАЗ-233011 «Тигр»";
+                description = "Российский многоцелевой автомобиль повышенной проходимости, бронеавтомобиль, армейский автомобиль-вседорожник.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CW_SOV_O_LATE_Ural_Zu23 {
+                displayName = "Урал-4320 (ЗУ-23)";
+                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_btr70_msv {
+                displayName = "БТР-70";
+                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
+                amount = 1;
+                price = 1500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_btr80a_msv {
+                displayName = "БТР-80А";
+                description = "Советский колесный бронетранспортёр (БТР). Бронетранспортёр был принят на вооружение в 1985 году и заменил предыдущие машины, БТР-60 и БТР-70. Модификация с вооружением из 30-мм автоматической пушки 2А72 и 7,62-мм пулемёта ПКТ, установленных в новой башне лафетной компоновки. Многими специалистами классифицируется как колёсная боевая машина пехоты.";
+                amount = 1;
+                price = 3000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_G_T55 {
+                displayName = "Т-55А";
+                description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
+                amount = 1;
+                price = 4500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_bmp2d_msv {
+                displayName = "БМП-2";
+                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
+                amount = 1;
+                price = 5500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_t72bb_tv {
+                displayName = "Т-72 «Урал»";
+                description = "Советский основной танк. Самый массовый танк второго поколения.";
+                amount = 1;
+                price = 7800;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_t80ue1 {
+                displayName = "Т-80УЕ-1";
+                description = "Модифицированный основной боевой танк семейства Т-80.";
+                amount = 1;
+                price = 10600;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_zsu234_aa {
+                displayName = "ЗСУ-23-4 «Шилка»";
+                description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
+                amount = 1;
+                price = 14000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            // class rhs_9k79 {
+            //     displayName = "9П129-1М «Точка»";
+            //     description = "Советский тактический ракетный комплекс дивизионного звена.";
+            //     amount = 1;
+            //     price = 30000;
+            //     stock = 1000;
+            //     spawnEmpty = 1;
+            // };
+        };
+        class independentAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";           
+        };
+        class independentUAV {
+            kindOf = "Items";
+            displayName = "БПЛА";
+            class I_UavTerminal {
+                displayName = "Терминал БПЛА";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class I_UAV_01_backpack_F {
+                displayName = "БПЛА AR-2 «Тайран»";
+                description = "Российский многоцелевой военный беспилотный летательный аппарат.";
+                amount = 1;
+                price = 2200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class independentStaticVehicles {
+            kindOf = "Vehicles";
+            displayName = "Стационарные установки";
+            class rhs_KORD_high_VDV {
+                displayName = "КОРД (6У16)";
+                description = "Российский крупнокалиберный пулемёт с ленточным питанием под патрон 12,7×108 мм. Предназначен для борьбы с легкобронированными целями и огневыми средствами, уничтожения живой силы противника на дальностях до 2000 м и поражения воздушных целей на наклонных дальностях до 1500 м. Название образовано от начальных букв словосочетания «ковровские оружейники дегтярёвцы».";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_2b14_82mm_msv {
+                displayName = "2Б14 «Поднос»";
+                description = "Советский 82-мм миномёт, стреляющий теми же снарядами, что и 2Б9 «Василёк». Создавался для подавления живой силы и огневых средств противника в поддержку моторизованным частям. Он незаменим в ближнем бою при уничтожении противника в окопах и складках местности, за обратными скатами высот, домами и заборами.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };  
+            class rhs_Metis_9k115_2_msv {
+                displayName = "ПТРК Метис";
+                description = "Советский/российский переносной противотанковый ракетный комплекс ротного звена с полуавтоматическим командным наведением по проводам. Относится к ПТРК второго поколения. Разработан тульским КБ Приборостроения. Комплекс предназначен для поражения визуально наблюдаемых неподвижной и движущейся, с фланговыми скоростями до 60 км/ч, бронированных техники и огневых точек.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };      
+        };
+    };
+    class eastShop {
+        class eastWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class rhs_weap_makarov_pm {
+                displayName = "ПМ";
+                description = "Советский самозарядный пистолет, разработанный советским конструктором Николаем Фёдоровичем Макаровым в 1948 году. Принят на вооружение в 1951 году. Является личным оружием нападения и защиты, предназначенным для поражения противника на коротких расстояниях, в вооружённых силах и правоохранительных органах.";
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_weap_akmn_npz {
+                displayName = "АКМ (Планка Пикатинни)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 100;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akm_zenitco01_b33 {
+                displayName = "АКМ (Зенитка)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 125;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akmm_gp25 {
+                displayName = "АКМ (Ласточкин хвост, ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 150;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akmn_gp25_npz {
+                displayName = "АКМ (Планка Пикатинни, ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_ak74m_camo {
+                displayName = "АК-74М (Ласточкин хвост)";
+                description = "АК-74М — АК-74 модернизированный. Оснащён складывающимся на левый бок полимерным прикладом и универсальным креплением (планка «ласточкин хвост») для крепления прицелов, как оптических, так и ночных, на левой стороне ствольной коробки. Камуфлированная модификация.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak74n_gp25 {
+                displayName = "АК-74Н (Ласточкин хвост, ГП-25)";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103 {
+                displayName = "АК-103 (Ласточкин хвост)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103_gp25 {
+                displayName = "АК-103 (Ласточкин хвост, ГП-25)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_rpk74m {
+                displayName = "РПК-74М (Ласточкин хвост)";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 300;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_rpk74m_npz {
+                displayName = "РПК-74М (Планка Пикатинни)";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_svdp {
+                displayName = "СВД";
+                description = "Советская самозарядная снайперская винтовка. Поставляется вместе с оптическим прицелом ПСО-1.";
+                price = 500;
+                stock = 1000;
+                opticsItem = "rhs_acc_pso1m2";
+            };
+            class rhs_weap_pkm {
+                displayName = "ПКМ";
+                description = "Советский пулемёт, разработанный М. Т. Калашниковым в качестве единого пулемёта для Вооружённых Сил СССР.";
+                price = 600;
+                stock = 1000;
+            };
+            class rhs_weap_t5000 {
+                displayName = "Т-5000 (Планка Пикатинни)";
+                description = "Магазинная высокоточная снайперская винтовка с продольно скользящим затвором. Поставляется вместе с оптическим прицелом DH 5-20×56.";
+                price = 1000;
+                stock = 1000;
+                opticsItem = "rhs_acc_dh520x56";
+            };
+        };
+        class eastLaunchers {
+            kindOf = "Weapons";
+            displayName = "Пусковые установки";
+            class rhs_weap_rpg26 {
+                displayName = "РПГ-26";
+                description = "";
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_weap_rpg7 {
+                displayName = "РПГ-7В2";
+                description = "";
+                price = 200;
+                stock = 1000;
+            };   
+            class rhs_weap_igla {
+                displayName = "9K38 «Игла»";
+                description = "«Игла» — советский и российский переносной зенитный ракетный комплекс, предназначенный для поражения низколетящих воздушных целей на встречных и догонных курсах в условиях тепловых помех.";
+                price = 400;
+                stock = 1000;
+            };
+        };
+        class eastAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class rhs_mag_9x18_8_57N181S {
+                displayName = "Магазин на 8 патронов 9x18";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231)";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm_tracer {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231П)";
+                description = "7.62x39";
+                amount = 1;
+                price = 23;
+                stock = 1000;
+            };            
+            class rhs_30Rnd_545x39_7N22_AK {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Н22)";
+                description = "5.45x39";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_545x39_AK_plum_green {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Т3М)";
+                description = "5.45x39";
+                amount = 1;
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_60Rnd_545X39_7N10_AK {
+                displayName = "Магазин на 60 патронов 5.45x39 (7Н10)";
+                description = "5.45x39";
+                amount = 1;
+                price = 55;
+                stock = 1000;
+            };                        
+            class rhs_100Rnd_762x54mmR {
+                displayName = "Короб на 100 патронов 7.62x54 (57-Н-323С)";
+                description = "7.62x54";
+                amount = 1;
+                price = 120;
+                stock = 1000;
+            };
+            class rhs_10Rnd_762x54mmR_7N1 {
+                displayName = "Магазин на 10 патронов 7.62x54 (7Н1)";
+                description = "7.62x54";
+                amount = 1;
+                price = 40;
+                stock = 1000;
+            };
+            class rhs_5Rnd_338lapua_t5000 {
+                displayName = "Магазин на 5 патронов .338 Lapua";
+                description = ".338 Lapua";
+                amount = 1;
+                price = 60;
+                stock = 1000;
+            };
+            class rhs_VOG25 {
+                displayName = "ВОГ-25";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_VG40OP_white {
+                displayName = "ВГ-40ОП (белый)";
+                description = "";
+                amount = 1;
+                price = 80;
+                stock = 1000;
+            };
+            class rhs_mag_rgd5 {
+                displayName = "РГД-5";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_mag_rgd2_white {
+                displayName = "РДГ-2";
+                description = "";
+                amount = 1;
+                price = 10;
+                stock = 1000;
+            };
+            class rhs_rpg7_OG7V_mag {
+                displayName = "ОГ-7В «Карандаш»";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class rhs_rpg7_PG7VL_mag {
+                displayName = "ПГ-7ВЛ";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_rpg7_TBG7V_mag {
+                displayName = "ТБГ-7В";
+                description = "";
+                amount = 1;
+                price = 760;
+                stock = 1000;
+            };
+            class rhs_mine_tm62m_mag {
+                displayName = "ТМ-62М";
+                description = "";
+                amount = 1;
+                price = 560;
+                stock = 1000;
+            };
+            class rhssaf_mine_pma3_mag {
+                displayName = "ПМА-3";
+                description = "";
+                amount = 1;
+                price = 340;
+                stock = 1000;
+            };
+            class rhs_mag_9k38_rocket {
+                displayName = "Ракета 9К38";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+        };
+        class eastAccessories {
+            kindOf = "Items";
+            displayName = "Аксессуары";
+            class U_O_PilotCoveralls {
+                displayName = "Летный комбинезон";
+                description = "";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+            };
+            class H_PilotHelmetFighter_O {
+                displayName = "Летный шлем";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };                        
+            class rhs_acc_dh520x56 {
+                displayName = "DH 5-20×56";
+                description = "Прицел DH 5-20x56 предназначен для установки на оружие с целью наблюдения, распознавания цели и ведения прицельной стрельбы на средних и больших дистанциях.";
+                amount = 1;
+                price = 800;
+                stock = 1000;
+            };
+            class rhs_acc_okp7_dovetail {
+                displayName = "ОКП-7";
+                description = "Коллиматорный прицел ОКП-7 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_acc_pso1m2 {
+                displayName = "ПСО-1М2";
+                description = "Прицел снайперский оптический — один из основных прицелов советского и российского снайперского вооружения.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };
+            class rhs_acc_1p63 {
+                displayName = "1П63";
+                description = "Коллиматорный прицел 1П63 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+            };
+            class rhs_acc_dtk {
+                displayName = "ДТК (АК-74)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_acc_dtkakm {
+                displayName = "ДТК (АКМ)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };                                   
+        };
+        class eastVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class rhs_6b23_vydra_3m {
+                displayName = "6Б23 (Флора, Выздра-3М)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhsgref_6b23_khaki_rifleman {
+                displayName = "6Б23 (Хаки, Выздра-3М)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+
+            class rhs_6b23_6sh92 {
+                displayName = "6Б23 (Флора, 6Ш92)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_6b23_6sh116_od {
+                displayName = "6Б23 (Олива, 6Ш116)";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_6b23_6sh116_flora {
+                displayName = "6Б23 (Флора, 6Ш116)";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_6b23_6sh116_mixed {
+                displayName = "6Б23 (ЕМР/Флора, 6Ш116)";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_6b13_Flora_6sh92 {
+                displayName = "6Б13 (Флора, 6Ш92)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class rhs_6b13_6sh92 {
+                displayName = "6Б13 (Горная Флора, 6Ш92)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+        };
+        class eastHelmets {
+            kindOf = "Wearables";
+            displayName = "Шлемы";
+            class UK3CB_ADA_B_H_6b27m_OLI {
+                displayName = "6Б27М";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_ADA_B_H_6b27m_ESS_OLI {
+                displayName = "6Б27М (ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_6b27m {
+                displayName = "6Б27М (Флора)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_6b27m_ess {
+                displayName = "6Б27М (Флора, ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_ADA_B_H_6b27m_ml_OLI {
+                displayName = "6Б27М (Хаки)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_ADA_B_H_6b27m_ml_ESS_OLI {
+                displayName = "6Б27М (Хаки, ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            }
+            class rhs_6b7_1m {
+                displayName = "6Б7-1М";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            }
+            class rhs_6b7_1m_ess {
+                displayName = "6Б7-1М (ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            }
+            class rhs_6b7_1m_olive {
+                displayName = "6Б7-1М (Олива)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            }
+            class rhs_6b7_1m_flora {
+                displayName = "6Б7-1М (Флора)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            }
+        };
+        class eastServiceVehicles {
+            kindOf = "Vehicles";
+            displayName = "Служебная техника";
+            class UK3CB_CHD_O_Ural_Fuel {
+                displayName = "Урал-4320 (Бензовоз)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_G_Ural_Repair_CHK {
+                displayName = "Урал-4320 (Ремонтный)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_G_Ural_Ammo_CHK {
+                displayName = "Урал-4320 (Боеприпасы)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class eastLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            
+            class rhsgref_ins_uaz_dshkm {
+                displayName = "УАЗ-3151 (ДШКМ)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён ДШКМ.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_uaz_spg9 {
+                displayName = "УАЗ-3151 (СПГ-9 «Копьё»)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_BRDM2_ins {
+                displayName = "БРДМ-2";
+                description = "Бронированная разведывательно-дозорная машина, является дальнейшим развитием БРДМ-1.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_ural_Zu23 {
+                displayName = "Урал-4320 (ЗУ-23)";
+                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_btr70 {
+                displayName = "БТР-70";
+                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
+                amount = 1;
+                price = 1200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_T55_CHK {
+                displayName = "Т-55А";
+                description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
+                amount = 1;
+                price = 4500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_bmp2 {
+                displayName = "БМП-2 (обр. 1986г.)";
+                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
+                amount = 1;
+                price = 5500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_t72bb {
+                displayName = "Т-72 «Урал» (обр. 1989г.)";
+                description = "Советский основной танк. Самый массовый танк второго поколения.";
+                amount = 1;
+                price = 7800;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_zsu234 {
+                displayName = "ЗСУ-23-4 «Шилка»";
+                description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
+                amount = 1;
+                price = 14000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            // class rhs_9k79 {
+            //     displayName = "9П129-1М «Точка»";
+            //     description = "Советский тактический ракетный комплекс дивизионного звена.";
+            //     amount = 1;
+            //     price = 30000;
+            //     stock = 1000;
+            //     spawnEmpty = 1;
+            // };
+        };
+        class eastAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";
+        };
+        class eastUAV {
+            kindOf = "Items";
+            displayName = "БПЛА";
+            class Item_O_UavTerminal {
+                displayName = "Терминал БПЛА";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            }; 
+            class O_UAV_01_backpack_F {
+                displayName = "БПЛА AR-2 «Тайран»";
+                description = "Российский многоцелевой военный беспилотный летательный аппарат.";
+                amount = 1;
+                price = 2200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class eastStaticVehicles {
+            kindOf = "Vehicles";
+            displayName = "Стационарные установки";
+            class rhs_KORD_high_VDV {
+                displayName = "КОРД (6У16)";
+                description = "Российский крупнокалиберный пулемёт с ленточным питанием под патрон 12,7×108 мм. Предназначен для борьбы с легкобронированными целями и огневыми средствами, уничтожения живой силы противника на дальностях до 2000 м и поражения воздушных целей на наклонных дальностях до 1500 м. Название образовано от начальных букв словосочетания «ковровские оружейники дегтярёвцы».";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_2b14_82mm_msv {
+                displayName = "2Б14 «Поднос»";
+                description = "Советский 82-мм миномёт, стреляющий теми же снарядами, что и 2Б9 «Василёк». Создавался для подавления живой силы и огневых средств противника в поддержку моторизованным частям. Он незаменим в ближнем бою при уничтожении противника в окопах и складках местности, за обратными скатами высот, домами и заборами.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };  
+            class rhs_Metis_9k115_2_msv {
+                displayName = "ПТРК Метис";
+                description = "Советский/российский переносной противотанковый ракетный комплекс ротного звена с полуавтоматическим командным наведением по проводам. Относится к ПТРК второго поколения. Разработан тульским КБ Приборостроения. Комплекс предназначен для поражения визуально наблюдаемых неподвижной и движущейся, с фланговыми скоростями до 60 км/ч, бронированных техники и огневых точек.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };      
+        };
+    };
+    class westShop {
+        class westWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class rhs_weap_makarov_pm {
+                displayName = "ПМ";
+                description = "Советский самозарядный пистолет, разработанный советским конструктором Николаем Фёдоровичем Макаровым в 1948 году. Принят на вооружение в 1951 году. Является личным оружием нападения и защиты, предназначенным для поражения противника на коротких расстояниях, в вооружённых силах и правоохранительных органах.";
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_weap_akmn_npz {
+                displayName = "АКМ (Планка Пикатинни)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 100;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akm_zenitco01_b33 {
+                displayName = "АКМ (Зенитка)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 125;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akmm_gp25 {
+                displayName = "АКМ (Ласточкин хвост, ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 150;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akmn_gp25_npz {
+                displayName = "АКМ (Планка Пикатинни, ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_ak74m_camo {
+                displayName = "АК-74М (Ласточкин хвост)";
+                description = "АК-74М — АК-74 модернизированный. Оснащён складывающимся на левый бок полимерным прикладом и универсальным креплением (планка «ласточкин хвост») для крепления прицелов, как оптических, так и ночных, на левой стороне ствольной коробки. Камуфлированная модификация.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak74n_gp25 {
+                displayName = "АК-74Н (Ласточкин хвост, ГП-25)";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103 {
+                displayName = "АК-103 (Ласточкин хвост)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103_gp25 {
+                displayName = "АК-103 (Ласточкин хвост, ГП-25)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_rpk74m {
+                displayName = "РПК-74М (Ласточкин хвост)";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 300;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_rpk74m_npz {
+                displayName = "РПК-74М (Планка Пикатинни)";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_svdp {
+                displayName = "СВД";
+                description = "Советская самозарядная снайперская винтовка. Поставляется вместе с оптическим прицелом ПСО-1.";
+                price = 500;
+                stock = 1000;
+                opticsItem = "rhs_acc_pso1m2";
+            };
+            class rhs_weap_pkm {
+                displayName = "ПКМ";
+                description = "Советский пулемёт, разработанный М. Т. Калашниковым в качестве единого пулемёта для Вооружённых Сил СССР.";
+                price = 600;
+                stock = 1000;
+            };
+            class rhs_weap_t5000 {
+                displayName = "Т-5000 (Планка Пикатинни)";
+                description = "Магазинная высокоточная снайперская винтовка с продольно скользящим затвором. Поставляется вместе с оптическим прицелом DH 5-20×56.";
+                price = 1000;
+                stock = 1000;
+                opticsItem = "rhs_acc_dh520x56";
+            };
+        };
+        class westLaunchers {
+            kindOf = "Weapons";
+            displayName = "Пусковые установки";
+            class rhs_weap_rpg26 {
+                displayName = "РПГ-26";
+                description = "";
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_weap_M136 {
+                displayName = "M136";
+                description = "";
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_weap_rpg7 {
+                displayName = "РПГ-7В2";
+                description = "";
+                price = 200;
+                stock = 1000;
+            };   
+            class rhs_weap_igla {
+                displayName = "9K38 «Игла»";
+                description = "«Игла» — советский и российский переносной зенитный ракетный комплекс, предназначенный для поражения низколетящих воздушных целей на встречных и догонных курсах в условиях тепловых помех.";
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_weap_fim92 {
+                displayName = "FIM-92 «Стингер»";
+                description = "Американский переносной зенитно-ракетный комплекс (ПЗРК), предназначенный для поражения низколетящих воздушных целей (самолётов, вертолётов, БПЛА), кроме того обеспечивает возможность обстрела небронированных наземных или надводных целей.";
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_weap_fgm148 {
+                displayName = "FGM-148 «Джавелин»";
+                description = "Американский переносной противотанковый ракетный комплекс (ПТРК). Предназначен для поражения бронетехники и низколетящих малоскоростных целей (вертолётов, БПЛА, заходящих на посадку винтомоторных самолётов). Является первым серийным ПТРК третьего поколения.";
+                price = 800;
+                stock = 1000;
+            };
+        };
+        class westAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class rhs_mag_9x18_8_57N181S {
+                displayName = "Магазин на 8 патронов 9x18";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231)";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm_tracer {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231П)";
+                description = "7.62x39";
+                amount = 1;
+                price = 23;
+                stock = 1000;
+            };            
+            class rhs_30Rnd_545x39_7N22_AK {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Н22)";
+                description = "5.45x39";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_545x39_AK_plum_green {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Т3М)";
+                description = "5.45x39";
+                amount = 1;
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_60Rnd_545X39_7N10_AK {
+                displayName = "Магазин на 60 патронов 5.45x39 (7Н10)";
+                description = "5.45x39";
+                amount = 1;
+                price = 55;
+                stock = 1000;
+            };                        
+            class rhs_100Rnd_762x54mmR {
+                displayName = "Короб на 100 патронов 7.62x54 (57-Н-323С)";
+                description = "7.62x54";
+                amount = 1;
+                price = 120;
+                stock = 1000;
+            };
+            class rhs_10Rnd_762x54mmR_7N1 {
+                displayName = "Магазин на 10 патронов 7.62x54 (7Н1)";
+                description = "7.62x54";
+                amount = 1;
+                price = 40;
+                stock = 1000;
+            };
+            class rhs_5Rnd_338lapua_t5000 {
+                displayName = "Магазин на 5 патронов .338 Lapua";
+                description = ".338 Lapua";
+                amount = 1;
+                price = 60;
+                stock = 1000;
+            };
+            class rhs_VOG25 {
+                displayName = "ВОГ-25";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_VG40OP_white {
+                displayName = "ВГ-40ОП (белый)";
+                description = "";
+                amount = 1;
+                price = 80;
+                stock = 1000;
+            };
+            class rhs_mag_rgd5 {
+                displayName = "РГД-5";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_mag_rgd2_white {
+                displayName = "РДГ-2";
+                description = "";
+                amount = 1;
+                price = 10;
+                stock = 1000;
+            };
+            class rhs_rpg7_OG7V_mag {
+                displayName = "ОГ-7В «Карандаш»";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class rhs_rpg7_PG7VL_mag {
+                displayName = "ПГ-7ВЛ";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_rpg7_TBG7V_mag {
+                displayName = "ТБГ-7В";
+                description = "";
+                amount = 1;
+                price = 760;
+                stock = 1000;
+            };
+            class rhs_mine_tm62m_mag {
+                displayName = "ТМ-62М";
+                description = "";
+                amount = 1;
+                price = 560;
+                stock = 1000;
+            };
+            class rhssaf_mine_pma3_mag {
+                displayName = "ПМА-3";
+                description = "";
+                amount = 1;
+                price = 340;
+                stock = 1000;
+            };
+            class rhs_fgm148_magazine_AT {
+                displayName = "Ракета FGM-148";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class rhs_mag_9k38_rocket {
+                displayName = "Ракета 9К38";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class rhs_fim92_mag {
+                displayName = "Ракета FIM-92";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+        };
+        class westAccessories {
+            kindOf = "Items";
+            displayName = "Аксессуары";
+            class U_O_PilotCoveralls {
+                displayName = "Летный комбинезон";
+                description = "";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+            };
+            class H_PilotHelmetFighter_O {
+                displayName = "Летный шлем";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };                        
+            class rhs_acc_dh520x56 {
+                displayName = "DH 5-20×56";
+                description = "Прицел DH 5-20x56 предназначен для установки на оружие с целью наблюдения, распознавания цели и ведения прицельной стрельбы на средних и больших дистанциях.";
+                amount = 1;
+                price = 800;
+                stock = 1000;
+            };
+            class rhs_acc_okp7_dovetail {
+                displayName = "ОКП-7";
+                description = "Коллиматорный прицел ОКП-7 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_acc_pso1m2 {
+                displayName = "ПСО-1М2";
+                description = "Прицел снайперский оптический — один из основных прицелов советского и российского снайперского вооружения.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };
+            class rhs_acc_1p63 {
+                displayName = "1П63";
+                description = "Коллиматорный прицел 1П63 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+            };
+            class rhs_acc_dtk {
+                displayName = "ДТК (АК-74)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_acc_dtkakm {
+                displayName = "ДТК (АКМ)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };                                   
+        };
+        class westVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class UK3CB_GAF_B_MBAV_LIGHT_DIGI {
+                displayName = "MBAV (Digital, Light)";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_LIGHT_DIGI_OLI {
+                displayName = "MBAV (Digital/Olive, Light)";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_RifLEMAN_DIGI_OLI {
+                displayName = "MBAV (Digital/Olive, Rifleman)";
+                description = "";
+                amount = 1;
+                price = 175;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_RifLEMAN_DIGI {
+                displayName = "MBAV (Digital, Rifleman)";
+                description = "";
+                amount = 1;
+                price = 175;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_MG_DIGI_01 {
+                displayName = "MBAV (Digital, MG)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_MG_DIGI_OLI_01 {
+                displayName = "MBAV (Digital/Olive, MG)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_MEDIC_DIGI_01 {
+                displayName = "MBAV (Digital, Medic)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_MEDIC_OLI_01 {
+                displayName = "MBAV (Olive, Medic)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_MBAV_MEDIC_DIGI_OLI_01 {
+                displayName = "MBAV (Digital/Olive, Medic)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+        };
+        class westHelmets {
+            kindOf = "Wearables";
+            displayName = "Шлемы";
+            class UK3CB_GAF_B_H_6b27m_GRN {
+                displayName = "6Б27М";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_H_6b27m_ESS_GRN {
+                displayName = "6Б27М (ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_H_6b27m_DIGI_NOflag {
+                displayName = "6Б27М (Digital)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class UK3CB_GAF_B_H_6b27m_ESS_DIGI_NOflag {
+                displayName = "6Б27М (Digital, ESS)";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+        };
+        class westServiceVehicles {
+            kindOf = "Vehicles";
+            displayName = "Служебная техника";
+            class rhsgref_cdf_b_ural_fuel {
+                displayName = "Урал-4320 (Бензовоз)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_B_Ural_Repair_CDF {
+                displayName = "Урал-4320 (Ремонтный)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_B_Ural_Ammo_CDF {
+                displayName = "Урал-4320 (Боеприпасы)";
+                description = "";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class westLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            class rhsgref_cdf_b_reg_uaz_dshkm {
+                displayName = "УАЗ-3151 (ДШКМ)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён ДШКМ.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_reg_uaz_spg9 {
+                displayName = "УАЗ-3151 (СПГ-9 «Копьё»)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_B_BTR40_MG_CDF {
+                displayName = "БТР-40 (ДШКМ)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения. Оснащён ДШКМ.";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            
+            class rhsgref_BRDM2_b {
+                displayName = "БРДМ-2";
+                description = "Бронированная разведывательно-дозорная машина, является дальнейшим развитием БРДМ-1.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_ural_Zu23 {
+                displayName = "Урал-4320 (ЗУ-23)";
+                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_btr70 {
+                displayName = "БТР-70";
+                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
+                amount = 1;
+                price = 1200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_B_T55_CDF {
+                displayName = "Т-55А";
+                description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
+                amount = 1;
+                price = 4500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_bmp2 {
+                displayName = "БМП-2 (обр. 1986г.)";
+                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
+                amount = 1;
+                price = 5500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_t72bb_tv {
+                displayName = "Т-72 «Урал» (обр. 1985г.)";
+                description = "Советский основной танк. Самый массовый танк второго поколения.";
+                amount = 1;
+                price = 7800;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_zsu234 {
+                displayName = "ЗСУ-23-4 «Шилка»";
+                description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
+                amount = 1;
+                price = 14000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class westAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";
+        };
+        class westUAV {
+            kindOf = "Wearables";
+            displayName = "БПЛА";
+            class B_UavTerminal {
+                displayName = "Терминал БПЛА";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            }; 
+            class B_UAV_01_backpack_F {
+                displayName = "БПЛА AR-2 «Тайран»";
+                description = "Российский многоцелевой военный беспилотный летательный аппарат.";
+                amount = 1;
+                price = 2200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class westStaticVehicles {
+            kindOf = "Vehicles";
+            displayName = "Стационарные установки";
+            class rhs_KORD_high_VDV {
+                displayName = "КОРД (6У16)";
+                description = "Российский крупнокалиберный пулемёт с ленточным питанием под патрон 12,7×108 мм. Предназначен для борьбы с легкобронированными целями и огневыми средствами, уничтожения живой силы противника на дальностях до 2000 м и поражения воздушных целей на наклонных дальностях до 1500 м. Название образовано от начальных букв словосочетания «ковровские оружейники дегтярёвцы».";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_2b14_82mm_msv {
+                displayName = "2Б14 «Поднос»";
+                description = "Советский 82-мм миномёт, стреляющий теми же снарядами, что и 2Б9 «Василёк». Создавался для подавления живой силы и огневых средств противника в поддержку моторизованным частям. Он незаменим в ближнем бою при уничтожении противника в окопах и складках местности, за обратными скатами высот, домами и заборами.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };  
+            class rhs_Metis_9k115_2_msv {
+                displayName = "ПТРК Метис";
+                description = "Советский/российский переносной противотанковый ракетный комплекс ротного звена с полуавтоматическим командным наведением по проводам. Относится к ПТРК второго поколения. Разработан тульским КБ Приборостроения. Комплекс предназначен для поражения визуально наблюдаемых неподвижной и движущейся, с фланговыми скоростями до 60 км/ч, бронированных техники и огневых точек.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };      
+        };
+    };
+    class russianShop {
+        class RussianWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class rhs_weap_akm {
+                displayName = "АКМ";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием.";
+                price = 120;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_akm_gp25 {
+                displayName = "АКМ (ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК (Индекс ГРАУ — 56-А-212) и являющийся его дальнейшим развитием. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 220;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkakm";
+            };
+            class rhs_weap_ak74m_camo {
+                displayName = "АК-74М";
+                description = "АК-74М — АК-74 модернизированный. Оснащён складывающимся на левый бок полимерным прикладом и универсальным креплением (планка «ласточкин хвост») для крепления прицелов, как оптических, так и ночных, на левой стороне ствольной коробки. Камуфлированная модификация.";
+                price = 200;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak74_gp25 {
+                displayName = "АК-74 (ГП-25)";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 300;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103 {
+                displayName = "АК-103";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ.";
+                price = 250;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_ak103_gp25 {
+                displayName = "АК-103 (ГП-25)";
+                description = "Российский автомат под патрон калибра 7,62х39 мм. Экспортная версия автомата АКМ. Модификация автомата с подствольным гранатомётом ГП-25.";
+                price = 350;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk";
+            };
+            class rhs_weap_rpk74m {
+                displayName = "РПК-74М";
+                description = "Ручной пулемёт, разработанный для замены в войсках пулемёта РПК под патрон 7,62×39 мм в рамках системы стрелкового оружия под малоимпульсный патрон 5,45×39 мм.";
+                price = 300;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtkrpk";
+            };
+            class rhs_weap_pkm {
+                displayName = "ПКМ";
+                description = "Советский пулемёт, разработанный М. Т. Калашниковым в качестве единого пулемёта для Вооружённых Сил СССР.";
+                price = 600;
+                stock = 1000;
+            };
+            class rhs_weap_svdp {
+                displayName = "СВД";
+                description = "Советская самозарядная снайперская винтовка. Поставляется вместе с оптическим прицелом ПСО-1.";
+                price = 500;
+                stock = 1000;
+                opticsItem = "rhs_acc_pso1m2";
+            };
+            class rhs_weap_t5000 {
+                displayName = "Т-5000";
+                description = "Магазинная высокоточная снайперская винтовка с продольно скользящим затвором. Поставляется вместе с оптическим прицелом DH 5-20×56.";
+                price = 1000;
+                stock = 1000;
+                opticsItem = "rhs_acc_dh520x56";
+            };
+            class rhs_weap_makarov_pm {
+                displayName = "ПМ";
+                description = "Советский самозарядный пистолет, разработанный советским конструктором Николаем Фёдоровичем Макаровым в 1948 году. Принят на вооружение в 1951 году. Является личным оружием нападения и защиты, предназначенным для поражения противника на коротких расстояниях, в вооружённых силах и правоохранительных органах.";
+                price = 100;
+                stock = 1000;
+            };            
+            class rhs_weap_igla {
+                displayName = "9K38 Игла";
+                description = "";
+                price = 1400;
+                stock = 1000;
+            };
+            class rhs_weap_rpg26 {
+                displayName = "РПГ-26";
+                description = "";
+                price = 600;
+                stock = 1000;
+            };
+            class rhs_weap_rpg7 {
+                displayName = "РПГ-7В2";
+                description = "";
+                price = 1300;
+                stock = 1000;
+            };                                    
+        };
+        class RussianAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class rhs_30Rnd_762x39mm {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231)";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_762x39mm_tracer {
+                displayName = "Магазин на 30 патронов 7.62x39 (57-H-231П)";
+                description = "7.62x39";
+                amount = 1;
+                price = 23;
+                stock = 1000;
+            };            
+            class rhs_30Rnd_545x39_7N22_AK {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Н22)";
+                description = "5.45x39";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_30Rnd_545x39_AK_plum_green {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Т3М)";
+                description = "5.45x39";
+                amount = 1;
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_60Rnd_545X39_7N10_AK {
+                displayName = "Магазин на 60 патронов 5.45x39 (7Н10)";
+                description = "5.45x39";
+                amount = 1;
+                price = 55;
+                stock = 1000;
+            };                        
+            class rhs_100Rnd_762x54mmR {
+                displayName = "Короб на 100 патронов 7.62x54 (57-Н-323С)";
+                description = "7.62x54";
+                amount = 1;
+                price = 120;
+                stock = 1000;
+            };
+            class rhs_10Rnd_762x54mmR_7N1 {
+                displayName = "Магазин на 10 патронов 7.62x54 (7Н1)";
+                description = "7.62x54";
+                amount = 1;
+                price = 40;
+                stock = 1000;
+            };
+            class rhs_5Rnd_338lapua_t5000 {
+                displayName = "Магазин на 5 патронов .338 Lapua";
+                description = ".338 Lapua";
+                amount = 1;
+                price = 60;
+                stock = 1000;
+            };
+            class rhs_VOG25 {
+                displayName = "ВОГ-25";
+                description = "";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class rhs_VG40OP_white {
+                displayName = "ВГ-40ОП (белый)";
+                description = "";
+                amount = 1;
+                price = 80;
+                stock = 1000;
+            };
+            class rhs_mag_rgd5 {
+                displayName = "РГД-5";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhs_mag_rgd2_white {
+                displayName = "РДГ-2";
+                description = "";
+                amount = 1;
+                price = 10;
+                stock = 1000;
+            };
+            class rhs_mag_9k38_rocket {
+                displayName = "9k38 (ракета)";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class rhs_rpg7_OG7V_mag {
+                displayName = "ОГ-7В";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class rhs_rpg7_PG7VL_mag {
+                displayName = "ПГ-7ВЛ";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_rpg7_TBG7V_mag {
+                displayName = "ТБГ-7В";
+                description = "";
+                amount = 1;
+                price = 760;
+                stock = 1000;
+            };
+            class rhs_mine_tm62m_mag {
+                displayName = "ТМ-62М";
+                description = "";
+                amount = 1;
+                price = 560;
+                stock = 1000;
+            };
+            class rhssaf_mine_pma3_mag {
+                displayName = "ПМА-3";
+                description = "";
+                amount = 1;
+                price = 340;
+                stock = 1000;
+            };
+            class rhs_mag_9x18_8_57N181S {
+                displayName = "Магазин на 8 патронов 9x18";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+        };
+        class RussianAccessories {
+            kindOf = "Items";
+            displayName = "Аксессуары";
+            class U_O_PilotCoveralls {
+                displayName = "Летный комбинезон";
+                description = "";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+            };
+            class H_PilotHelmetFighter_O {
+                displayName = "Летный шлем";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };                        
+            class rhs_acc_dh520x56 {
+                displayName = "DH 5-20×56";
+                description = "Прицел DH 5-20x56 предназначен для установки на оружие с целью наблюдения, распознавания цели и ведения прицельной стрельбы на средних и больших дистанциях.";
+                amount = 1;
+                price = 800;
+                stock = 1000;
+            };
+            class rhs_acc_okp7_dovetail {
+                displayName = "ОКП-7";
+                description = "Коллиматорный прицел ОКП-7 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_acc_pso1m2 {
+                displayName = "ПСО-1М2";
+                description = "Прицел снайперский оптический — один из основных прицелов советского и российского снайперского вооружения.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+            };
+            class rhs_acc_1p63 {
+                displayName = "1П63";
+                description = "Коллиматорный прицел 1П63 на крепление «ласточкин хвост».";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+            };
+            class rhs_acc_dtk {
+                displayName = "ДТК (АК-74)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class rhs_acc_dtkakm {
+                displayName = "ДТК (АКМ)";
+                description = "";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class Item_O_UavTerminal {
+                displayName = "Терминал БПЛА";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };                                    
+        };
+        class RussianVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class rhs_6b2_chicom {
+                displayName = "6Б2";
+                description = "Советский противоосколочный и противопульный бронежилет второго поколения. Версия с разгрузочной системой.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };            
+            class rhs_6b2_RPK {
+                displayName = "6Б2";
+                description = "Советский противоосколочный и противопульный бронежилет второго поколения. Версия с подсумком для магазинов РПК.";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_6b2_SVD {
+                displayName = "6Б2";
+                description = "Советский противоосколочный и противопульный бронежилет второго поколения. Версия с подсумком для магазинов СВД.";
+                amount = 1;
+                price = 120;
+                stock = 1000;
+            };
+            class rhs_6b23_vydra_3m {
+                displayName = "6Б23";
+                description = "Общевойсковой российский дифференцированный бронежилет с улучшенными характеристиками. Версия с разгрузочной системой Выдра-3М";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhs_6b23_medic {
+                displayName = "6Б23";
+                description = "Общевойсковой российский дифференцированный бронежилет с улучшенными характеристиками. Версия с медицинским подсумком.";
+                amount = 1;
+                price = 170;
+                stock = 1000;
+            };
+            class rhs_6b23_sniper {
+                displayName = "6Б23";
+                description = "Общевойсковой российский дифференцированный бронежилет с улучшенными характеристиками. Версия с подсумком для магазинов СВД.";
+                amount = 1;
+                price = 160;
+                stock = 1000;
+            };
+            class rhs_6b13_6sh92 {
+                displayName = "6Б13";
+                description = "Первый российский штурмовой бронежилет с кирамическими бронеэлементами. Бронежилет является переходным звеном эволюции между 6б23 и 6б45. Поставляется с разгрузочной системой 6Ш92.";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+        };
+        class RussianHelmets {
+            kindOf = "Wearables";
+            displayName = "Шлемы";
+            /*
+            class rhs_6b27m_green {
+                displayName = "6Б27М";
+                description = "Общевойсковой штурмовой шлем Вооружённых Сил России. Разработан «НИИ Стали» в 2005 году для замены шлема 6Б7 обр. 1999 года.";
+                amount = 1;
+                price = 10000;
+                stock = 1000;
+            };
+            */
+            class rhs_6b7_1m {
+                displayName = "6Б7-1М";
+                description = "Шлем общевойсковой защитный усиленный 6Б7-1М является модернизацией шлема 6Б7-1. Предназначен для использования в комплекте боевой экипировки в качестве средства бронезащиты военнослужащих СВ и ВДВ при ведении всех видов боевых действий.";
+                amount = 1;
+                price = 90;
+                stock = 1000;
+            };
+            class rhs_altyn_novisor {
+                displayName = "«Алтын»";
+                description = "Советский, а затем российский противопульный боевой шлем закрытого типа, разработанный НИИ Стали по заказу КГБ СССР в 1984 году. «Алтын» прошел реальные боевые испытания в Афганистане и Чечне и до сих пор остается на вооружении органов МВД РФ и армейского спецназа. Версия без забрала.";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+            };
+        };
+        // class RussianBackpacks {
+        //     kindOf = "Wearables";
+        //     displayName = "Рюкзаки";
+        //     class rhs_sidor {
+        //         displayName = "Сидор";
+        //         description = "Заплечная сумка в виде мешка из брезента простой формы с клапаном в верхней части, внешне напоминает бесформенный рюкзак.";
+        //         amount = 1;
+        //         price = 50;
+        //         stock = 1000;
+        //     };
+        //     class rhs_rk_sht_30_olive {
+        //         displayName = "РК-ШТ-30";
+        //         description = "Ранец штурмовой РК-ШТ-30 входит в комплект 6Б46 экипировки Ратник. Конструкция представляет собой простой по компоновке однообъёмный ранец с большим накладным карманом.";
+        //         amount = 1;
+        //         price = 250;
+        //         stock = 1000;
+        //     };
+        //     class rhs_tortila_olive {
+        //         displayName = "SSO Тортилла";
+        //         description = "Рюкзак горный рейдовый боевой «Тортила» объемом 45 литров предназначен для переноски в полевых условиях личных вещей и снаряжения.";
+        //         amount = 1;
+        //         price = 300;
+        //         stock = 1000;
+        //     };            
+        // };
+        class RussianLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            class UK3CB_CHC_C_Gaz24 {
+                displayName = "ГАЗ-24 «Волга»";
+                description = "ГАЗ-24 «Волга» — советский автомобиль среднего класса, серийно производившийся на Горьковском автомобильном заводе с 1968 по 1986 год.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_Lada {
+                displayName = "ВАЗ-2106 «Жигули»";
+                description = "Советский и российский заднеприводный автомобиль III группы малого класса с кузовом типа седан, являющийся модернизацией ВАЗ-2103 и выпускавшийся Волжским автомобильным заводом с 1976 по 2001 год.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_UAZ_Closed {
+                displayName = "УАЗ-469";
+                description = "5-дверный легковой внедорожник. Выпускался с 1972 по 2007 год.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_Skoda {
+                displayName = "Škoda 105";
+                description = "Чехословацкий легковой автомобиль малого класса с заднемоторной компоновкой, производившиеся компанией в 1976-1990 гг.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CHC_C_Landcruiser {
+                displayName = "Toyota Landcruiser 100";
+                description = "Внедорожник, выпускаемый японской компанией Toyota Motor Corporation в 1997-2008 гг.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_G_UAZ_SPG9 {
+                displayName = "УАЗ-3151 (СПГ-9)";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_tigr_3camo_vv {
+                displayName = "ГАЗ-233011 «Тигр»";
+                description = "Российский многоцелевой автомобиль повышенной проходимости, бронеавтомобиль, армейский автомобиль-вседорожник.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CW_SOV_O_LATE_Ural_Zu23 {
+                displayName = "Урал-4320 (ЗУ-23)";
+                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_btr70_msv {
+                displayName = "БТР-70";
+                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
+                amount = 1;
+                price = 1500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_btr80a_msv {
+                displayName = "БТР-80А";
+                description = "Советский колесный бронетранспортёр (БТР). Бронетранспортёр был принят на вооружение в 1985 году и заменил предыдущие машины, БТР-60 и БТР-70. Модификация с вооружением из 30-мм автоматической пушки 2А72 и 7,62-мм пулемёта ПКТ, установленных в новой башне лафетной компоновки. Многими специалистами классифицируется как колёсная боевая машина пехоты.";
+                amount = 1;
+                price = 3000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_G_T55 {
+                displayName = "Т-55А";
+                description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
+                amount = 1;
+                price = 4500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_bmp2d_msv {
+                displayName = "БМП-2";
+                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
+                amount = 1;
+                price = 5500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_t72bb_tv {
+                displayName = "Т-72 «Урал»";
+                description = "Советский основной танк. Самый массовый танк второго поколения.";
+                amount = 1;
+                price = 7800;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_t80ue1 {
+                displayName = "Т-80УЕ-1";
+                description = "Модифицированный основной боевой танк семейства Т-80.";
+                amount = 1;
+                price = 10600;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_zsu234_aa {
+                displayName = "ЗСУ-23-4 «Шилка»";
+                description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
+                amount = 1;
+                price = 14000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            // class rhs_9k79 {
+            //     displayName = "9П129-1М «Точка»";
+            //     description = "Советский тактический ракетный комплекс дивизионного звена.";
+            //     amount = 1;
+            //     price = 30000;
+            //     stock = 1000;
+            //     spawnEmpty = 1;
+            // };
+        };
+        class RussianAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";
+            class O_UAV_01_F {
+                displayName = "БПЛА AR-2 «Тайран»";
+                description = "Российский многоцелевой военный беспилотный летательный аппарат.";
+                amount = 1;
+                price = 2200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class O_UAV_02_dynamicLoadout_F  {
+                displayName = "YABHON-R3";
+                description = "Многоцелевой военный беспилотный летательный аппарат оснащенный ПТУР.";
+                amount = 1;
+                price = 6000;
+                stock = 1000;
+                spawnEmpty = 1;
+            }; 
+            class rhs_mi28n_vvsc {
+                displayName = "Ми-28Н «Ночной охотник»";
+                description = "Советский и российский ударный вертолёт предназначенный для поиска и уничтожения в условиях активного огневого противодействия танков и другой бронированной техники, а также малоскоростных воздушных целей и живой силы противника";
+                amount = 1;
+                price = 30000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };            
+        };
+        class RussianStaticVehicles {
+            kindOf = "Vehicles";
+            displayName = "Стационарные установки";
+            class rhs_KORD_high_VDV {
+                displayName = "КОРД (6У16)";
+                description = "Российский крупнокалиберный пулемёт с ленточным питанием под патрон 12,7×108 мм. Предназначен для борьбы с легкобронированными целями и огневыми средствами, уничтожения живой силы противника на дальностях до 2000 м и поражения воздушных целей на наклонных дальностях до 1500 м. Название образовано от начальных букв словосочетания «ковровские оружейники дегтярёвцы».";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class rhs_2b14_82mm_msv {
+                displayName = "2Б14 «Поднос»";
+                description = "Советский 82-мм миномёт, стреляющий теми же снарядами, что и 2Б9 «Василёк». Создавался для подавления живой силы и огневых средств противника в поддержку моторизованным частям. Он незаменим в ближнем бою при уничтожении противника в окопах и складках местности, за обратными скатами высот, домами и заборами.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };  
+            class rhs_Metis_9k115_2_msv {
+                displayName = "ПТРК Метис";
+                description = "Советский/российский переносной противотанковый ракетный комплекс ротного звена с полуавтоматическим командным наведением по проводам. Относится к ПТРК второго поколения. Разработан тульским КБ Приборостроения. Комплекс предназначен для поражения визуально наблюдаемых неподвижной и движущейся, с фланговыми скоростями до 60 км/ч, бронированных техники и огневых точек.";
+                amount = 1;
+                price = 970;
+                stock = 1000;
+            };      
+        };
+    };
+    class americanShop {
+        class AmericanWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class rhs_weap_m79 {
+                displayName = "М79";
+                description = "";
+                price = 1200;
+                stock = 1000;
+            };
+            class rhs_weap_m14_ris {
+                displayName = "М14 (RIS)";
+                description = "";
+                price = 220;
+                stock = 1000;
+            };
+            class rhs_weap_m4 {
+                displayName = "M4";
+                description = "";
+                price = 310;
+                stock = 1000;
+            };
+            class rhs_weap_m4a1_m203s {
+                displayName = "M4A1 (M203S)";
+                description = "";
+                price = 400;
+                stock = 1000;
+            };
+            class rhs_weap_m40a5 {
+                displayName = "M40a5";
+                description = "";
+                price = 800;
+                stock = 1000;
+            };
+            class rhs_weap_m240G {
+                displayName = "M240G";
+                description = "";
+                price = 600;
+                stock = 1000;
+            };
+            class rhsusf_weap_m1911a1 {
+                displayName = "M1911A1";
+                description = "";
+                price = 90;
+                stock = 1000;
+            };
+            class rhs_weap_SCARH_CQC {
+                displayName = "SCARH (CQC)";
+                description = "";
+                price = 350;
+                stock = 1000;
+            };
+            class rhsusf_weap_MP7A2 {
+                displayName = "MP-7";
+                description = "";
+                price = 210;
+                stock = 1000;
+                muzzleItem = "rhsusf_acc_rotex_mp7";
+            };
+            class UK3CB_FAMAS_F1 {
+                displayName = "Famas F1";
+                description = "";
+                price = 320;
+                stock = 1000;
+            };
+            class rhsusf_weap_m9 {
+                displayName = "Beretta M9";
+                description = "";
+                price = 120;
+                stock = 1000;
+            };
+            class uk3cb_auga3_blk {
+                displayName = "AUG Black";
+                description = "";
+                price = 300;
+                stock = 1000;
+            };                                    
+        };
+        class AmericanAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class 1Rnd_HE_Grenade_shell {
+                displayName = "40mm Граната";
+                description = "";
+                amount = 1;
+                price = 110;
+                stock = 1000;
+            };
+            class 1Rnd_Smoke_Grenade_shell {
+                displayName = "40mm Дымовая";
+                description = "";
+                amount = 1;
+                price = 80;
+                stock = 1000;
+            };
+            class rhsusf_20Rnd_762x51_m80_Mag {
+                displayName = "М14 M80 (20птр)";
+                description = "";
+                amount = 1;
+                price = 30;
+                stock = 1000;
+            };
+            class UK3CB_M14_20rnd_762x51_G {
+                displayName = "М14 M80 (Трассер)";
+                description = "";
+                amount = 1;
+                price = 33;
+                stock = 1000;
+            };
+            class rhs_mag_30Rnd_556x45_M855_Stanag {
+                displayName = "30патр STANAG M855A1";
+                description = "";
+                amount = 1;
+                price = 25;
+                stock = 1000;
+            };
+            class rhs_mag_30Rnd_556x45_M196_Stanag_Tracer_Red {
+                displayName = "30патр STANAG M855A1 (Трассер)";
+                description = "";
+                amount = 1;
+                price = 28;
+                stock = 1000;
+            };
+            class rhsusf_100Rnd_762x51 {
+                displayName = "M240 BOX 100птр";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhsusf_10Rnd_762x51_m118_special_Mag {
+                displayName = "M40A5 10птр";
+                description = "";
+                amount = 1;
+                price = 40;
+                stock = 1000;
+            };
+            class rhsusf_mag_7x45acp_MHP {
+                displayName = "M1911A1 Mag";
+                description = "";
+                amount = 1;
+                price = 15;
+                stock = 1000;
+            };
+            class UK3CB_FAMAS_25rnd_556x45 {
+                displayName = "Famas F1 Mag";
+                description = "";
+                amount = 1;
+                price = 35;
+                stock = 1000;
+            };
+            class rhsusf_mag_15Rnd_9x19_JHP {
+                displayName = "M9 Mag";
+                description = "";
+                amount = 1;
+                price = 20;
+                stock = 1000;
+            };
+            class rhsusf_mag_40Rnd_46x30_FMJ {
+                displayName = "MP-7 Mag";
+                description = "";
+                amount = 1;
+                price = 30;
+                stock = 1000;
+            };                                                
+        };
+        class AmericanAccessories {
+            kindOf = "Items";
+            displayName = "Аксессуары";
+            class rhsusf_acc_wmx_bk {
+                displayName = "Фонарик WMX";
+                description = "";
+                amount = 1;
+                price = 180;
+                stock = 1000;
+            };
+            class optic_Yorris  {
+                displayName = "Buris Fastfire";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };                                   
+        };
+        class AmericanVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class UK3CB_CW_US_B_LATE_V_PASGT_Rif_Vest {
+                displayName = "PASGT";
+                description = "Разгрузочный бронежилет стрелка PASGT с расцветкой Woodland.";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+            };
+            class UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI {
+                displayName = "SPCS";
+                description = "Разгрузочный бронежилет SPCS с расцветкой Olive.";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+        };
+        class AmericanHelmets {
+            kindOf = "Wearables";
+            displayName = "Шлемы";
+            class rhsusf_opscore_fg_pelt {
+                displayName = "FAST Ballistic";
+                description = "Баллистический шлем FAST с расцветкой Foliage Green. Поставляются с шумоподавляющими наушниками.";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class rhsusf_cvc_green_alt_helmet {
+                displayName = "ACVC-H, MK-1697";
+                description = "Танковый шлем ACVC-H модели MK-1697 с встроенной защитой слуха.";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+            };
+            class UK3CB_MDF_B_H_M1 {
+                displayName = "M1";
+                description = "";
+                amount = 1;
+                price = 80;
+                stock = 1000;
+            };
+            class H_PilotHelmetFighter_B {
+                displayName = "Лётный шлем";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };                                                                        
+        };
+        class AmericanBackpacks {
+            kindOf = "Wearables";
+            displayName = "Рюкзаки";
+            class rhsusf_falconii_coy {
+                displayName = "Falcon-II";
+                description = "Штурмовой рюкзак Falcon-II с расцветкой Coyote.";
+                amount = 1;
+                price = 120;
+                stock = 1000;
+            };
+            class rhsusf_assault_eagleaiii_coy {
+                displayName = "Eagle A-III";
+                description = "Штурмовой рюкзак Eagle A-III с расцветкой Coyote.";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+            };
+            class rhssaf_kitbag_smb {
+                displayName = "Kitbag";
+                description = "Штурмовой рюкзак Kitbag с расцветкой SMB.";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };                                                
+        };
+        class AmericanLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            class UK3CB_B_LAV25_HIDF {
+                displayName = "LAV-25";
+                description = "Канадская боевая разведывательная машина, выпускаемая компанией General Dynamics Land Systems — Canada для Корпуса морской пехоты США.";
+                amount = 1;
+                price = 4400;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsusf_m113_usarmy_M2_90 {
+                displayName = "M113A3";
+                description = "Бронетранспортёр США 1960-х годов. Разработан в 1957—1959 годах. Запущен в серийное производство в январе 1960 года, производство продолжалось до 2007 года. Длительное время оставался основным бронетранспортёром США, в значительных количествах поставлялся также в другие страны и использовался во множестве вооружённых конфликтов. Поставляется с пулемётом M2.";
+                amount = 1;
+                price = 800;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CW_US_B_LATE_M2A2 {
+                displayName = "M2A2";
+                description = "Боевая машина пехоты США, названная в честь генерала Омара Брэдли. Создана во второй половине 1970-х годов на базе прототипа XM723 с учётом опыта боевого применения советской БМП-1, конструктивных особенностей германской БМП Maрдер в качестве лучше защищённой и вооружённой альтернативы бронетранспортёрам M113.";
+                amount = 1;
+                price = 8000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_B_M151_Jeep_TOW_HIDF {
+                displayName = "M151 MUTT";
+                description = "Американский армейский автомобиль повышенной проходимости, преемник армейских M38 и M38A1. Производился с 1959 по 1982 год, широко использовался американскими войсками в войне во Вьетнаме. Поставляется с системой ПТУР TOW.";
+                amount = 1;
+                price = 900;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsusf_m1151_m2crows_usarmy_wd {
+                displayName = "M1151";
+                description = "«Высокоподвижное многоцелевое колёсное транспортное средство», «Хамви») — американский армейский грузовой фургон, стоящий на вооружении в основном у ВС США, а также вооружённых сил, полицейских и иных служб некоторых других стран. Автомобиль обладает высокой проходимостью, пригоден к транспортировке по воздуху и десантированию парашютным способом. Поставляется с пулемётом M2.";
+                amount = 1;
+                price = 1150;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsusf_m1025_w_mk19 {
+                displayName = "M1025";
+                description = "«Высокоподвижное многоцелевое колёсное транспортное средство», «Хамви») — американский армейский грузовой фургон, стоящий на вооружении в основном у ВС США, а также вооружённых сил, полицейских и иных служб некоторых других стран. Автомобиль обладает высокой проходимостью, пригоден к транспортировке по воздуху и десантированию парашютным способом. Поставляется с гранатомётом MK19.";
+                amount = 1;
+                price = 850;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CW_US_B_LATE_M60a3 {
+                displayName = "M60A3";
+                description = "Американский основной боевой танк, разработанный в 1957—1959 годах на основе среднего танка М48. M60, неоднократно модернизируясь, находился в серийном производстве с 1960 по 1987 год.";
+                amount = 1;
+                price = 8600;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_CW_US_B_LATE_M1A1 {
+                displayName = "M1A1";
+                description = "Основной боевой танк США, серийно выпускается с 1980 года. Стоит на вооружении армии и морской пехоты США, а также вооружённых сил Египта, Австралии, Марокко и ряда ближневосточных государств. Назван в честь генерала Крейтона Абрамса. М1 «Абрамс» в настоящее время является одним из наиболее тяжёлых танков, его боевая масса превысила 62 т. Положил начало использованию целого ряда новаторских решений, включая компьютерную систему управления огнём и раздельное хранение боезапаса с использованием вышибных панелей.";
+                amount = 1;
+                price = 15000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_KRG_B_M270_Avenger {
+                displayName = "M270 MLRS";
+                description = "Американская универсальная пусковая установка, использующаяся в качестве РСЗО и установки для запуска тактических ракет.";
+                amount = 1;
+                price = 20000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };            
+        };
+        class AmericanAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";
+            class UK3CB_CW_US_B_LATE_UH1H_GUNSHIP {
+                displayName = "UH-1";
+                description = "Американский многоцелевой вертолёт фирмы Bell Helicopter Textron, также известный как «Хьюи». Одна из самых известных и массовых машин в истории вертолётостроения. Серийно производится с 1960 года. Выпущено большое количество военных и гражданских модификаций.";
+                amount = 1;
+                price = 5000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_MDF_B_Mystere {
+                displayName = "MD-454";
+                description = "";
+                amount = 1;
+                price = 25000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_B_AC47_HIDF {
+                displayName = "C47";
+                description = "";
+                amount = 1;
+                price = 15000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class AmericanStaticVehicles {
+            kindOf = "Vehicles";
+            displayName = "Стационарные установки";
+            class UK3CB_CW_US_B_LATE_M252 {
+                displayName = "M252";
+                description = "81-мм миномёт. Поступил на вооружение армии США в 1987 году. Представляет собой одну из версий английского миномёта L16. Используется на батальонном уровне, в американской армии M252 имеются в лёгких пехотных, воздушно-десантных, воздушно-штурмовых и батальонах морской пехоты в количестве от 4 до 8.";
+                amount = 1;
+                price = 2700;
+                stock = 1000;
+            };
+        };
+    };
+    /*
+    class shopFood {
+        class shopFoodFood {
+            kindOf = "Items";
+            displayName = "Еда";
+            class ACE_Banana {
+                displayName = "Банан";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };            
+            class ACE_Humanitarian_Ration {
+                displayName = "ИРП (1)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_CreamChickenSoup {
+                displayName = "ИРП (2)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_ChickenTikkaMasala {
+                displayName = "ИРП (3)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_ChickenHerbDumplings {
+                displayName = "ИРП (4)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_MeatballsPasta {
+                displayName = "ИРП (5)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_SteakVegetables {
+                displayName = "ИРП (6)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_CreamTomatoSoup {
+                displayName = "ИРП (7)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_BeefStew {
+                displayName = "ИРП (8)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_MRE_LambCurry {
+                displayName = "ИРП (9)";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+        };
+        class shopFoodDrinks {
+            kindOf = "Items";
+            displayName = "Напитки";
+            class ACE_WaterBottle {
+                displayName = "Бутылка воды";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };            
+            class ACE_Can_Franta {
+                displayName = "Franta";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_Can_Spirit {
+                displayName = "Spirit";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_Can_RedGull {
+                displayName = "RedGull";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class ACE_Canteen {
+                displayName = "Фляга с водой";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };            
+        };
+        class shopFoodOther {
+            kindOf = "Items";
+            displayName = "Прочее";
+            class murshun_cigs_matches {
+                displayName = "Коробка спичек";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+            class immersion_pops_poppack {
+                displayName = "Пачка леденцов";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };            
+            class murshun_cigs_lighter {
+                displayName = "Зажигалка";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };                        
+            class murshun_cigs_cigpack {
+                displayName = "Пачка сигарет";
+                description = "";
+                amount = 1;
+                price = 5;
+                stock = 1000;
+            };
+        };
+    };
+    class egerShop {
+        class EgerRussianWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class av_Saiga12K {
+                displayName = "Сайга-12К";
+                description = "";
+                price = 5000;
+                stock = 1000;
+            };
+            class av_saiga_mk {
+                displayName = "Сайга-МК";
+                description = "";
+                price = 6000;
+                stock = 1000;
+            };
+            class av_soc_vepr {
+                displayName = "СОК-93";
+                description = "";
+                price = 5500;
+                stock = 1000;
+            };
+            class mp135 {
+                displayName = "МР-153";
+                description = "";
+                price = 5200;
+                stock = 1000;
+            };
+        };
+        class EgerRussianAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class av_Saiga12p_M {
+                displayName = "Магазин на 8 патронов 12К (пуля)";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class 5Rnd_222Rem_Mag {
+                displayName = "Магазин на 5 патронов 222. Rem";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class 10Rnd_av_762x39_v {
+                displayName = "Магазин на 10 патронов 7.62x39";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class av_4_M {
+                displayName = "4 патрона 12K (дробь)";
+                description = "";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class rhsgref_50Rnd_792x57_SmE_notracers_drum {
+                displayName = "Барабан на 50 патронов 7.92x57";
+                description = "";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+            };
+            class rhsgref_30Rnd_792x33_SmE_StG {
+                displayName = "Магазин на 30 патронов 7.92.33";
+                description = "";
+                amount = 1;
+                price = 600;
+                stock = 1000;
+            };
+            class 30Rnd_mp40_av {
+                displayName = "Магазин на 30 патронов 9x19";
+                description = "";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class rhsgref_5Rnd_792x57_kar98k {
+                displayName = "Обойма на 5 патронов 7.92x57";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class rhsgref_5Rnd_762x54_m38 {
+                displayName = "Обойма на 5 патронов 7.62x54";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class 8Rnd_Mag_p38 {
+                displayName = "Магазин на 8 патронов 9x19";
+                description = "";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class 20Rnd_9x21_Mag {
+                displayName = "Магазин на 20 патронов 9x21";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+        };
+        class EgerRussianVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class UK3CB_TKA_I_V_vydra_3m_Tan {
+                displayName = "Выдра-3М";
+                description = "";
+                amount = 1;
+                price = 800;
+                stock = 1000;
+            };
+            class UK3CB_TKP_B_V_TacVest_Tan {
+                displayName = "Тактический бронежилет";
+                description = "";
+                amount = 1;
+                price = 830;
+                stock = 1000;
+            };
+            class rhsgref_chicom {
+                displayName = "Разгрузочный жилет Чиком";
+                description = "";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+        };
+        class EgerRussianBackpacks {
+            kindOf = "Wearables";
+            displayName = "Рюкзаки";
+            class UK3CB_B_Fieldpack {
+                displayName = "Вещмешок";
+                description = "";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+            };
+        };
+    };
+    class policeShop {
+        class PoliceRussianWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class rhs_weap_ak105_zenitco01_b33 {
+                displayName = "АК-105";
+                description = "";
+                price = 4000;
+                stock = 1000;
+                muzzleItem = "rhs_acc_dtk1983";
+                opticsItem = "rhs_acc_ekp8_18";
+                underbarrelItem = "rhs_acc_grip_rk2";
+            };
+        };
+        class PoliceRussianAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class rhs_30Rnd_545x39_7N22_AK {
+                displayName = "Магазин на 30 патронов 5.45x39 (7Н22)";
+                description = "";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+        };
+        class PoliceRussianLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            class av_tigr_omon_2 {
+                displayName = "ГАЗ-233011 (ОМОН)";
+                description = "";
+                amount = 1;
+                price = 10000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class av_btr80_omon {
+                displayName = "БТР-80 (ОМОН)";
+                description = "";
+                amount = 1;
+                price = 12500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };            
+        };
+        class PoliceRussianAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";
+            class UK3CB_CPD_O_Mi8AMT {
+                displayName = "Ми-8";
+                description = "";
+                amount = 1;
+                price = 15000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };        
+    };
+    class rebelShop {
+        class RebelWeapons {
+            kindOf = "Weapons";
+            displayName = "Оружие";
+            class CUP_arifle_AKM_Early {
+                displayName = "АКМ";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК и являющийся его дальнейшим развитием.";
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_arifle_AKM_GL_Early {
+                displayName = "АКМ (ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК и являющийся его дальнейшим развитием. Модификация с подствольным гранатомётом ГП-25.";
+                price = 250;
+                stock = 1000;
+            };
+            class CUP_arifle_AKMS_Early {
+                displayName = "АКМС";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК и являющийся его дальнейшим развитием. Модификация со складным прикладом.";
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_arifle_AKMS_GL_Early {
+                displayName = "АКМС (ГП-25)";
+                description = "Автомат, принятый на вооружение ВС Союза ССР в 1959 году взамен автомата АК и являющийся его дальнейшим развитием. Модификация с подствольным гранатомётом ГП-25 и складным прикладом.";
+                price = 250;
+                stock = 1000;
+            };
+            class CUP_arifle_AKS74U {
+                displayName = "АКС-74У";
+                description = "Укороченный вариант автомата АКС-74, был разработан в конце 1970 — начале 1980-х годов для вооружения экипажей боевых машин, авиатехники, расчётов орудий, а также десантников. Он также используется в МВД и охранных структурах благодаря своим небольшим размерам.";
+                price = 200;
+                stock = 1000;
+            };            
+            class CUP_arifle_AK74_Early {
+                displayName = "АК-74";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм.";
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_arifle_AK74_GL_Early {
+                displayName = "АК-74 (ГП-25)";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация с подствольным гранатомётом ГП-25.";
+                price = 350;
+                stock = 1000;
+            };            
+            class CUP_arifle_AKS74_Early {
+                displayName = "АКС-74";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация со складным прикладом.";
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_arifle_AKS74_GL_Early {
+                displayName = "АКС-74 (ГП-25)";
+                description = "Автомат калибра 5,45 мм, разработанный в 1970 году советским конструктором М. Т. Калашниковым и принятый на вооружение вооружённых сил СССР в 1974 году. Является дальнейшим развитием АКМ. Разработка АК-74 связана с переходом на новый малоимпульсный патрон 5,45×39 мм. Модификация с подствольным гранатомётом ГП-25 и складным прикладом.";
+                price = 350;
+                stock = 1000;
+            };
+            class CUP_arifle_AK74M {
+                displayName = "АК-74M";
+                description = "АК-74 модернизированный. Оснащён складывающимся на левый бок полимерным прикладом и универсальным креплением (планка «ласточкин хвост») для крепления прицелов, как оптических, так и ночных, на левой стороне ствольной коробки.";
+                price = 400;
+                stock = 1000;
+            };
+            class CUP_arifle_AK74M_GL {
+                displayName = "АК-74M (ГП-25)";
+                description = "АК-74 модернизированный. Оснащён складывающимся на левый бок полимерным прикладом и универсальным креплением (планка «ласточкин хвост») для крепления прицелов, как оптических, так и ночных, на левой стороне ствольной коробки. Модификация с подствольным гранатомётом ГП-25.";
+                price = 450;
+                stock = 1000;
+            };
+            class CUP_lmg_PKM {
+                displayName = "ПКМ";
+                description = "Советский пулемёт, разработанный М. Т. Калашниковым в качестве единого пулемёта для Вооружённых Сил СССР.";
+                price = 500;
+                stock = 1000;
+            };
+            class CUP_arifle_M16A1 {
+                displayName = "M16A1";
+                description = "Усовершенствованный вариант M16. Основные отличия: появление механизма досылания затвора и усовершенствованный буфер стебля затвора (снизил темп стрельбы до 750—850 выстрелов в минуту и исключил отскок затвора и осечки), более надёжный пламегаситель с замкнутыми щелями, хромированное покрытие затвора (для исключения его коррозии), уменьшение шага нарезов с 356 до 305 мм (улучшило устойчивость пули, но увеличило рассеивание на дистанциях свыше 400 м), прилив для установки штык-ножа. Также специально для новой винтовки был создан 30-зарядный магазин и глушитель, рассчитанный для стрельбы обычными (а не дозвуковыми) патронами. Находилась на вооружении армии США с 1967 по 1985 год.";
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_arifle_M16A1GL {
+                displayName = "M16A1 M203";
+                description = "Усовершенствованный вариант M16. Основные отличия: появление механизма досылания затвора и усовершенствованный буфер стебля затвора (снизил темп стрельбы до 750—850 выстрелов в минуту и исключил отскок затвора и осечки), более надёжный пламегаситель с замкнутыми щелями, хромированное покрытие затвора (для исключения его коррозии), уменьшение шага нарезов с 356 до 305 мм (улучшило устойчивость пули, но увеличило рассеивание на дистанциях свыше 400 м), прилив для установки штык-ножа. Также специально для новой винтовки был создан 30-зарядный магазин и глушитель, рассчитанный для стрельбы обычными (а не дозвуковыми) патронами. Находилась на вооружении армии США с 1967 по 1985 год. Модификация с подствольным гранатомётом M203.";
+                price = 350;
+                stock = 1000;
+            };
+            class CUP_arifle_M16A2 {
+                displayName = "M16A2";
+                description = "Вариант винтовки M16A1, адаптированный под патрон SS109/М855. Отличия от M16A1: упрочнённый ствол с шагом нарезов 1:7, улучшенные прицельные приспособления, размеченные до 800 м, новые цевьё и приклад из ударопрочного полиамида, замена режима непрерывного огня на режим с отсечкой очереди после 3 выстрелов (на вооружении корпуса морской пехоты поступил вариант M16A2 с возможностью ведения непрерывного огня), новый пламегаситель с прорезями только в верхней части (благодаря чему компенсировался увод оружия вверх). Новая винтовка стала комплектоваться лёгкими пластиковыми магазинами на 30 патронов.";
+                price = 400;
+                stock = 1000;
+            };
+            class CUP_arifle_M16A2_GL {
+                displayName = "M16A2 M203";
+                description = "Вариант винтовки M16A1, адаптированный под патрон SS109/М855. Отличия от M16A1: упрочнённый ствол с шагом нарезов 1:7, улучшенные прицельные приспособления, размеченные до 800 м, новые цевьё и приклад из ударопрочного полиамида, замена режима непрерывного огня на режим с отсечкой очереди после 3 выстрелов (на вооружении корпуса морской пехоты поступил вариант M16A2 с возможностью ведения непрерывного огня), новый пламегаситель с прорезями только в верхней части (благодаря чему компенсировался увод оружия вверх). Новая винтовка стала комплектоваться лёгкими пластиковыми магазинами на 30 патронов. Модификация с подствольным гранатомётом M203.";
+                price = 450;
+                stock = 1000;
+            };
+            class CUP_arifle_M16A4_Base {
+                displayName = "M16A4";
+                description = "Вариант винтовки M16A3. Сверху ствольной коробки вместо ручки для переноски (которая стала съёмной) установлена направляющая типа Пикатинни. Возможна установка дополнительных направляющих типа Пикатинни на цевьё.";
+                price = 500;
+                stock = 1000;
+            };
+            class CUP_arifle_M16A4_GL {
+                displayName = "M16A4 M203";
+                description = "Вариант винтовки M16A3. Сверху ствольной коробки вместо ручки для переноски (которая стала съёмной) установлена направляющая типа Пикатинни. Возможна установка дополнительных направляющих типа Пикатинни на цевьё. Модификация с подствольным гранатомётом M203.";
+                price = 550;
+                stock = 1000;
+            };
+        };
+        class RebelLaunchers {
+            kindOf = "Weapons";
+            displayName = "Пусковые установки";
+            class CUP_launch_RPG26 {
+                displayName = "РПГ-26 «Аглень»";
+                description = "Советская реактивная противотанковая граната, разработанная в НПО «Базальт» на замену РПГ-22 «Нетто», для повышения боевых возможностей мотострелковых, воздушно-десантных и других подразделений.";
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_launch_RShG2 {
+                displayName = "РШГ-2";
+                description = "Российская одноразовая реактивная штурмовая граната (гранатомёт). Представляет собой реактивный снаряд с термобарической боевой частью калибром 72.5 мм (иначе называемой «боеприпас объемного взрыва») и пороховым реактивным двигателем";
+                price = 400;
+                stock = 1000;
+            };
+            class CUP_launch_RPG7V {
+                displayName = "РПГ-7В2 «Гая»";
+                description = "Советский индивидуальный ручной противотанковый гранатомёт многоразового применения.";
+                price = 500;
+                stock = 1000;
+            };
+            class CUP_launch_Igla {
+                displayName = "9K38 «Игла»";
+                description = "Советский и российский переносной зенитный ракетный комплекс, предназначенный для поражения низколетящих воздушных целей на встречных и догонных курсах в условиях тепловых помех. Комплекс принят на вооружение в 1981 году.";
+                price = 400;
+                stock = 1000;
+            };
+        };
+        class RebelAmmunition {
+            kindOf = "Items";
+            displayName = "Боеприпасы";
+            class CUP_30Rnd_762x39_AK47_M {
+                displayName = "Магазин на 30 патронов 7.62x39мм";
+                description = "Магазин, снаряженный 30 промежуточными патронами с невыступающей закраиной конструкции Н. М. Елизарова и Б. В. Сёмина.";
+                amount = 1;
+                price = 25;
+                stock = 1000;
+            };
+            class CUP_40Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M {
+                displayName = "Магазин на 40 патронов 7.62x39мм";
+                description = "Магазин, снаряженный 40 промежуточными патронами с невыступающей закраиной конструкции Н. М. Елизарова и Б. В. Сёмина.";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class CUP_75Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M {
+                displayName = "Магазин на 75 патронов 7.62x39мм";
+                description = "Магазин, снаряженный 40 промежуточными патронами с невыступающей закраиной конструкции Н. М. Елизарова и Б. В. Сёмина.";
+                amount = 1;
+                price = 75;
+                stock = 1000;
+            };            
+            class CUP_30Rnd_545x39_AK74M_M {
+                displayName = "Магазин на 30 патронов 5.45x39мм";
+                description = "Магазин, снаряженный 30 малоимпульсными советскими промежуточными унитарными патронами центрального воспламенения. Патрон разработан в начале 1970-х годов группой конструкторов и технологов под руководством В. М. Сабельникова: Л. И. Булавской, Б. В. Семиным, М. Е. Федоровым, П. Ф. Сазоновым, В. И. Волковым, В. А. Николаевым, Е. Е. Зиминым, П. С. Королевым. Принят на вооружение в 1974 году.";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class CUP_45Rnd_TE4_LRT4_Green_Tracer_545x39_RPK74M_M {
+                displayName = "Магазин на 45 патронов 5.45x39мм";
+                description = "Магазин, снаряженный 45 малоимпульсными советскими промежуточными унитарными патронами центрального воспламенения. Патрон разработан в начале 1970-х годов группой конструкторов и технологов под руководством В. М. Сабельникова: Л. И. Булавской, Б. В. Семиным, М. Е. Федоровым, П. Ф. Сазоновым, В. И. Волковым, В. А. Николаевым, Е. Е. Зиминым, П. С. Королевым. Принят на вооружение в 1974 году.";
+                amount = 1;
+                price = 75;
+                stock = 1000;
+            };
+            class CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M {
+                displayName = "Короб на 100 патронов 7.62x54мм";
+                description = "Короб, снаряженный 100 унитарными винтовочными патронами с гильзой с выступающей закраиной размерностью 7,62 × 53,72 мм, общей максимальной длиной патрона 77,16 мм, диаметром пули 7,62 мм и дульной энергией 3500 Дж.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class CUP_1Rnd_HE_GP25_M {
+                displayName = "Упаковка гранат ВОГ-25 40мм";
+                description = "Коробка гранат ВОГ-25 - осколочных боеприпасов для гранатомётов ГП-25 «Костёр». В упаковке 5 штук.";
+                amount = 5;
+                price = 100;
+                stock = 1000;
+            };
+            class CUP_1Rnd_SMOKE_GP25_M {
+                displayName = "Упаковка гранат ВДГ-40 40мм";
+                description = "Коробка дымовых гранат ВДГ-40 «Нагар» — применяются для постановки дымовой завесы. В упаковке 5 штук.";
+                amount = 5;
+                price = 50;
+                stock = 1000;
+            };
+            class CUP_FlareRed_GP25_M {
+                displayName = "Упаковка гранат ВГС-40 40мм";
+                description = "Коробка ВГС-40 - выстрелов с сигнальными гранатами белого цвета. В упаковке 5 штук.";
+                amount = 5;
+                price = 25;
+                stock = 1000;
+            };
+            class CUP_20Rnd_556x45_Stanag {
+                displayName = "Магазин на 20 патронов 5.56x45мм";
+                description = "Магазин на 20 малоимпульсных промежуточных патронов с бесфланцевой гильзой бутылочной формы, принятый на вооружение странами НАТО в 1980-х годах.";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class CUP_30Rnd_556x45_Stanag {
+                displayName = "Магазин на 30 патронов 5.56x45мм";
+                description = "Магазин на 30 малоимпульсных промежуточных патронов с бесфланцевой гильзой бутылочной формы, принятый на вооружение странами НАТО в 1980-х годах.";
+                amount = 1;
+                price = 75;
+                stock = 1000;
+            };
+            class CUP_60Rnd_556x45_SureFire {
+                displayName = "Магазин на 60 патронов 5.56x45мм";
+                description = "Магазин на 60 малоимпульсных промежуточных патронов с бесфланцевой гильзой бутылочной формы, принятый на вооружение странами НАТО в 1980-х годах.";
+                amount = 1;
+                price = 125;
+                stock = 1000;
+            };
+            class CUP_1Rnd_HE_M203 {
+                displayName = "Упаковка гранат M441 HE 40мм";
+                description = "Коробка гранат M441 - осколочных боеприпасов для гранатомётов M203. В упаковке 5 штук.";
+                amount = 5;
+                price = 150;
+                stock = 1000;
+            };
+            class CUP_1Rnd_HEDP_M203 {
+                displayName = "Упаковка гранат M443 HEDP 40мм";
+                description = "Коробка гранат M443 - осколочных боеприпасов двойного действия для гранатомётов M203. В упаковке 5 штук.";
+                amount = 5;
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_1Rnd_Smoke_M203 {
+                displayName = "Упаковка гранат M714 40мм";
+                description = "Коробка гранат M714 - дымовых боеприпасов для гранатомётов M203. В упаковке 5 штук.";
+                amount = 5;
+                price = 100;
+                stock = 1000;
+            };
+            class CUP_FlareWhite_M203 {
+                displayName = "Упаковка гранат M583 40мм";
+                description = "Коробка гранат M583 - сигнальных боеприпасов для гранатомётов M203. В упаковке 5 штук.";
+                amount = 5;
+                price = 75;
+                stock = 1000;
+            };
+            class CUP_PG7V_M {
+                displayName = "Выстрел ПГ-7В";
+                description = "40-мм выстрел динамо-реактивного типа ПГ-7В с кумулятивной противотанковой гранатой предназначен для поражения танков, САУ и других бронированных целей, а также для уничтожения живой силы противника в лёгких укрытиях и сооружениях городского типа на дальностях до 500 м.";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class CUP_PG7VM_M {
+                displayName = "Выстрел ПГ-7ВМ";
+                description = "Выстрел ПГ-7ВМ является модернизированным вариантом ПГ-7В.";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_PG7VL_M {
+                displayName = "Выстрел ПГ-7ВЛ «Луч»";
+                description = "Выстрел предназначен для пробивания слоистой композитной брони. Бронепробиваемость до 500 мм достигнута за счёт увеличения в два раза массы BB (730 г окфола), при этом калибр увеличился до 93 мм, но уменьшились начальная скорость гранаты и дальность стрельбы (до 300 м).";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+            };
+            class CUP_PG7VR_M {
+                displayName = "Выстрел ПГ-7ВР «Резюме»";
+                description = "Выстрел предназначен для пробивания брони с активной (динамической) защитой, состоящей из пластин BB пониженной мощности. Выстрел ПГ-7ВР - тандемный, то есть с двумя расположенными один за другим кумулятивными зарядами, срабатывающими последовательно.";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_TBG7V_M {
+                displayName = "Выстрел ТБГ-7В";
+                description = "Выстрел ТБГ-7В снаряжен термобарической смесью и внешне подобен выстрелу ПГ-7ВР без головного кумулятивного заряда. Реактивный двигатель и стартовый заряд по конструкции аналогичны ПГ-7ВР. Фугасно-зажигательно-осколочное действие гранаты обеспечивает поражение живой силы на открытой местности в радиусе 10 м и в помещении с объёмом до 300 м3.";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class CUP_OG7_M {
+                displayName = "Выстрел ОГ-7В";
+                description = "Выстрел ОГ-7В имеет 40-мм калиберную гранату ОГ-7 цилиндрической формы без реактивного двигателя, снаряженную BB марки A-IX-I, взрыватель ГО-2 и стартовый заряд ПГ-7ПМ. Приведенная площадь поражения осколками - 150 м2.";
+                amount = 1;
+                price = 175;
+                stock = 1000;
+            };
+        };
+        class RebelAccessories {
+            kindOf = "Items";
+            displayName = "Аксессуары";
+            class CUP_optic_AC11704_Black {
+                displayName = "Прицел Barska";
+                description = "Прицельное приспособление для ведения боя на ближней и средней дистанции модели Barska AC11704.";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_optic_HoloBlack {
+                displayName = "Прицел EOTech 551";
+                description = "Прицельное приспособление для ведения боя на ближней и средней дистанции модели EOTech 551.";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_optic_ACOG2 {
+                displayName = "Прицел Trijicon ACOG TA31F";
+                description = "Прицельное приспособление для ведения боя на средней и дальней дистанции модели Trijicon ACOG TA31F.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class CUP_acc_Zenit_2DS {
+                displayName = "Фонарь Зенит-2ДС";
+                description = "Тактический фонарь разработанный Российской фирмой Зенит практически сразу был принят на вооружение силовых структур РФ. В простонародье называется «Зенитка» из-за яркости излучаемого света.";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class CUP_muzzle_mfsup_Flashhider_762x39_Black {
+                displayName = "Пламегаситель 7.62x39мм";
+                description = "Дульная насадка на оружие калибра 7.62x39мм";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class CUP_muzzle_Bizon {
+                displayName = "Глушитель 7.62x39мм";
+                description = "Дульная насадка на оружие калибра 7.62x39мм";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_muzzle_mfsup_Flashhider_545x39_Black {
+                displayName = "Пламегаситель 5.45x39мм";
+                description = "Дульная насадка на оружие калибра 5.45x39мм";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+            };
+            class CUP_muzzle_snds_KZRZP_AK545 {
+                displayName = "Глушитель 5.45x39мм";
+                description = "Дульная насадка на оружие калибра 5.45x39мм";
+                amount = 1;
+                price = 400;
+                stock = 1000;
+            };
+            class CUP_muzzle_mfsup_Flashhider_556x45_Black {
+                displayName = "Пламегаситель 5.56x45мм";
+                description = "Дульная насадка на оружие калибра 5.56x45мм";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+            class CUP_muzzle_snds_M16 {
+                displayName = "Глушитель 5.56x45мм";
+                description = "Дульная насадка на оружие калибра 5.56x45мм";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class Rangefinder {
+                displayName = "Дальномер";
+                description = "Устройство наблюдения с встроенным считывателем расстояния до цели.";
+                amount = 1;
+                price = 450;
+                stock = 1000;
+            };            
+            class I_UavTerminal {
+                displayName = "Терминал БПЛА";
+                description = "Микрокомпьютер, позволяющий управлять беспилотными устройствами.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+        };
+        class RebelVests {
+            kindOf = "Wearables";
+            displayName = "Жилеты";
+            class CFP_MBSS_BLK {
+                displayName = "MBSS";
+                description = "Платформенный разгрузочный бронежилет MBSS.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class CFP_RAV_Black {
+                displayName = "RAV";
+                description = "Платформенный разгрузочный бронежилет RAV.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };            
+            class CUP_V_B_Armatus_Black {
+                displayName = "Armatus";
+                description = "Платформенный жилет Armatus.";
+                amount = 1;
+                price = 600;
+                stock = 1000;
+            };
+            class CUP_V_B_Armatus_BB_Black {
+                displayName = "Armatus Battlebelt";
+                description = "Платформенный разгрузочный бронежилет Armatus. Версия с боевым поясом.";
+                amount = 1;
+                price = 750;
+                stock = 1000;
+            };
+        };
+        class RebelHelmets {
+            kindOf = "Wearables";
+            displayName = "Шлемы";
+            class SP_PASGTHelmet_Black1 {
+                displayName = "PASGT";
+                description = "Бронешлем из комплекта PASGT. Разработан в середине 1970-х годов после получения положительных результатов опробования технологии кевлара.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+            };
+            class SP_ACHHelmet_Black1 {
+                displayName = "ACH";
+                description = "«Усовершенствованный боевой шлем». Бронешлем, находящийся на вооружении сухопутных войск США.";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+            };
+
+            class CFP_OPS2017_Helmet_Black2 {
+                displayName = "Ops-Core FAST";
+                description = "Баллистический шлем Ops-Core FAST популярный у спецподразделений всего мира.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+        };
+        class RebelBackpacks {
+            kindOf = "Wearables";
+            displayName = "Рюкзаки";
+            class CFP_RPGPack_Black {
+                displayName = "Сумка РПГ";
+                description = "Заплечная сумка с карманами для гранат РПГ.";
+                amount = 1;
+                price = 50;
+                stock = 1000;
+            };
+            class CFP_Kitbag_Olive {
+                displayName = "Компактный рюкзак";
+                description = "Стандартный вместительный рюкзак.";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+            };
+            class SP_Carryall_Black {
+                displayName = "Походный рюкзак";
+                description = "Походный рюкзак с повышенной вместительностью.";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+            };
+        };
+        class RebelLandVehicles {
+            kindOf = "Vehicles";
+            displayName = "Наземная техника";
+            class CUP_I_RG31_M2_W_ION {
+                displayName = "RG-31 Nyala M2";
+                description = "Бронированный автомобиль с пулемётом M2.";
+                amount = 1;
+                price = 750;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class CUP_I_RG31_Mk19_W_ION {
+                displayName = "RG-31 Mk.19";
+                description = "Бронированный автомобиль с автоматическим гранатомётом Mk.19.";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class CFP_I_WAGNER_MT_LB_LV_WIN_01 {
+                displayName = "МТ-ЛБ";
+                description = "Советская боевая машина, многоцелевой плавающий бронетранспортёр (БТР). Версия с башней с ПКТ";
+                amount = 1;
+                price = 1250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class CFP_I_WAGNER_BTR_80_WIN_01 {
+                displayName = "БТР-80";
+                description = "Советский бронетранспортёр.";
+                amount = 1;
+                price = 1500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class CFP_I_WAGNER_BMP_2_WIN_01 {
+                displayName = "БМП-2";
+                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
+                amount = 1;
+                price = 1750;
+                stock = 1000;
+                spawnEmpty = 1;
+            };            
+        };
+        class RebelAirVehicles {
+            kindOf = "Vehicles";
+            displayName = "Воздушная техника";
+            class CFP_I_WAGNER_Pchela_1T_WIN_01 {
+                displayName = "Пчела-1Т";
+                description = "Советский и российский разведывательный БПЛА.";
+                amount = 1;
+                price = 1000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class CFP_I_WAGNER_Ka60_WIN_01 {
+                displayName = "Ка-60";
+                description = "Проект советского/российского среднего многоцелевого военного вертолёта, предназначенного для воздушного патрулирования, ведения поисково-спасательных работ, эвакуации раненых, обучения лётного состава, перевозки и десантирования живой силы и вооружения, а также для ведения воздушной разведки и выдачи целеуказания группам ударных вертолётов на поле боя.";
+                amount = 1;
+                price = 5000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+        };
+        class RebelStaticVehicles {
+            kindOf = "Vehicles";
+            displayName = "Стационарные установки";
+            class CFP_I_WAGNER_DShKM_WIN_01 {
+                displayName = "ДКШМ";
+                description = "Советский станковый крупнокалиберный пулемёт под патрон 12,7×108 мм. Разработан на основе конструкции крупнокалиберного станкового пулемёта ДК.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+            class CFP_I_WAGNER_Mortar_WIN_01 {
+                displayName = "2Б14 «Поднос»";
+                description = "Советский 82-мм миномёт, стреляющий теми же снарядами, что и 2Б9 «Василёк». Создавался для подавления живой силы и огневых средств противника в поддержку моторизованным частям. Он незаменим в ближнем бою при уничтожении противника в окопах и складках местности, за обратными скатами высот, домами и заборами.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };            
+            class CFP_I_WAGNER_SPG_9_WIN_01 {
+                displayName = "СПГ-9";
+                description = "Советский станковый противотанковый гранатомёт (безоткатное орудие).";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+            };
+        };
+    };
+    */
+};
+
+

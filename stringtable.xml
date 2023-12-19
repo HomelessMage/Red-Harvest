@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project>
+	<Package>
+		<Container>
+			<Key ID="STR_TAG_missionName">
+				<English>Red Harvest</English>
+				<Russian>Красная Жатва</Russian>
+			</Key>
+            <Key ID="STR_TAG_missionAuthor">
+                <English>«Zvezda» roleplay community | HomelessMage</English>
+                <Russian>Ролевое сообщество «Звезда» | HomelessMage</Russian>
+            </Key>
+            <Key ID="STR_TAG_missionDescription">
+                <English>About two years have passed since the start of the civil war in Chernarus, but it has not ended in success for any side of the conflict. Despite the peace agreement signed under pressure from the UN Security Council, the new Chernorussian states are not going to just sit idly by: the time has come for revenge.</English>
+                <Russian>Прошло около двух лет с момента начала гражданской войны в Чернаруси, но она так и не окончилась успехом для какой-либо стороны конфликта. Несмотря на мирное соглашение, подписанное под давлением совбеза ООН, новые чернорусские государства не собираются просто так сидеть сложа руки: пришло время реванша.</Russian>
+            </Key>
+            <Key ID="STR_TAG_KIA">
+                <English>KILLED IN ACTION</English>
+                <Russian>ПОГИБ В БОЮ</Russian>
+            </Key>
+            <Key ID="STR_TAG_MIA">
+                <English>MISSING IN ACTION</English>
+                <Russian>ПРОПАЛ БЕЗ ВЕСТИ</Russian>
+            </Key>
+            <Key ID="STR_TAG_WIA">
+                <English>WOUNDED IN ACTION</English>
+                <Russian>РАНЕН В БОЮ</Russian>
+            </Key>
+            <Key ID="STR_TAG_POW">
+                <English>PRISONER OF WAR</English>
+                <Russian>ВЗЯТ В ПЛЕН</Russian>
+            </Key>
+            <Key ID="STR_TAG_saveProgress">
+                <English>Save progress</English>
+                <Russian>Сохранить прогресс</Russian>
+            </Key>
+            <Key ID="STR_TAG_medicalAssistance">
+                <English>Get medical assistance</English>
+                <Russian>Получить медицинскую помощь</Russian>
+            </Key>
+            <Key ID="STR_TAG_deployToMHQ">
+                <English>Deploy to MHQ</English>
+                <Russian>Высадиться на КШМ</Russian>
+            </Key>
+            <Key ID="STR_TAG_getEquipment">
+                <English>Get basic equipment</English>
+                <Russian>Получить базовую экипировку</Russian>
+            </Key>
+            <Key ID="STR_TAG_militaryShop">
+                <English>Military shop</English>
+                <Russian>Военная барахолка</Russian>
+            </Key>
+            <Key ID="STR_TAG_defend">
+                <English>Defend</English>
+                <Russian>Защитить</Russian>
+            </Key>
+            <Key ID="STR_TAG_defendBuilding">
+                <English>Defend building</English>
+                <Russian>Защитить здание</Russian>
+            </Key>
+            <Key ID="STR_TAG_townTaskDescription">
+                <English>Control the town of</English>
+                <Russian>Контролировать город</Russian>
+            </Key>
+            <Key ID="STR_TAG_captureFlag">
+                <English>Capture flag</English>
+                <Russian>Поднять знамя</Russian>
+            </Key>
+            <Key ID="STR_TAG_defendWeaponsCacheTaskDescription">
+                <English>CDF have a weapons cache located somewhere in a town. We have to make sure the cache is secured. In case of emergency we should retrieve to an FOB.</English>
+                <Russian>ЧСО разместило в городе схрон с американским снаряжением. Нам нужно убедиться в том что он не будет украден противником. В случае необходимости его можно вывезти в штаб.</Russian>
+            </Key>
+            <Key ID="STR_TAG_defendWeaponsCacheTaskName">
+                <English>Defend weapons cache</English>
+                <Russian>Защитить схрон</Russian>
+            </Key>
+            <Key ID="STR_TAG_killAgentTaskDescription">
+                <English>We have to neutralize Chedaki agent located somewhere in this town.</English>
+                <Russian>Необходимо ликвидировать агента ЧДКЗ, который находится где-то в этом городе.</Russian>
+            </Key>
+            <Key ID="STR_TAG_killAgentTaskName">
+                <English>Neutralize agent</English>
+                <Russian>Ликвидировать агента</Russian>
+            </Key>
+            <Key ID="STR_TAG_arsenal">
+                <English>Arsenal</English>
+                <Russian>Арсенал</Russian>
+            </Key>
+            <Key ID="STR_TAG_storage">
+                <English>Storage</English>
+                <Russian>Склад</Russian>
+            </Key>
+            <Key ID="STR_TAG_press">
+                <English>Press</English>
+                <Russian>Нажмите</Russian>
+            </Key>
+            <Key ID="STR_TAG_toOpenDistanceDrawSetting">
+                <English>to open distance draw settings</English>
+                <Russian>чтобы открыть меню настройки дальности видимости</Russian>
+            </Key>
+            <Key ID="STR_TAG_trashBin">
+                <English>Trashbin</English>
+                <Russian>Мусорка</Russian>
+            </Key>
+            <Key ID="STR_TAG_destroyTrashInTrashBin">
+                <English>Destroy trash in trashbin</English>
+                <Russian>Уничтожить мусор в мусорке</Russian>
+            </Key>
+            <Key ID="STR_TAG_destroyTrashAtBase">
+                <English>Destroy trash at base</English>
+                <Russian>Уничтожить мусор на базе</Russian>
+            </Key>
+            <Key ID="STR_TAG_resetEquipment">
+                <English>Reset eqiupment</English>
+                <Russian>Сбросить экипировку</Russian>
+            </Key>
+            <Key ID="STR_TAG_breakWindow">
+                <English>Break window</English>
+                <Russian>Выбить окно</Russian>
+            </Key>
+            
+		</Container>
+        <Container>
+            <Key ID="STR_TAG_notepad">
+                <English>NOTEPAD</English>
+                <Russian>БЛОКНОТ</Russian>
+            </Key>
+            <Key ID="STR_TAG_notes">
+                <English>Notes</English>
+                <Russian>Записки</Russian>
+            </Key>
+            <Key ID="STR_TAG_writeNote">
+                <English>Write a note</English>
+                <Russian>Создать записку</Russian>
+            </Key>
+            <Key ID="STR_TAG_interaction">
+                <English>Interaction</English>
+                <Russian>Взаимодействие</Russian>
+            </Key>
+            <Key ID="STR_TAG_readNote">
+                <English>Read note</English>
+                <Russian>Прочитать записку</Russian>
+            </Key>
+            <Key ID="STR_TAG_takeNote">
+                <English>Take note</English>
+                <Russian>Взять записку</Russian>
+            </Key>
+            <Key ID="STR_TAG_destroyNote">
+                <English>Destroy note</English>
+                <Russian>Порвать записку</Russian>
+            </Key>
+            <Key ID="STR_TAG_dropNote">
+                <English>Drop note</English>
+                <Russian>Бросить записку</Russian>
+            </Key>            
+            
+            <Key ID="STR_TAG_progressSaved">
+                <English>Progress saved</English>
+                <Russian>Прогресс сохранен</Russian>
+            </Key>
+            <Key ID="STR_TAG_progressLoaded">
+                <English>Progress loaded</English>
+                <Russian>Прогресс загружен</Russian>
+            </Key>
+            <Key ID="STR_TAG_progressWillBeSavedIn">
+                <English>Progress will be saved in</English>
+                <Russian>Прогресс будет сохранён через</Russian>
+            </Key>
+            <Key ID="STR_TAG_seconds">
+                <English>seconds</English>
+                <Russian>секунд</Russian>
+            </Key>
+            <Key ID="STR_TAG_leaveTransport">
+                <English>Leave a vehicle!</English>
+                <Russian>Покиньте транспорт!</Russian>
+            </Key>
+            <Key ID="STR_TAG_checkBalance">
+                <English>Check balance</English>
+                <Russian>Проверить баланс</Russian>
+            </Key>
+            <Key ID="STR_TAG_checkCash">
+                <English>Check cash</English>
+                <Russian>Проверить наличные</Russian>
+            </Key>
+            <Key ID="STR_TAG_bankBalance">
+                <English>Bank balance</English>
+                <Russian>Банковский баланс</Russian>
+            </Key>
+            <Key ID="STR_TAG_wallet">
+                <English>Wallet</English>
+                <Russian>Кошелёк</Russian>
+            </Key>
+            <Key ID="STR_TAG_receivedFrom">
+                <English>received from</English>
+                <Russian>получено от</Russian>
+            </Key>
+            <Key ID="STR_TAG_tookFromYou">
+                <English>took from you</English>
+                <Russian>взял у тебя</Russian>
+            </Key>
+            <Key ID="STR_TAG_takenFrom">
+                <English>taken from</English>
+                <Russian>взято у</Russian>
+            </Key>
+            <Key ID="STR_TAG_takenFromStorage">
+                <English>taken from storage</English>
+                <Russian>взято со склада</Russian>
+            </Key>
+            <Key ID="STR_TAG_showDocuments">
+                <English>Show ID</English>
+                <Russian>Предъявить документы</Russian>
+            </Key>
+            <Key ID="STR_TAG_checkID">
+                <English>Check ID</English>
+                <Russian>Проверить документы</Russian>
+            </Key>
+            <Key ID="STR_TAG_checkOwnID">
+                <English>Check your ID</English>
+                <Russian>Посмотреть свои документы</Russian>
+            </Key>
+            <Key ID="STR_TAG_isCheckingYourID">
+                <English>is checking your ID</English>
+                <Russian>проверяет ваши документы</Russian>
+            </Key>
+            <Key ID="STR_TAG_isNoMoreCheckingYourID">
+                <English>is no more checking your ID</English>
+                <Russian>больше не осматривает ваши документы</Russian>
+            </Key>
+            <Key ID="STR_TAG_isBusyAndCannotCheckID">
+                <English>is busy and can't check ID</English>
+                <Russian>занят, и не может проверить документы</Russian>
+            </Key>
+            <Key ID="STR_TAG_takeBackID">
+                <English>TAKE BACK ID</English>
+                <Russian>ЗАБРАТЬ ДОКУМЕНТЫ</Russian>
+            </Key>
+            <Key ID="STR_TAG_idIsBeingInspected">
+                <English>YOUR ID IS BEING INSPECTED</English>
+                <Russian>ВАШИ ДОКУМЕНТЫ ОСМАТРИВАЮТСЯ</Russian>
+            </Key>
+            <Key ID="STR_TAG_idSurname">
+                <English>Surname</English>
+                <Russian>Фамилия</Russian>
+            </Key>
+            <Key ID="STR_TAG_idName">
+                <English>Name</English>
+                <Russian>Имя</Russian>
+            </Key>
+            <Key ID="STR_TAG_idDateOfBirth">
+                <English>Date of birth</English>
+                <Russian>Дата рождения</Russian>
+            </Key>
+            <Key ID="STR_TAG_idRegistrationPlace">
+                <English>Place of registration</English>
+                <Russian>Адрес регистрации</Russian>
+            </Key>
+            <Key ID="STR_TAG_idPeriodOfValidity">
+                <English>Period of validity</English>
+                <Russian>Срок действия</Russian>
+            </Key>
+        </Container>
+	</Package>
+</Project>
