@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={13908.673,66.476036,2862.4822};
-		dir[]={-0.57477701,-0.54076254,0.6141721};
-		up[]={-0.36950427,0.84117526,0.39483002};
-		aside[]={0.73013568,0,0.68330228};
+		pos[]={4413.4756,362.08896,10404.709};
+		dir[]={-0.7299549,-0.67313039,-0.11858056};
+		up[]={-0.66442055,0.73952383,-0.10793456};
+		aside[]={-0.16034718,0,0.98706073};
 	};
 };
 binarizationWanted=0;
@@ -9422,7 +9422,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="(_this select 0) execVM ""scripts\fn_respawnUAV.sqf"";";
+							value="(_this select 0) call hmg_fnc_respawnUAV";
 						};
 					};
 				};
@@ -9704,7 +9704,7 @@ class Mission
 			flags=6;
 			class Attributes
 			{
-				init="_this setPylonLoadout [1, """"]; " \n "_this setPylonLoadout [2, """"]; " \n "";
+				init="[_this] call hmg_fnc_respawnUAV";
 				reportRemoteTargets=1;
 				reportOwnPosition=1;
 				pylons="[0];[0];";
