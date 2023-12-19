@@ -19,9 +19,9 @@ _taskDescriptionWEST = [format [localize "STR_TAG_defend" + " %1", str _demoBuil
 
 
 while {alive _demoBuilding} do {
-	[WEST, 10] call HMG_fnc_giveMoneyToSide;
-	["Награда за сохранность здания: 10Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", [WEST, RESISTANCE]];
 	sleep 120;
+	[WEST, 10] call HMG_fnc_giveMoneyToSide;
+	["Награда за сохранность здания: 10Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", WEST];
 };
 
 

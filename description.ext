@@ -154,15 +154,45 @@ class CfgGradPersistence {
 
 
 
-class CfgSounds
-{
+class CfgSounds {
     sounds[] = {};
-    class deathmusic
-    {
-    name = "deathmusic";
-    sound[] = {"sounds\deathmusic.ogg", db+10, 1.0};
-    titles[] = {0,""};
+    class deathmusic {
+        name = "deathmusic";
+        sound[] = {"sounds\deathmusic.ogg", db+10, 1.0};
+        titles[] = {0,""};
     };
+    /*
+    class blufor_win {
+        name = "blufor_win";
+        sound[] = {"sounds\blufor_win.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class blufor_lose {
+        name = "blufor_lose";
+        sound[] = {"sounds\blufor_lose.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class opfor_win {
+        name = "opfor_win";
+        sound[] = {"sounds\opfor_win.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class opfor_lose {
+        name = "opfor_lose";
+        sound[] = {"sounds\opfor_lose.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class indfor_win {
+        name = "indfor_win";
+        sound[] = {"sounds\indfor_win.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class indfor_lose {
+        name = "indfor_lose";
+        sound[] = {"sounds\indfor_lose.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    */
 };
 
 
