@@ -59,7 +59,7 @@ if (!alive _agent) exitWith {
 	[_randomIndexWEST, "SUCCEEDED"] call BIS_fnc_taskSetState;
 	[RESISTANCE, 1500] call HMG_fnc_giveMoneyToSide;
 	[WEST, 1500] call HMG_fnc_giveMoneyToSide;
-	["Награда за ликвидацию агента: 1500. Деньги отправлены на банковский счёт."] remoteExec ["hintSilent", [WEST, RESISTANCE]];
+	["Награда за ликвидацию агента: 1500Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", [WEST, RESISTANCE]];
 };
 
 // if (!alive _agent) exitWith {};
@@ -73,7 +73,7 @@ while {alive _agent} do {
 		[_randomIndexWEST, "FAILED"] call BIS_fnc_taskSetState;
 		[EAST, 3000] call HMG_fnc_giveMoneyToSide;
 		[WEST, 1500] call HMG_fnc_giveMoneyToSide;
-		["Награда за эвакуацию агента: 3000. Деньги отправлены на банковский счёт."] remoteExec ["hintSilent", EAST];
+		["Награда за эвакуацию агента: 3000Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", EAST];
 		deleteVehicle _agent;
 	};
 	sleep 60;

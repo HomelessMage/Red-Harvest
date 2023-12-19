@@ -134,19 +134,19 @@ if (!alive _lootCache) then {
 waitUntil {!(_lootCache inArea _cacheTrigger);};
 
 while {alive _lootCache} do {
-	if (_lootCache inArea gradTriggerGUER) then {
+	if (_lootCache inArea gradTriggerGUER) exitWith {
 		[_lootCache] call grad_persistence_fnc_unblacklistObjects;
 		[_randomIndexEAST, "FAILED"] call BIS_fnc_taskSetState;
 		[_randomIndexRESISTANCE, "SUCCEEDED"] call BIS_fnc_taskSetState;
 		[_randomIndexWEST, "FAILED"] call BIS_fnc_taskSetState;
 	};
-	if (_lootCache inArea gradTriggerEAST) then {
+	if (_lootCache inArea gradTriggerEAST) exitWith {
 		[_lootCache] call grad_persistence_fnc_unblacklistObjects;
 		[_randomIndexEAST, "SUCCEEDED"] call BIS_fnc_taskSetState;
 		[_randomIndexRESISTANCE, "FAILED"] call BIS_fnc_taskSetState;
 		[_randomIndexWEST, "FAILED"] call BIS_fnc_taskSetState;
 	};
-	if (_lootCache inArea gradTriggerWEST) then {
+	if (_lootCache inArea gradTriggerWEST) exitWith {
 		[_lootCache] call grad_persistence_fnc_unblacklistObjects;
 		[_randomIndexEAST, "FAILED"] call BIS_fnc_taskSetState;
 		[_randomIndexRESISTANCE, "FAILED"] call BIS_fnc_taskSetState;

@@ -18,8 +18,19 @@ _taskDescriptionWEST = [format [localize "STR_TAG_defend" + " %1", str _demoBuil
 [WEST, _randomIndexWEST, _taskDescriptionWEST, _demoBuilding, "CREATED", -1, false, "Defend", false] call BIS_fnc_taskCreate;
 
 
+while {alive _demoBuilding} do {
+	[WEST, 10] call HMG_fnc_giveMoneyToSide;
+	["Награда за сохранность здания: 10Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", [WEST, RESISTANCE]];
+	sleep 120;
+};
+
+
+
 waitUntil {!alive _demoBuilding};
 [_randomIndex, "SUCCEEDED"] call BIS_fnc_taskSetState;
+[RESISTANCE, 1000] call HMG_fnc_giveMoneyToSide;
+[EAST, 1000] call HMG_fnc_giveMoneyToSide;
+["Награда за уничтожение здания: 1000Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", [RESISTANCE, EAST]];
 [_randomIndexWEST, "FAILED"] call BIS_fnc_taskSetState;
 
 // _indexVariable setVariable ["indexVar",_randomIndex];

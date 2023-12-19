@@ -1,4 +1,4 @@
-params ["_newVehicle"];
-_newVehicle setPylonLoadout [1, ""];
-_newVehicle setPylonLoadout [2, ""];
-_newVehicle disableTIEquipment true;
+params ["_vehicle"];
+_vehicle setPylonLoadout [1, ""];
+_vehicle setPylonLoadout [2, ""];
+_vehicle disableTIEquipment true;

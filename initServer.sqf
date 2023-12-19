@@ -9,12 +9,8 @@ while {true} do {
 
 	{
 		_ownerVariable = _x getVariable "currentOwner";
-		{
-			if (side _x == _ownerVariable && isPlayer _x) then {
-				[_x, 50, true] call grad_moneymenu_fnc_addFunds;
-				["Вы получили 50Р за контроль точки. Деньги поступили на банковский счёт."] remoteExec ["hintSilent", _ownerVariable];
-			};
-		} forEach allUnits;
+		[_ownerVariable, 50] call hmg_fnc_giveMoneyToSide;
+		["Вы получили 50Р за контроль точки. Деньги поступили на банковский счёт."] remoteExec ["systemChat", _ownerVariable];
 		// systemChat format ["Сектор: %1, Владелец: %2", str _x, str _ownerVariable];
 	} forEach _allSectors;
 	sleep 120;
