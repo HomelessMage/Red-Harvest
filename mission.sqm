@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=97;
+		nextID=98;
 	};
 	class Camera
 	{
-		pos[]={4432.5928,492.2879,10510.734};
-		dir[]={-0.11873786,-0.76975453,-0.62719953};
-		up[]={-0.14318232,0.63834,-0.75632054};
-		aside[]={-0.9825477,0,0.18601036};
+		pos[]={4394.7271,362.29858,10347.908};
+		dir[]={-0.68487459,-0.63676888,-0.35422063};
+		up[]={-0.56559777,0.77105474,-0.29253006};
+		aside[]={-0.45939755,1.4901161e-008,0.88823086};
 	};
 };
 binarizationWanted=0;
@@ -1423,7 +1423,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[this, trashBinEAST, gradTriggerEAST] execVM ""scripts\fn_trashBin.sqf"";";
+				init="[this, trashBinEAST, gradTriggerEAST] call HMG_fnc_trashBin;";
 				name="trashBinPlaceholderEAST";
 				dynamicSimulation=1;
 			};
@@ -2730,20 +2730,20 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4771.7568,9.1884003,2570.0618};
-				angles[]={0,2.1195478,0};
+				position[]={4771.7568,9.188076,2570.062};
+				angles[]={0,2.1195452,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="[this, trashBinGUER, gradTriggerGUER] execVM ""scripts\fn_trashBin.sqf"";";
+				init="[this, trashBinGUER, gradTriggerGUER] call HMG_fnc_trashBin;";
 				name="trashBinPlaceholderGUER";
 				dynamicSimulation=1;
 			};
 			id=72;
 			type="TrashBagHolder_01_F";
-			atlOffset=0.055324554;
+			atlOffset=0.055000305;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7748,7 +7748,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[this, trashBinWEST, gradTriggerWEST] execVM ""scripts\fn_trashBin.sqf"";";
+				init="[this, trashBinWEST, gradTriggerWEST] call HMG_fnc_trashBin;";
 				name="trashBinPlaceholderWEST";
 				dynamicSimulation=1;
 			};
@@ -9798,22 +9798,22 @@ class Mission
 				};
 			};
 			id=4019;
+			atlOffset=15.014008;
 		};
 		class Item64
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4512.7593,355.82056,10398.035};
+				position[]={4512.7588,355.82047,10398.035};
 				angles[]={0,2.6529005,0};
 			};
 			side="West";
-			flags=6;
+			flags=2;
 			class Attributes
 			{
-				init="this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
+				init="this allowDamage false;" \n "this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
 				textures="Green";
-				dynamicSimulation=1;
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -9821,6 +9821,7 @@ class Mission
 			};
 			id=4020;
 			type="B_SAM_System_01_F";
+			atlOffset=15.014008;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9886,7 +9887,20 @@ class Mission
 						};
 					};
 				};
-				nAttributes=2;
+				class Attribute2
+				{
+					property="ace_cookoff_enable";
+					expression="if !(_value) then {_this setVariable ['ace_cookoff_enable', _value, true];};";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=3;
 			};
 		};
 		class Item65
@@ -9894,7 +9908,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4502.6479,340.67191,10411.069};
+				position[]={4502.6484,340.67194,10411.069};
 				angles[]={0,4.1887903,6.2805147};
 			};
 			side="West";
@@ -9906,7 +9920,6 @@ class Mission
 			};
 			id=4035;
 			type="rhs_KORD_high_VMF";
-			atlOffset=-3.0517578e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10046,7 +10059,6 @@ class Mission
 				};
 			};
 			id=4038;
-			atlOffset=-3.0517578e-005;
 		};
 		class Item67
 		{
@@ -10060,9 +10072,8 @@ class Mission
 			flags=6;
 			class Attributes
 			{
-				init="if (isServer) then {  " \n "    crew this join createGroup east;  " \n "};" \n "this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
+				init="this allowDamage false;" \n "if (isServer) then {  " \n "    crew this join createGroup east;  " \n "};" \n "this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
 				textures="Green";
-				dynamicSimulation=1;
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -10136,7 +10147,20 @@ class Mission
 						};
 					};
 				};
-				nAttributes=2;
+				class Attribute2
+				{
+					property="ace_cookoff_enable";
+					expression="if !(_value) then {_this setVariable ['ace_cookoff_enable', _value, true];};";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=3;
 			};
 		};
 		class Item68
@@ -10473,23 +10497,22 @@ class Mission
 				};
 			};
 			id=4057;
-			atlOffset=15.255016;
+			atlOffset=15.254999;
 		};
 		class Item74
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4718.3818,26.093826,2531.238};
+				position[]={4718.3823,26.093811,2531.2385};
 				angles[]={0.0019547688,0.52359879,0.0072780228};
 			};
 			side="West";
 			flags=2;
 			class Attributes
 			{
-				init="if (isServer) then {  " \n "    crew this join createGroup resistance;  " \n "};" \n "this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
+				init="this allowDamage false;" \n "if (isServer) then {  " \n "    crew this join createGroup resistance;  " \n "};" \n "this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
 				textures="Green";
-				dynamicSimulation=1;
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -10497,7 +10520,7 @@ class Mission
 			};
 			id=4059;
 			type="B_SAM_System_01_F";
-			atlOffset=15.255016;
+			atlOffset=15.254999;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10563,7 +10586,20 @@ class Mission
 						};
 					};
 				};
-				nAttributes=2;
+				class Attribute2
+				{
+					property="ace_cookoff_enable";
+					expression="if !(_value) then {_this setVariable ['ace_cookoff_enable', _value, true];};";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=3;
 			};
 		};
 		class Item75
@@ -10642,14 +10678,14 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="ENH_doStop";
-							expression="if (!is3DEN && _value) then {doStop _this}";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=1;
+									value=0;
 								};
 							};
 						};
@@ -10694,14 +10730,14 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="ENH_doStop";
+							expression="if (!is3DEN && _value) then {doStop _this}";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=0;
+									value=1;
 								};
 							};
 						};
@@ -11048,7 +11084,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13852.332,36.468105,2923.3013};
-				angles[]={-0,3.6651924,6.1558781};
+				angles[]={0,3.6651924,6.1558781};
 			};
 			side="Empty";
 			flags=4;
@@ -11174,7 +11210,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13860.255,35.788513,2918.8206};
-				angles[]={-0,3.682647,6.1821971};
+				angles[]={0,3.682647,6.1821971};
 			};
 			side="Empty";
 			flags=4;
@@ -11246,7 +11282,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13857.93,35.801949,2919.9155};
-				angles[]={-0,3.6302855,6.1795583};
+				angles[]={0,3.6302855,6.1795583};
 			};
 			side="Empty";
 			flags=4;
@@ -12387,7 +12423,7 @@ class Mission
 			};
 			id=4236;
 			type="rhs_t90saa_tv";
-			atlOffset=-0.0071868896;
+			atlOffset=-0.0072517395;
 			class CustomAttributes
 			{
 				class Attribute0

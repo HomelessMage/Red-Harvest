@@ -1,5 +1,8 @@
-params ["_locationType"];
-_locationType = _this select 0;
+// params ["_locationType"];
+// if (!isServer) exitWith {};
+
+
+_locationType = "NameVillage";
 
 _cfgPath = configFile >> "CfgWorlds" >> worldName >> "Names";
 _cfgClasses = [];
@@ -150,7 +153,7 @@ _locationsArray resize 2;
 // };
 
 
-	// Спавним лутбокс
+	// Задание на лутбокс
 	_housesArray = nearestObjects [_locationPosition, ["house"], 300] select {
 		[_x] call BIS_fnc_isBuildingEnterable;
 		count (_x buildingPos -1) > 5;
@@ -162,21 +165,23 @@ _locationsArray resize 2;
 
 	_cacheMission = true;
     if (_cacheMission == true) then {
-        [_cachePos] execVM "scripts\fn_spawnCache.sqf";
+		[_cachePos] execVM "scripts\cacheMission.sqf";
     };
 	// Задание на взрыв здания
 	_demoMission = true;
 	_demoBuilding = selectRandom _housesArray;
     if (_demoMission == true) then {
-        [_demoBuilding] execVM "scripts\fn_demoMission.sqf";
+		[_demoBuilding] execVM "scripts\demoMission.sqf";
     };
     // Задание на убийство агента ЧДКЗ
     _agentBuilding = selectRandom _housesArray;
     _agentBuildingPositions = _agentBuilding buildingPos -1;
     _agentPosition = selectRandom _agentBuildingPositions;
-    [_agentPosition] execVM "scripts\fn_eliminateAgent.sqf";
-
-
+	_agentMission = true;
+	if (_agentMission == true) then {
+		[_agentPosition] execVM "scripts\agentMission.sqf";
+	};
+	
 	// systemChat str isNil "_agentBuilding";    // should be fine
 	// systemChat str count _agentBuildingPositions;    // may be empty
 	// systemChat str isNil "_agentPosition";  // may be nil

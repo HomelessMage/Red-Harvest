@@ -1,5 +1,5 @@
 params ["_agentPosition"];
-_agentPosition = _this select 0;
+// _agentPosition = _this select 0;
 
 
 

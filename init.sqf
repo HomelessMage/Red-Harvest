@@ -90,7 +90,8 @@ CHVD_maxObj = 2500; // Set maximimum object view distance (default: 12000)
 // Сохраняем прогресс
 [] spawn {
 	_gradTriggers = [gradTrigger];
-	while {isDedicated} do {
+	while {true} do {
+		if (!isServer) exitWith {};
 		sleep 900;
 		{
 			[false, 30, _x] call grad_persistence_fnc_saveMission;
@@ -174,20 +175,8 @@ addMissionEventHandler ["Draw3d", {
 */
 
 if (isServer) then {
-	_locationType = "NameVillage";
-	[_locationType] execVM "scripts\fn_missionFramework.sqf";
+	[] execVM "scripts\missionFramework.sqf";
 };
- 
-
-
-
-
-
-
-
-
-
-
 
 // while {true} do {
 // 	sleep 900;

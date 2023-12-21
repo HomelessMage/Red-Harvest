@@ -14,76 +14,52 @@ _civ = _this select 0;
 
 
 // [_civ, [0, 50] call BIS_fnc_randomInt, false] call grad_moneymenu_fnc_addFunds;
-
-
-_housesArray = nearestObjects [_civ, ["house"], 300] select {
-		[_x] call BIS_fnc_isBuildingEnterable
-};
-_randomHouse = selectRandom _housesArray;//Pick an object found in the above nearestObjects array
-_housePositions = _randomHouse buildingPos -1;//Finds list of all available building positions in the selected building
-_randomPosition = selectRandom _housePositions;//Picks a building position from the list of building positions
-_civ setPos _randomPosition;//Orders the civilian to move to the building position
-
-
-
-
 ["ace_captives_setSurrendered",[_civ, true]] call CBA_fnc_globalEvent;
 ["ace_captives_setSurrendered",[_civ, false]] call CBA_fnc_globalEvent;
 
 
-
-
 _civ addEventHandler["FiredNear", {
-params ["_unit"];
+	params ["_unit"];
 
-    switch(round(random 2))do{
-        case 0:{
-			_unit switchMove "ApanPercMstpSnonWnonDnon_G01";
-			_unit setSpeedMode "FULL";
+		switch(round(random 2))do{
+			case 0:{
+				_unit switchMove "ApanPercMstpSnonWnonDnon_G01";
+				_unit setSpeedMode "FULL";
+			};
+			case 1:{
+				_unit playMoveNow "ApanPknlMstpSnonWnonDnon_G01";
+				_unit setSpeedMode "FULL";
+			};
+			case 2:{
+				_unit playMoveNow "ApanPpneMstpSnonWnonDnon_G01";
+				_unit setSpeedMode "FULL";
+			};
+			default{
+				_unit playMoveNow "ApanPknlMstpSnonWnonDnon_G01";
+				_unit setSpeedMode "FULL";
+			};
 		};
-        case 1:{
-			_unit playMoveNow "ApanPknlMstpSnonWnonDnon_G01";
-			_unit setSpeedMode "FULL";
-		};
-        case 2:{
-			_unit playMoveNow "ApanPpneMstpSnonWnonDnon_G01";
-			_unit setSpeedMode "FULL";
-		};
-        default{
-			_unit playMoveNow "ApanPknlMstpSnonWnonDnon_G01";
-			_unit setSpeedMode "FULL";
-		};
-	};
-
-//nearestObjects[ PositionOrTarget, ["List","Of","Classnames","To","Look","For"], MaxDistanceToSearchAroundTarget ];
-
 		_housesArray = nearestObjects [_unit, ["house"], 300] select {
 				[_x] call BIS_fnc_isBuildingEnterable
 		};
-
-		// _nH=nearestObjects[_civ,nH_List,100];
-
-
 		_randomHouse = selectRandom _housesArray;//Pick an object found in the above nearestObjects array
-
 		_housePositions = _randomHouse buildingPos -1;//Finds list of all available building positions in the selected building
-
 		_randomPosition = selectRandom _housePositions;//Picks a building position from the list of building positions
-
 		_unit doMove _randomPosition;//Orders the civilian to move to the building position
-
 		//Remove the eventHandler to prevent spamming
 		_unit removeAllEventHandlers "FiredNear";
 	}
 ];
 
-
-
-
-
-
-
-
+_housesArray = nearestObjects [_civ, ["house"], 300] select {
+		[_x] call BIS_fnc_isBuildingEnterable
+};
+if (_housesArray isEqualTo []) exitWith {};
+_randomHouse = selectRandom _housesArray;//Pick an object found in the above nearestObjects array
+_housePositions = _randomHouse buildingPos -1;//Finds list of all available building positions in the selected building
+if (_housePositions isEqualTo []) exitWith {};
+_randomPosition = selectRandom _housePositions;//Picks a building position from the list of building positions
+_civ setPos _randomPosition;//Orders the civilian to move to the building position
 
 // _civ addEventHandler ["FiredNear", {
 // 	params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];

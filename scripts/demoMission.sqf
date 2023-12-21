@@ -20,9 +20,20 @@ _taskDescriptionWEST = [format [localize "STR_TAG_defend" + " %1", str _demoBuil
 
 while {alive _demoBuilding} do {
 	sleep 120;
-	[WEST, 10] call HMG_fnc_giveMoneyToSide;
-	["Награда за сохранность здания: 10Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", WEST];
+	_resistancePlayers = allPlayers select {side _x == resistance};
+	_eastPlayers = allPlayers select {side _x == east};
+	if (
+		(count _resistancePlayers > 0)
+		|| (count _eastPlayers > 0)
+	) then {
+		[WEST, 10] call HMG_fnc_giveMoneyToSide;
+		["Награда за сохранность здания: 10Р. Деньги отправлены на банковский счёт."] remoteExec ["systemChat", WEST];
+	} else {
+		["Вы не получили деньги за сохранность здания, поскольку нет противника."] remoteExec ["systemChat", WEST];
+	};
 };
+
+
 
 
 
