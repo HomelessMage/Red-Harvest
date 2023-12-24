@@ -31,14 +31,14 @@ _Placement=(_mkrX + 500);
 // ДОБАВИЛ ЧТОБЫ УБРАТЬ АКТИВАЦИЮ СИНИМИ
 	if ismultiplayer then {
 			if (_heightLimit) then 
-			{_actCond="{side _x != west && vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 5} count playableunits > 0";
+			{_actCond="{vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 5} count playableunits > 0";
 							}else 
-							{_actCond="{side _x != west && vehicle _x in thisList && isplayer _x} count playableunits > 0";
+							{_actCond="{vehicle _x in thisList && isplayer _x} count playableunits > 0";
 		};}else{
 			if (_heightLimit) then 
-						{_actCond="{side _x != west && vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 5} count allUnits > 0";
+						{_actCond="{vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 5} count allUnits > 0";
 								}else
-									{_actCond="{side _x != west && vehicle _x in thisList && isplayer _x} count allUnits > 0";};};
+									{_actCond="{vehicle _x in thisList && isplayer _x} count allUnits > 0";};};
 							
 				_basActivated = createTrigger ["EmptyDetector",_mPos]; 
 				_basActivated setTriggerArea [_mkrX,_mkrY,_mkrAgl,FALSE];

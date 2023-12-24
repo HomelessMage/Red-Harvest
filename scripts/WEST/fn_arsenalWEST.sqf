@@ -48,7 +48,8 @@ _openArsenalCDF = ["OpenArsenalCDF", localize "STR_TAG_arsenal", "\a3\ui_f\data\
 		_aceitems = ["ACE_fieldDressing", "ACE_elasticBandage", "ACE_packingBandage", "ACE_bloodIV", "ACE_bloodIV_250", "ACE_bloodIV_500", "ACE_CableTie", "ACE_bodyBag", "ACE_DefusalKit", "ACE_EarPlugs", "ACE_Entrenchingtool", "ACE_epinephrine", "ACE_Clacker", "ACE_morphine", "ACE_personalAidKit", "ACE_SpareBarrel_Item", "ACE_splint", "ACE_SpottingScope", "toolKit", "ACE_tourniquet", "ACE_wirecutter", "CUP_pipeBomb_M", "ItemGPS", "ItemWatch", "ItemCompass", "ItemMap", "binocular", "ACE_artilleryTable", "ACE_RangeTable_82mm", "ACE_ATragMX", "ACE_Flashlight_MX991", "ACE_RangeCard", "ACE_Maptools", "ACE_surgicalKit", "ACE_UAVBattery", "ACE_quikclot", "ACE_DAGR"];
 		_grenadesitems = ["rhs_mag_mk84", "rhs_mag_m67", "rhs_mag_mk3a2", "rhs_mag_an_m8hc"];
 		_radioItem = ["TFAR_anprc152"];
-		_arsenalArray = _uniformsArray + _backpackArray + _headgearArray + _faceGearArray + _vestsArray + _weaponsArray + _launchersArray + _attachmentsArray + _weaponMagazines + _aceitems + _grenadesitems + _radioItem;
+		_explosives = ["rhs_charge_M2tet_x2_mag"];
+		_arsenalArray = _uniformsArray + _backpackArray + _headgearArray + _faceGearArray + _vestsArray + _weaponsArray + _launchersArray + _attachmentsArray + _weaponMagazines + _aceitems + _grenadesitems + _radioItem + _explosives;
 		[_arsenal, _arsenalArray] call ace_arsenal_fnc_addVirtualitems;
 		[_arsenal, player] call ace_arsenal_fnc_openBox;
 }, {

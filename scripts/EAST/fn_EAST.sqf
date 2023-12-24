@@ -25,7 +25,7 @@ _healPlayer = ["HealPlayer",localize "STR_TAG_medicalAssistance","\a3\ui_f\data\
 [_unit, 0, ["ACE_MainActions"], _healPlayer] call ace_interact_menu_fnc_addActionToObject;
 
 _deployToMHQ = ["MHQDeploy",localize "STR_TAG_deployToMHQ","\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa",{
-	[teleportItemEAST, player] call HMG_fnc_teleportToMHQ;
+	[teleportItemEAST, player] execVM "scripts\teleportToMHQ.sqf";;
 	},{
 		side player == east
 		},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;

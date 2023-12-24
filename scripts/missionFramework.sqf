@@ -2,7 +2,7 @@
 // if (!isServer) exitWith {};
 
 
-_locationType = "NameVillage";
+_locationType = "NameCity";
 
 _cfgPath = configFile >> "CfgWorlds" >> worldName >> "Names";
 _cfgClasses = [];
@@ -28,11 +28,6 @@ _locationsArray = [];
 
 // Если _locationsArray пустой то НЕ выполняем код ниже.
 if (_locationsArray isEqualTo []) exitWith {};
-
-// ["Тулга","Мста","Старое","Шаховка","Долина","Орловец","Бор","Новый Собор","Кабанино","Могилевка","Надеждино","Гуглово","Камышово","Пуста","Дубровка","Хельм","Ольша","Гвоздно","Гришино","Рогово","Погоревка","Пустошка","Козловка","Поляна","Балота","Комарово","Каменка","Мышкино","Павлово","Лопатино","Вышное","Пригородки","Дрожино","Сосновка","Нижнее","Пулково","Zvir","Bogtyrka","Vavilovo","Zabolotye","Sinystok","Topolniki","Tisy","Zaprudnoe","Ratnoe","Polesovo","Skalka","Krasnoe","Stary Yar","Kamensk","Kalinovka","Arsenovo","Svergino","Nagornoe","Karmanovka","Dobroye","Belaya Polyana","Turovo","Berezhki"]
-// Убираю не локализованные места 
-_locationsArray resize 35;
-
 
 
 // // Миксуем элементы массива

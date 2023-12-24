@@ -356,7 +356,7 @@ _uidArray = [
 		[["rhs_weap_ak104_zenitco01_b33_grip1","rhs_acc_dtk4screws","","rhsusf_acc_ACOG_USMC",["rhs_30Rnd_762x39mm_polymer",30],[],"rhsusf_acc_grip1"],["rhs_weap_rpg26","","","",[],[],""],["rhsusf_weap_m1911a1","","","",["rhsusf_mag_7x45acp_MHP",7],[],""],["UK3CB_CHD_B_U_CombatUniform_07",[["ACE_elasticBandage",20],["ACE_splint",4],["ACE_morphine",5],["ACE_epinephrine",5]]],["UK3CB_TKA_O_V_6b23_ml_Oli_02",[["30Rnd_762x39_AK12_Mag_F",10,30]]],["UK3CB_ION_B_B_ASS_OLI_01",[["ACE_SpraypaintBlack",1],["ACE_microDAGR",1],["ACE_Kestrel4500",1],["ACE_Flashlight_MX991",1],["ACE_RangeCard",1],["ACE_Cellphone",1],["ACE_EntrenchingTool",1],["rhs_mag_f1",5,1],["rhs_mag_rdg2_white",5,1],["rhsusf_mag_7x45acp_MHP",5,7],[["rhs_weap_rpg26","","","",[],[],""],2]]],"rhs_6b27m_green","UK3CB_G_Balaclava",["rhs_pdu4","","","",[],[],""],["ItemMap","ItemGPS","TFAR_fadak","ItemCompass","TFAR_microdagr","rhsusf_ANPVS_14"]]
 	],
 	[
-		"76561198048135103",
+		"76561198170743341",
 		"Кирилл Металлов",
 		[["rhs_weap_asval_grip1","","","rhs_acc_pso1m21",["rhs_20rnd_9x39mm_SP6",20],[],"rhs_acc_grip_rk6"],[],[],["UK3CB_LSM_B_U_CombatSmock_07",[["ACE_EarPlugs",1],["ACE_epinephrine",5],["ACE_morphine",5],["ACE_elasticBandage",15],["ACE_tourniquet",4],["ACE_splint",4]]],["rhs_6b23_6sh116_flora",[["rhs_mag_f1",1,1],["rhs_20rnd_9x39mm_SP6",1,20]]],["UK3CB_B_Invisible",[["ACE_bloodIV_500",5],["ACE_personalAidKit",2],["rhs_20rnd_9x39mm_SP6",24,20],["rhs_mag_f1",4,1]]],"rhs_6b26_bala","UK3CB_G_Ballistic_Black_Tactical_Gloves_Green",["rhs_pdu4","","","",[],[],""],["ItemMap","ItemGPS","TFAR_fadak_3","ItemCompass","TFAR_microdagr",""]]
 	],

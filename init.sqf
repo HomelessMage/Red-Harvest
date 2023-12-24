@@ -176,6 +176,7 @@ addMissionEventHandler ["Draw3d", {
 
 if (isServer) then {
 	[] execVM "scripts\missionFramework.sqf";
+	// [] execVM "scripts\missionPVEFramework.sqf";
 };
 
 // while {true} do {

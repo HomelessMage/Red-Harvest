@@ -740,98 +740,150 @@ class CfgGradBuymenu {
         class independentLandVehicles {
             kindOf = "Vehicles";
             displayName = "Наземная техника";
-            class UK3CB_O_G_UAZ_SPG9 {
-                displayName = "УАЗ-3151 (СПГ-9)";
-                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
+            class UK3CB_I_G_Hilux_Open {
+                displayName = "Toyota Hilux";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Pkm {
+                displayName = "Toyota Hilux (ПКМ)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён ПКМ.";
+                amount = 1;
+                price = 150;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Dshkm {
+                displayName = "Toyota Hilux (ДШКМ)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён ПКМ.";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_M2 {
+                displayName = "Toyota Hilux (M2)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён M2.";
+                amount = 1;
+                price = 200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_GMG {
+                displayName = "Toyota Hilux (АГС-17 «Пламя»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён АГС-17 «Пламя».";
+                amount = 1;
+                price = 250;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            // ПТ
+            class UK3CB_I_G_Hilux_Spg9 {
+                displayName = "Toyota Hilux (СПГ-9 «Копьё»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён СПГ-9 «Копьё».";
+                amount = 1;
+                price = 300;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Metis {
+                displayName = "Toyota Hilux (ПТРК «Метис-М1»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён ПТРК «Метис-М1».";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Rocket {
+                displayName = "Toyota Hilux (НАР «Hydra-70»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён НАР «Hydra-70».";
                 amount = 1;
                 price = 400;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhs_tigr_3camo_vv {
-                displayName = "ГАЗ-233011 «Тигр»";
-                description = "Российский многоцелевой автомобиль повышенной проходимости, бронеавтомобиль, армейский автомобиль-вседорожник.";
+            // ПВО
+            class UK3CB_I_G_Hilux_Zu23_Front {
+                displayName = "Toyota Hilux (ЗУ-23)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён ЗУ-23.";
+                amount = 1;
+                price = 350;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Igla_Chair {
+                displayName = "Toyota Hilux (ОПУ «Джигит»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён ОПУ «Джигит».";
+                amount = 1;
+                price = 450;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Vulcan_Front {
+                displayName = "Toyota Hilux (M163 «Вулкан»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён ОПУ «Джигит».";
                 amount = 1;
                 price = 700;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class UK3CB_CW_SOV_O_LATE_Ural_Zu23 {
-                displayName = "Урал-4320 (ЗУ-23)";
-                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
+            // Артиллерия
+            class UK3CB_I_G_Hilux_Mortar {
+                displayName = "Toyota Hilux (2Б14 «Поднос»)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён 2Б14 «Поднос».";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_I_G_Hilux_Rocket_Arty {
+                displayName = "Toyota Hilux (РСЗО)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён РСЗО.";
                 amount = 1;
                 price = 1000;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhs_btr70_msv {
-                displayName = "БТР-70";
-                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
+            // Броне-тачки
+            class UK3CB_I_G_Hilux_BTR {
+                displayName = "Toyota Hilux (БТР-60)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён башней от БТР-60.";
                 amount = 1;
-                price = 1500;
+                price = 350;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhs_btr80a_msv {
-                displayName = "БТР-80А";
-                description = "Советский колесный бронетранспортёр (БТР). Бронетранспортёр был принят на вооружение в 1985 году и заменил предыдущие машины, БТР-60 и БТР-70. Модификация с вооружением из 30-мм автоматической пушки 2А72 и 7,62-мм пулемёта ПКТ, установленных в новой башне лафетной компоновки. Многими специалистами классифицируется как колёсная боевая машина пехоты.";
+            class UK3CB_I_G_Hilux_BMP {
+                displayName = "Toyota Hilux (БМП-1)";
+                description = "Среднеразмерный пикап, выпускаемый компанией Toyota Motor Corporation. Оснащён башней от БМП-1.";
                 amount = 1;
-                price = 3000;
+                price = 800;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class UK3CB_O_G_T55 {
-                displayName = "Т-55А";
-                description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
+            class UK3CB_CW_US_B_EARLY_M60a1 {
+                displayName = "M60A1 «AOS»";
+                description = "Основной боевой танк США 1960-х годов, разработан на основе среднего танка М48, отличался от последнего вооружением и новой башней, на которой была установлена командирская башенка, вращающаяся на 360°.";
                 amount = 1;
-                price = 4500;
+                price = 2000;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhs_bmp2d_msv {
-                displayName = "БМП-2";
-                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
-                amount = 1;
-                price = 5500;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhs_t72bb_tv {
-                displayName = "Т-72 «Урал»";
-                description = "Советский основной танк. Самый массовый танк второго поколения.";
-                amount = 1;
-                price = 7800;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhs_t80ue1 {
-                displayName = "Т-80УЕ-1";
-                description = "Модифицированный основной боевой танк семейства Т-80.";
-                amount = 1;
-                price = 10600;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhs_zsu234_aa {
-                displayName = "ЗСУ-23-4 «Шилка»";
-                description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
-                amount = 1;
-                price = 14000;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            // class rhs_9k79 {
-            //     displayName = "9П129-1М «Точка»";
-            //     description = "Советский тактический ракетный комплекс дивизионного звена.";
-            //     amount = 1;
-            //     price = 30000;
-            //     stock = 1000;
-            //     spawnEmpty = 1;
-            // };
         };
         class independentAirVehicles {
             kindOf = "Vehicles";
-            displayName = "Воздушная техника";           
+            displayName = "Воздушная техника";
+            class C_Heli_Light_01_civil_F {
+                displayName = "MD-500";
+                description = "Гражданский вертолёт";
+                amount = 1;
+                price = 750;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
         };
         class independentUAV {
             kindOf = "Items";
@@ -1364,12 +1416,19 @@ class CfgGradBuymenu {
         class eastLandVehicles {
             kindOf = "Vehicles";
             displayName = "Наземная техника";
-            
+            class rhsgref_ins_uaz {
+                displayName = "УАЗ-3151";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
             class rhsgref_ins_uaz_dshkm {
                 displayName = "УАЗ-3151 (ДШКМ)";
                 description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён ДШКМ.";
                 amount = 1;
-                price = 100;
+                price = 150;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -1377,7 +1436,7 @@ class CfgGradBuymenu {
                 displayName = "УАЗ-3151 (СПГ-9 «Копьё»)";
                 description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
                 amount = 1;
-                price = 200;
+                price = 300;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -1385,23 +1444,31 @@ class CfgGradBuymenu {
                 displayName = "БРДМ-2";
                 description = "Бронированная разведывательно-дозорная машина, является дальнейшим развитием БРДМ-1.";
                 amount = 1;
+                price = 400;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_ins_gaz66_zu23 {
+                displayName = "ГАЗ-66 (ЗУ-23)";
+                description = "Советский среднетоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 4 × 4, грузоподъёмностью 2,0 тонны и кабиной над двигателем. Оснащён установкой ЗУ-23.";
+                amount = 1;
                 price = 500;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhsgref_ins_ural_Zu23 {
-                displayName = "Урал-4320 (ЗУ-23)";
-                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
+            class UK3CB_O_MTLB_Cannon_CHK {
+                displayName = "МТ-ЛБ (БМ-1Б «Гром» / ПКТ)";
+                description = "Советская боевая машина, многоцелевой плавающий бронетранспортёр. Оснащён БМ-1Б «Гром» и ПКТ.";
                 amount = 1;
-                price = 1000;
+                price = 700;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhsgref_ins_btr70 {
-                displayName = "БТР-70";
-                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
+            class rhsgref_ins_bmp1p {
+                displayName = "БМП-1П";
+                description = "Советская гусеничная боевая машина пехоты.";
                 amount = 1;
-                price = 1200;
+                price = 1500;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -1409,23 +1476,15 @@ class CfgGradBuymenu {
                 displayName = "Т-55А";
                 description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
                 amount = 1;
-                price = 4500;
+                price = 2000;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhsgref_ins_bmp2 {
-                displayName = "БМП-2 (обр. 1986г.)";
+            class rhsgref_ins_bmp2d {
+                displayName = "БМП-2Д (обр. 1986г.)";
                 description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
                 amount = 1;
-                price = 5500;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhsgref_ins_t72bb {
-                displayName = "Т-72 «Урал» (обр. 1989г.)";
-                description = "Советский основной танк. Самый массовый танк второго поколения.";
-                amount = 1;
-                price = 7800;
+                price = 2500;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -1433,22 +1492,54 @@ class CfgGradBuymenu {
                 displayName = "ЗСУ-23-4 «Шилка»";
                 description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
                 amount = 1;
-                price = 14000;
+                price = 3000;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            // class rhs_9k79 {
-            //     displayName = "9П129-1М «Точка»";
-            //     description = "Советский тактический ракетный комплекс дивизионного звена.";
-            //     amount = 1;
-            //     price = 30000;
-            //     stock = 1000;
-            //     spawnEmpty = 1;
-            // };
+            class rhsgref_ins_t72bb {
+                displayName = "Т-72Б «Урал» (обр. 1989г.)";
+                description = "Советский основной танк. Самый массовый танк второго поколения.";
+                amount = 1;
+                price = 3000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class UK3CB_O_2S6M_Tunguska_VPV {
+                displayName = "2К22 «Тунгуска»";
+                description = "Советский зенитный пушечно-ракетный комплекс (ЗПРК).";
+                amount = 1;
+                price = 3500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_t80a {
+                displayName = "Т-80";
+                description = "Боевая машина, основной танк, производившийся в СССР.";
+                amount = 1;
+                price = 3500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhs_t90saa_tv {
+                displayName = "Т-90 «Владимир»";
+                description = "Российский основной боевой танк семейства Т-72, принятый на вооружение в 1992 году под именем Т-90. Представляет из себя модернизацию танка Т-72Б с целью доведения его до уровня боевых возможностей танка Т-80У.";
+                amount = 1;
+                price = 4000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
         };
         class eastAirVehicles {
             kindOf = "Vehicles";
             displayName = "Воздушная техника";
+            class rhsgref_ins_Mi8amt {
+                displayName = "Ми-8АМТ";
+                description = "Советский многоцелевой вертолёт, разработанный Опытным конструкторским бюро (ОКБ) М. Л. Миля";
+                amount = 1;
+                price = 600;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
         };
         class eastUAV {
             kindOf = "Items";
@@ -1977,11 +2068,19 @@ class CfgGradBuymenu {
         class westLandVehicles {
             kindOf = "Vehicles";
             displayName = "Наземная техника";
+            class rhsgref_cdf_b_reg_uaz {
+                displayName = "УАЗ-3151";
+                description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе.";
+                amount = 1;
+                price = 100;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
             class rhsgref_cdf_b_reg_uaz_dshkm {
                 displayName = "УАЗ-3151 (ДШКМ)";
                 description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён ДШКМ.";
                 amount = 1;
-                price = 100;
+                price = 150;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -1989,7 +2088,7 @@ class CfgGradBuymenu {
                 displayName = "УАЗ-3151 (СПГ-9 «Копьё»)";
                 description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения, выпускавшийся на Ульяновском автомобильном заводе. Оснащён установкой СПГ-9 «Копьё» - советский станковый противотанковый гранатомёт (безоткатное орудие).";
                 amount = 1;
-                price = 200;
+                price = 300;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -1997,11 +2096,10 @@ class CfgGradBuymenu {
                 displayName = "БТР-40 (ДШКМ)";
                 description = "Советский грузо-пассажирский автомобиль повышенной проходимости военного предназначения. Оснащён ДШКМ.";
                 amount = 1;
-                price = 350;
+                price = 250;
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            
             class rhsgref_BRDM2_b {
                 displayName = "БРДМ-2";
                 description = "Бронированная разведывательно-дозорная машина, является дальнейшим развитием БРДМ-1.";
@@ -2010,51 +2108,19 @@ class CfgGradBuymenu {
                 stock = 1000;
                 spawnEmpty = 1;
             };
-            class rhsgref_cdf_b_ural_Zu23 {
-                displayName = "Урал-4320 (ЗУ-23)";
-                description = "Советский и российский крупнотоннажный грузовой автомобиль повышенной проходимости с колёсной формулой 6 × 6, производящийся на Уральском автомобильном заводе в Миассе. На нём установлена советская 23-мм спаренная зенитная установка, в составе двух авиационных пушек, станка, прицела ЗАП-23, платформы с ходом, наземного прицела Т-3.";
-                amount = 1;
-                price = 1000;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhsgref_cdf_b_btr70 {
-                displayName = "БТР-70";
-                description = "Советский бронетранспортёр — боевая колёсная плавающая бронемашина для транспортировки личного состава мотострелковых подразделений и их огневой поддержки, в том числе и в условиях применения оружия массового поражения. Вооружение состоит из пулемёта КПВТ калибра 14,5 мм и пулемёта ПКТ калибра 7,62 мм.";
-                amount = 1;
-                price = 1200;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class UK3CB_B_T55_CDF {
-                displayName = "Т-55А";
-                description = "Советский средний танк. Танк создан на базе танка Т-54. Принят на вооружение Армии СССР в 1958 году. Производился с 1958 по 1979 год.";
-                amount = 1;
-                price = 4500;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhsgref_cdf_b_bmp2 {
-                displayName = "БМП-2 (обр. 1986г.)";
-                description = "Советская и российская гусеничная боевая машина пехоты, предназначенная для транспортировки личного состава к переднему краю, повышения его мобильности, вооружённости и защищённости на поле боя в условиях применения ядерного оружия и совместных действий с танками в бою.";
-                amount = 1;
-                price = 5500;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
-            class rhsgref_cdf_b_t72bb_tv {
-                displayName = "Т-72 «Урал» (обр. 1985г.)";
-                description = "Советский основной танк. Самый массовый танк второго поколения.";
-                amount = 1;
-                price = 7800;
-                stock = 1000;
-                spawnEmpty = 1;
-            };
             class rhsgref_cdf_b_zsu234 {
                 displayName = "ЗСУ-23-4 «Шилка»";
                 description = "Советская зенитная самоходная установка, серийное производство боевой машины 2А6 начато в 1964 году. ЗСУ вооружена счетверённой автоматической 23-мм пушкой. Темп стрельбы установки — 3400 снарядов в минуту.";
                 amount = 1;
-                price = 14000;
+                price = 3000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_t80uk_tv {
+                displayName = "Т-80УК";
+                description = "Командирский вариант Т-80У разработки омского КБТМ, внешне похож на обычную «восьмидесятку»: из внешних отличий отчётливо просматриваются лишь две антенны и КОЭП «Штора-1».";
+                amount = 1;
+                price = 5000;
                 stock = 1000;
                 spawnEmpty = 1;
             };
@@ -2062,6 +2128,54 @@ class CfgGradBuymenu {
         class westAirVehicles {
             kindOf = "Vehicles";
             displayName = "Воздушная техника";
+            class RHS_MELB_MH6M {
+                displayName = "MH-6 «Литтл Берд»";
+                description = "Американский лёгкий многоцелевой вертолет, предназначенный для выполнения разнородных специальных задач тактического уровня.";
+                amount = 1;
+                price = 500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsusf_CH53e_USMC_cargo {
+                displayName = "Sikorsky CH-53 Super Stallion";
+                description = "Тяжёлый вертолёт, эксплуатируемый вооруженными силами США. Оснащён отсеком для перевозки техники.";
+                amount = 1;
+                price = 700;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_reg_Mi17Sh {
+                displayName = "Ми-8АМТШ «Терминатор»";
+                description = "Советский многоцелевой вертолёт, разработанный Опытным конструкторским бюро (ОКБ) М. Л. Миля";
+                amount = 1;
+                price = 900;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_Mi24D {
+                displayName = "Ми-24Д «Крокодил»";
+                description = "Советский ударный вертолёт разработки ОКБ М. Л. Миля.";
+                amount = 1;
+                price = 1200;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_cdf_b_Mi35 {
+                displayName = "Ми-24В «Крокодил»";
+                description = "Советский ударный вертолёт разработки ОКБ М. Л. Миля.";
+                amount = 1;
+                price = 1500;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
+            class rhsgref_b_mi24g_CAS {
+                displayName = "Ми-24Г «Крокодил»";
+                description = "Российский ударный вертолёт.";
+                amount = 1;
+                price = 2000;
+                stock = 1000;
+                spawnEmpty = 1;
+            };
         };
         class westUAV {
             kindOf = "Wearables";

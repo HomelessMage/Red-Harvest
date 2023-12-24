@@ -33,13 +33,50 @@ debugCOS=false;// Show spawned units on the map
 
 COSpedestrians=true; //Spawn pedestrians
 COScars=true;// Spawn Cars
-COSparked=false;// Spawn parked cars
+COSparked=true;// Spawn parked cars
 
 // Types of units that will be spawned as civilians.
 
 
-COScivPool = ["UK3CB_CHC_C_CIT", "UK3CB_CHC_C_COACH", "UK3CB_CHC_C_HIKER", "UK3CB_CHC_C_LABOUR", "UK3CB_CHC_C_PROF", "UK3CB_CHC_C_SPY", "UK3CB_CHC_C_VILL", "UK3CB_CHC_C_WOOD", "UK3CB_CHC_C_WORKER"];	
-COSmotPool = ["UK3CB_CHC_C_Ikarus", "UK3CB_CHC_C_Lada", "UK3CB_CHC_C_V3S_Refuel", "UK3CB_CHC_C_V3S_Repair", "UK3CB_CHC_C_S1203", "UK3CB_CHC_C_Tractor", "UK3CB_CHC_C_Tractor_Old", "UK3CB_CHC_C_TT650", "UK3CB_CHC_C_UAZ_Closed", "UK3CB_CHC_C_Ural_Fuel", "UK3CB_CHC_C_Ural_Open", "UK3CB_CHC_C_Ural_Ammo", "UK3CB_CHC_C_Ural_Empty", "UK3CB_CHC_C_Ural_Repair", "UK3CB_CHC_C_Gaz24", "UK3CB_CHC_C_YAVA"];
+COScivPool = ["UK3CB_CHC_C_CIV"];
+COSmotPool = ["UK3CB_CHC_C_Ikarus", 
+"UK3CB_CHC_C_Hatchback", 
+"UK3CB_CHC_C_Hilux_Civ_Closed", 
+"UK3CB_CHC_C_Hilux_Civ_Open", 
+"UK3CB_CHC_C_Kamaz_Covered", 
+"UK3CB_CHC_C_Kamaz_Fuel", 
+"UK3CB_CHC_C_Kamaz_Open", 
+"UK3CB_CHC_C_Kamaz_Repair", 
+"UK3CB_CHC_C_Lada", 
+"UK3CB_CHC_C_LR_Closed", 
+"UK3CB_CHC_C_LR_Open", 
+"UK3CB_CHC_C_Landcruiser", 
+"UK3CB_CHC_C_Octavia", 
+"UK3CB_CHC_C_Pickup", 
+"UK3CB_CHC_C_V3S_Refuel", 
+"UK3CB_CHC_C_V3S_Recovery", 
+"UK3CB_CHC_C_V3S_Repair", 
+"UK3CB_CHC_C_V3S_Closed", 
+"UK3CB_CHC_C_V3S_Open", 
+"UK3CB_CHC_C_Sedan", 
+"UK3CB_CHC_C_Skoda", 
+"UK3CB_CHC_C_S1203", 
+"UK3CB_CHC_C_S1203_Amb", 
+"UK3CB_CHC_C_SUV", 
+"UK3CB_CHC_C_Tractor", 
+"UK3CB_CHC_C_Tractor_Old", 
+"UK3CB_CHC_C_TT650", 
+"UK3CB_CHC_C_UAZ_Closed", 
+"UK3CB_CHC_C_UAZ_Open", 
+"UK3CB_CHC_C_Ural", 
+"UK3CB_CHC_C_Ural_Fuel", 
+"UK3CB_CHC_C_Ural_Open", 
+"UK3CB_CHC_C_Ural_Empty", 
+"UK3CB_CHC_C_Ural_Recovery", 
+"UK3CB_CHC_C_Ural_Repair", 
+"UK3CB_CHC_C_Gaz24", 
+"UK3CB_CHC_C_Golf", 
+"UK3CB_CHC_C_YAVA"];
 
 
 
