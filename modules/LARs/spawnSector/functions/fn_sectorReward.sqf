@@ -7,25 +7,28 @@ _sector setVariable ["lastOwner", _oldOwner];
 
 
 // Sound design
-/*
+
 _ownerVariable = _sector getVariable "currentOwner";
 _lastOwnerVariable = _sector getVariable "lastOwner";
+_bluforWin = ["blufor_win_1", "blufor_win_2", "blufor_win_3"];
+_opforWin = ["opfor_win_1", "opfor_win_2", "opfor_win_3"];
+_indforWin = ["indfor_win_1", "indfor_win_2", "indfor_win_3"];
 
 switch (_ownerVariable) do {
 	case WEST: {
-		["blufor_win"] remoteExec ["playSound", WEST];
+		[selectRandom _bluforWin] remoteExec ["playSound", WEST];
 	};
 	case EAST: {
-		["opfor_win"] remoteExec ["playSound", EAST];
+		[selectRandom _opforWin] remoteExec ["playSound", EAST];
 	};
 	case RESISTANCE: {
-		["indfor_win"] remoteExec ["playSound", RESISTANCE];
+		[selectRandom _indforWin] remoteExec ["playSound", RESISTANCE];
 	};
 	default { 
 
 	};
 };
-
+/*
 switch (_lastOwnerVariable) do {
 	case WEST: {
 		["blufor_lose"] remoteExec ["playSound", WEST];
@@ -37,11 +40,11 @@ switch (_lastOwnerVariable) do {
 		["indfor_lose"] remoteExec ["playSound", RESISTANCE];
 	};
 	default { 
-
 	};
 };
-
 */
+
+
 
 /*
 _sectorPos = [_sector] call ws_fnc_getEPos;

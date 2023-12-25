@@ -32,8 +32,7 @@ if (_locationsArray isEqualTo []) exitWith {};
 
 // // Миксуем элементы массива
 _locationsArray = [_locationsArray] call CBA_fnc_shuffle;
-// Меняем количество элементов массива
-// Только 1 сектор доступен, из-за моей тупости. 1 глобальная переменная для сектора
+
 _locationsArray resize 2;
 {
 

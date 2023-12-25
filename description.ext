@@ -161,38 +161,68 @@ class CfgSounds {
         sound[] = {"sounds\deathmusic.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    /*
-    class blufor_win {
-        name = "blufor_win";
-        sound[] = {"sounds\blufor_win.ogg", db+10, 1.0};
+
+    class blufor_win_1 {
+        name = "blufor_win_1";
+        sound[] = {"sounds\blufor_win_1.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    class blufor_lose {
-        name = "blufor_lose";
-        sound[] = {"sounds\blufor_lose.ogg", db+10, 1.0};
+    class blufor_win_2 {
+        name = "blufor_win_2";
+        sound[] = {"sounds\blufor_win_2.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    class opfor_win {
-        name = "opfor_win";
-        sound[] = {"sounds\opfor_win.ogg", db+10, 1.0};
+    class blufor_win_3 {
+        name = "blufor_win_3";
+        sound[] = {"sounds\blufor_win_3.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    class opfor_lose {
-        name = "opfor_lose";
-        sound[] = {"sounds\opfor_lose.ogg", db+10, 1.0};
+    // class blufor_lose {
+    //     name = "blufor_lose";
+    //     sound[] = {"sounds\blufor_lose.ogg", db+10, 1.0};
+    //     titles[] = {0,""};
+    // };
+    class opfor_win_1 {
+        name = "opfor_win_1";
+        sound[] = {"sounds\opfor_win_1.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    class indfor_win {
-        name = "indfor_win";
-        sound[] = {"sounds\indfor_win.ogg", db+10, 1.0};
+    class opfor_win_2 {
+        name = "opfor_win_2";
+        sound[] = {"sounds\opfor_win_2.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    class indfor_lose {
-        name = "indfor_lose";
-        sound[] = {"sounds\indfor_lose.ogg", db+10, 1.0};
+    class opfor_win_3 {
+        name = "opfor_win_3";
+        sound[] = {"sounds\opfor_win_3.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
-    */
+    // class opfor_lose {
+    //     name = "opfor_lose";
+    //     sound[] = {"sounds\opfor_lose.ogg", db+10, 1.0};
+    //     titles[] = {0,""};
+    // };
+    class indfor_win_1 {
+        name = "indfor_win_1";
+        sound[] = {"sounds\indfor_win_1.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class indfor_win_2 {
+        name = "indfor_win_2";
+        sound[] = {"sounds\indfor_win_2.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class indfor_win_3 {
+        name = "indfor_win_3";
+        sound[] = {"sounds\indfor_win_3.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    // class indfor_lose {
+    //     name = "indfor_lose";
+    //     sound[] = {"sounds\indfor_lose.ogg", db+10, 1.0};
+    //     titles[] = {0,""};
+    // };
+
 };
 
 
