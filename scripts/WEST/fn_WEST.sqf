@@ -90,6 +90,36 @@ _giveCDFEquipment = ["CDFEquipment",localize "STR_TAG_getEquipment","\a3\ui_f\da
 		},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;
 [_unit, 0, ["ACE_MainActions"], _giveCDFEquipment] call ace_interact_menu_fnc_addActionToObject;
 
+
+_giveCombatEquipment = ["CombatEquipment","Получить штурмовую экипировку","\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa",{
+	_uniformsArray = ["UK3CB_GAF_B_U_CombatSmock_01_DIGI"];
+	_backpackArray = ["UK3CB_B_Invisible"];
+	_headgearArray = ["UK3CB_GAF_B_H_6b27m_GRN", "UK3CB_GAF_B_H_6b27m_ESS_GRN", "UK3CB_GAF_B_H_6b27m_DIGI_NOflag", "UK3CB_GAF_B_H_6b27m_ESS_DIGI_NOflag"];
+	_facegearArray = ["UK3CB_G_Tactical_Black_Shemagh_Green", "UK3CB_G_Tactical_Black_Shemagh_Tan", "UK3CB_G_Tactical_Clear_Shemagh_Green", "UK3CB_G_Tactical_Clear_Shemagh_Tan", "UK3CB_G_Ballistic_Black_Shemagh_Green", "UK3CB_G_Ballistic_Black_Shemagh_Tan", "UK3CB_G_Tactical_Black"];
+	_vestsArray = ["UK3CB_GAF_B_MBAV_MEDIC_DIGI_OLI_01", "UK3CB_GAF_B_MBAV_MEDIC_OLI_01", "UK3CB_GAF_B_MBAV_MEDIC_DIGI_01", "UK3CB_GAF_B_MBAV_MG_DIGI_OLI_01", "UK3CB_GAF_B_MBAV_MG_DIGI_01"];
+	_weaponsArray = ["rhs_weap_ak74m", "rhs_weap_ak74m_fullplum", "rhs_weap_ak74m_camo", "rhs_weap_ak74m_desert"];
+	_radioItem = "TFAR_anprc152";
+	_randomUniform = selectRandom _uniformsArray;
+	_randomBackpack = selectRandom _backpackArray;
+	_randomHeadgear = selectRandom _headgearArray;
+	_randomFacegear = selectRandom _facegearArray;
+	_randomVest = selectRandom _vestsArray;
+	_randomWeapon = selectRandom _weaponsArray;
+	_weaponMagazines = getArray (configFile >> "CfgWeapons" >> _randomWeapon >> "magazines");
+	_weaponAmmo = _weaponMagazines select 0;
+	_combatPreset = [[_randomWeapon,"rhs_acc_ak5","","",[_weaponAmmo,30],[],""],["rhs_weap_rpg26","","","",[],[],""],[],[_randomUniform,[["ACE_EarPlugs",1]]],[_randomVest,[["rhs_mag_m67",1,1],["rhs_mag_an_m8hc",3,1],[_weaponAmmo,20,35]]],[_randomBackpack,[["ACE_splint",4],["ACE_bloodIV",5],["ACE_bloodIV_250",5],["ACE_bloodIV_500",5],["ACE_EntrenchingTool",1],["ACE_morphine",10],["ACE_tourniquet",8],["ACE_fieldDressing",15],["ACE_epinephrine",5],["ToolKit",1],["ACE_DefusalKit",1],["ACE_packingBandage",15],["ACE_elasticBandage",15],["ACE_surgicalKit",1]]],_randomHeadgear,_randomFacegear,["Binocular","","","",[],[],""],["ItemMap","ItemGPS",_radioItem,"ItemCompass","TFAR_microdagr",""]];
+	_playerCash = [player] call grad_lbm_fnc_getFunds;
+	if (_playerCash < 350) exitWith {
+		hintSilent "Недостаточно денег. Необходимо минимум 350Р."
+	};
+	[player, -350] call grad_moneymenu_fnc_addFunds;
+	hintSilent "Вы приобрели штурмовой комплект за 350Р";
+	player setUnitLoadout _combatPreset;
+	},{
+		side player == west && typeOf player == "rhsgref_cdf_b_reg_rifleman"
+	},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;
+[_unit, 0, ["ACE_MainActions"], _giveCombatEquipment] call ace_interact_menu_fnc_addActionToObject;
+
 /*
 _giveMVDEquipment = ["MVDEquipment",localize "STR_TAG_getEquipment","\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa",{
 	_uniformsArray = ["UK3CB_CPD_B_U_CombatUniform_01_Grey", "UK3CB_CPD_B_U_CombatUniform_01_Urban"];

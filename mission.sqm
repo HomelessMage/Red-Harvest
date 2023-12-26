@@ -5,14 +5,14 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1569;
+	toggles=33;
 	mods[]=
 	{
 		"3denEnhanced"
 	};
 	class ItemIDProvider
 	{
-		nextID=4347;
+		nextID=4372;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=103;
+		nextID=104;
 	};
 	class Camera
 	{
-		pos[]={6902.0396,103.90587,2385.1567};
-		dir[]={-0.24652661,-0.61886448,0.74580926};
-		up[]={-0.19422914,0.78549773,0.58759534};
-		aside[]={0.94947338,1.4901161e-008,0.3138476};
+		pos[]={13712.545,170.83246,2907.689};
+		dir[]={-0.33490828,-0.71867067,0.60938829};
+		up[]={-0.34613907,0.6953491,0.62982357};
+		aside[]={0.87637299,4.0279701e-008,0.48163819};
 	};
 };
 binarizationWanted=0;
@@ -82,13 +82,18 @@ addons[]=
 	"A3_Static_F_Jets_SAM_System_01",
 	"rhs_c_heavyweapons",
 	"UK3CB_Factions_CHC_C",
-	"UK3CB_Factions_Vehicles_LandRover"
+	"UK3CB_Factions_Vehicles_LandRover",
+	"ae3_armaos",
+	"A3_Structures_F_Furniture",
+	"tfar_antennas",
+	"A3_Static_F_Destroyer_Ship_Gun_01",
+	"ae3_power"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=39;
+		items=43;
 		class Item0
 		{
 			className="A3_Missions_F_Oldman";
@@ -360,6 +365,31 @@ class AddonsMetaData
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
+		class Item39
+		{
+			className="ae3_armaos";
+			name="armaos";
+			author="y0014984|Wasserstoff";
+		};
+		class Item40
+		{
+			className="tfar_antennas";
+			name="tfar_antennas";
+			url="https://github.com/michail-nikolaev/task-force-arma-3-radio";
+		};
+		class Item41
+		{
+			className="A3_Static_F_Destroyer";
+			name="CFGPATCHES_A3_Static_F_Destroyer";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item42
+		{
+			className="ae3_power";
+			name="power";
+			author="y0014984|Wasserstoff";
+		};
 	};
 };
 dlcs[]=
@@ -393,6 +423,24 @@ class ScenarioData
 };
 class CustomAttributes
 {
+	class Category0
+	{
+		name="GF_deformMission";
+		class Attribute0
+		{
+			property="GF_deformObjects";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					singleType="STRING";
+					value="";
+				};
+			};
+		};
+		nAttributes=1;
+	};
 	class Category1
 	{
 		name="Multiplayer";
@@ -647,7 +695,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=88;
+		items=104;
 		class Item0
 		{
 			dataType="Object";
@@ -10358,14 +10406,14 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="ENH_doStop";
-							expression="if (!is3DEN && _value) then {doStop _this}";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=1;
+									value=0;
 								};
 							};
 						};
@@ -10410,14 +10458,14 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="ENH_doStop";
+							expression="if (!is3DEN && _value) then {doStop _this}";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=0;
+									value=1;
 								};
 							};
 						};
@@ -10880,6 +10928,502 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item88
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12009.433,141.01257,12488.528};
+				angles[]={6.2792406,0.38397244,0.0086742863};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="laptopEAST";
+			};
+			id=4347;
+			type="Land_Laptop_03_black_F_AE3";
+			atlOffset=0.82136536;
+		};
+		class Item89
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12009.448,140.4305,12488.596};
+				angles[]={-0,3.5255654,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				createAsSimpleObject=1;
+				dynamicSimulation=1;
+			};
+			id=4348;
+			type="Land_TableDesk_F";
+			atlOffset=0.13000488;
+		};
+		class Item90
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={3716.1643,402,5980.3906};
+			};
+			areaSize[]={7.9345703,0,10.032959};
+			flags=1;
+			id=4351;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item91
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3716.7881,418.56342,5977.7319};
+				angles[]={0,2.5132742,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="radio_jammer_tower";
+				dynamicSimulation=1;
+			};
+			id=4355;
+			type="TFAR_Land_Communication_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item92
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={13679.318,47.756252,2971.4475};
+						angles[]={6.2645278,5.6542559,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						name="uavG";
+					};
+					id=4358;
+					type="B_UAV_AI";
+					atlOffset=-3.8146973e-006;
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=4358;
+						item1=4357;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=4356;
+			atlOffset=-3.8146973e-006;
+		};
+		class Item93
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13679.318,47.754803,2971.397};
+				angles[]={6.2645278,5.6542559,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				init="this allowDamage false;" \n "if (isServer) then {  " \n "    crew this join createGroup civilian;  " \n "};" \n "this addEventHandler [""Fired"", " \n " { " \n "  (_this select 0) setVehicleAmmo 1; " \n " } " \n "];";
+				name="uav";
+				receiveRemoteTargets=1;
+			};
+			id=4357;
+			type="B_Ship_Gun_01_F";
+			atlOffset=-3.8146973e-006;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item94
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4378.9502,339.98941,10332.124};
+				angles[]={6.2809687,4.1888251,6.2739};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="laptopWEST";
+			};
+			id=4359;
+			type="Land_Laptop_03_black_F_AE3";
+			atlOffset=0.82199097;
+		};
+		class Item95
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4378.896,339.40707,10332.08};
+				angles[]={-0,1.0471978,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				createAsSimpleObject=1;
+				dynamicSimulation=1;
+			};
+			id=4360;
+			type="Land_TableDesk_F";
+		};
+		class Item96
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4773.4551,9.6977167,2573.136};
+				angles[]={6.2739873,5.2534761,6.2806196};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="laptopRESISTANCE";
+			};
+			id=4361;
+			type="Land_Laptop_03_black_F_AE3";
+			atlOffset=0.76469421;
+		};
+		class Item97
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4773.3892,9.1153002,2573.1594};
+				angles[]={-0,2.0943952,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				createAsSimpleObject=1;
+				dynamicSimulation=1;
+			};
+			id=4362;
+			type="Land_TableDesk_F";
+		};
+		class Item98
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4774.2305,9.0660181,2574.2766};
+						angles[]={0,2.1118484,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+					};
+					id=4365;
+					type="B_UAV_AI";
+					atlOffset=0.0004825592;
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=4365;
+						item1=4364;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=4363;
+			atlOffset=0.0004825592;
+		};
+		class Item99
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4774.1582,9.1252728,2574.3401};
+				angles[]={0,2.1118484,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				init="this allowDamage false;" \n "[this, false] call ace_dragging_fnc_setCarryable;" \n "[this, false] call ace_dragging_fnc_setDraggable; " \n "if (isServer) then {  " \n "    crew this join createGroup resistance;  " \n "};" \n "";
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+				reportOwnPosition=1;
+				aiRadarUsage=1;
+			};
+			id=4364;
+			type="Land_Portable_generator_F_AE3";
+			atlOffset=0.0004825592;
+		};
+		class Item100
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4379.8931,339.29993,10330.623};
+						angles[]={0,1.0471976,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+					};
+					id=4367;
+					type="B_UAV_AI";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=4367;
+						item1=4368;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=4366;
+		};
+		class Item101
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4379.8208,339.35919,10330.687};
+				angles[]={0,1.0471976,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				init="this allowDamage false;" \n "[this, false] call ace_dragging_fnc_setCarryable;" \n "[this, false] call ace_dragging_fnc_setDraggable; " \n "";
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+				reportOwnPosition=1;
+				aiRadarUsage=1;
+			};
+			id=4368;
+			type="Land_Portable_generator_F_AE3";
+		};
+		class Item102
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={12007.379,140.32372,12488.752};
+						angles[]={0,3.4906585,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+					};
+					id=4370;
+					type="B_UAV_AI";
+					atlOffset=0.00021362305;
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=4370;
+						item1=4371;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=4369;
+			atlOffset=0.00021362305;
+		};
+		class Item103
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12007.949,140.38318,12489.123};
+				angles[]={0,3.4906585,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				init="this allowDamage false;" \n "[this, false] call ace_dragging_fnc_setCarryable;" \n "[this, false] call ace_dragging_fnc_setDraggable; " \n "if (isServer) then {  " \n "    crew this join createGroup east;  " \n "};" \n "";
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+				reportOwnPosition=1;
+				aiRadarUsage=1;
+			};
+			id=4371;
+			type="Land_Portable_generator_F_AE3";
+			atlOffset=0.00021362305;
 		};
 	};
 	class Connections

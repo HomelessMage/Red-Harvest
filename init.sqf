@@ -173,6 +173,7 @@ addMissionEventHandler ["Draw3d", {
 	};	
 }];
 */
+[] execVM "scripts\armaOS\initLaptops.sqf";
 
 if (isServer) then {
 	[] execVM "scripts\missionFramework.sqf";

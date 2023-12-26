@@ -10,7 +10,6 @@ class Header
 
 
 
-
 title = "$STR_TAG_missionName";
 author = "$STR_TAG_missionAuthor";
 onLoadName = "$STR_TAG_missionName";
@@ -43,7 +42,50 @@ allowFunctionsRecompile = 0;
 disableAI = 1;
 skipLobby = 0;
 joinUnassigned = 0;
-disableChannels[]={{0,false,false},{5,false,false}};
+
+/*
+0 = Global
+1 = Side
+2 = Command
+3 = Group
+4 = Vehicle
+5 = Direct
+6 = System
+*/
+
+disableChannels[] = {
+	{
+		0,		// Global
+		false,	// text chat is disabled
+		true	// voice chat is disabled
+	},
+	{
+		1,		// Side
+		true,	// text chat is disabled
+		true	// voice chat is disabled
+	},
+	{
+		2,		// Command
+		true,	// text chat is disabled
+		true	// voice chat is disabled
+	},
+	{
+		3,		// Group
+		true,	// text chat is disabled
+		true	// voice chat is disabled
+	},
+	{
+		4,		// Vehicle
+		true,	// text chat is disabled
+		true	// voice chat is disabled
+	},
+	{
+		5,		// Direct
+		true,	// text chat is disabled
+		true	// voice chat is disabled
+	},
+};
+
 briefing = 0;
 debriefing = 0;
 
@@ -215,6 +257,16 @@ class CfgSounds {
     class indfor_win_3 {
         name = "indfor_win_3";
         sound[] = {"sounds\indfor_win_3.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class warning_jammer {
+        name = "warning_jammer";
+        sound[] = {"sounds\warning_jammer.ogg", db+10, 1.0};
+        titles[] = {0,""};
+    };
+    class warning_uav {
+        name = "warning_uav";
+        sound[] = {"sounds\warning_uav.ogg", db+10, 1.0};
         titles[] = {0,""};
     };
     // class indfor_lose {

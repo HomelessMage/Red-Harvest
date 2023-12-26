@@ -76,6 +76,35 @@ _giveRecruitEquipment = ["RecruitEquipment","Получить базовую э�
 	},{side player == east},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;
 [_unit, 0, ["ACE_MainActions"], _giveRecruitEquipment] call ace_interact_menu_fnc_addActionToObject;
 
+_giveCombatEquipment = ["CombatEquipment","Получить штурмовую экипировку","\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa",{
+	_uniformsArray = ["UK3CB_LSM_B_U_CombatSmock_13", "UK3CB_LSM_B_U_CombatSmock_16", "UK3CB_LSM_B_U_CombatSmock_17", "UK3CB_LSM_B_U_CombatSmock_15", "UK3CB_LSM_B_U_CombatSmock_14", "UK3CB_LSM_B_U_Crew_CombatSmock_10", "UK3CB_LSM_B_U_CombatSmock_09", "UK3CB_LSM_B_U_Crew_CombatSmock_04"];
+	_backpackArray = ["UK3CB_B_Invisible"];
+	_headgearArray = ["UK3CB_ADA_B_H_6b27m_OLI", "UK3CB_ADA_B_H_6b27m_ESS_OLI", "rhs_6b27m", "rhs_6b27m_ess", "UK3CB_ADA_B_H_6b27m_ml_OLI", "UK3CB_ADA_B_H_6b27m_ml_ESS_OLI", "rhs_6b7_1m", "rhs_6b7_1m_ess", "rhs_6b7_1m_olive", "rhs_6b7_1m_flora"];
+	_facegearArray = ["UK3CB_G_Bandanna_flora_alt", "UK3CB_G_Bandanna_green_check", "UK3CB_G_Face_Wrap_01"];
+	_vestsArray = ["rhs_6b13_Flora_6sh92", "rhs_6b13_6sh92"];
+	_weaponsArray = ["rhs_weap_akmn"];
+	_radioItem = "TFAR_fadak";
+	_randomUniform = selectRandom _uniformsArray;
+	_randomBackpack = selectRandom _backpackArray;
+	_randomHeadgear = selectRandom _headgearArray;
+	_randomFacegear = selectRandom _facegearArray;
+	_randomVest = selectRandom _vestsArray;
+	_randomWeapon = selectRandom _weaponsArray;
+	_weaponMagazines = getArray (configFile >> "CfgWeapons" >> _randomWeapon >> "magazines");
+	_weaponAmmo = _weaponMagazines select 0;
+	_combatPreset = [[_randomWeapon,"rhs_acc_dtkakm","","",[_weaponAmmo,30],[],""],["rhs_weap_rpg26","","","","",[],""],[],[_randomUniform,[["ACE_EarPlugs",1]]],[_randomVest,[["rhs_mag_f1",1,1],["rhs_mag_rdg2_white",3,1],[_weaponAmmo,20,35]]],[_randomBackpack,[["ACE_splint",4],["ACE_bloodIV",5],["ACE_bloodIV_250",5],["ACE_bloodIV_500",5],["ACE_EntrenchingTool",1],["ACE_morphine",10],["ACE_tourniquet",8],["ACE_fieldDressing",15],["ACE_epinephrine",5],["ToolKit",1],["ACE_DefusalKit",1],["ACE_packingBandage",15],["ACE_elasticBandage",15],["ACE_surgicalKit",1]]],_randomHeadgear,_randomFacegear,["Binocular","","","",[],[],""],["ItemMap","ItemGPS",_radioItem,"ItemCompass","TFAR_microdagr",""]];
+	_playerCash = [player] call grad_lbm_fnc_getFunds;
+	if (_playerCash < 350) exitWith {
+		hintSilent "Недостаточно денег. Необходимо минимум 350Р."
+	};
+	[player, -350] call grad_moneymenu_fnc_addFunds;
+	hintSilent "Вы приобрели штурмовой комплект за 350Р";
+	player setUnitLoadout _combatPreset;
+	},{
+		side player == east
+		},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;
+[_unit, 0, ["ACE_MainActions"], _giveCombatEquipment] call ace_interact_menu_fnc_addActionToObject;
+
 /*
 _uniformsArray = ["UK3CB_LSM_B_U_CombatSmock_13", "UK3CB_LSM_B_U_CombatSmock_16", "UK3CB_LSM_B_U_CombatSmock_17", "UK3CB_LSM_B_U_CombatSmock_15", "UK3CB_LSM_B_U_CombatSmock_14", "UK3CB_LSM_B_U_Crew_CombatSmock_10", "UK3CB_LSM_B_U_CombatSmock_09", "UK3CB_LSM_B_U_Crew_CombatSmock_04"];
 _headgearArray = ["UK3CB_LSM_B_H_BoonieHat_PART", "UK3CB_LSM_B_H_Field_Cap_PART", "UK3CB_LSM_B_H_M88_Field_Cap_PART"];

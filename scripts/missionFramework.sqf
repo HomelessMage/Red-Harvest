@@ -175,7 +175,16 @@ _locationsArray resize 2;
 	if (_agentMission == true) then {
 		[_agentPosition] execVM "scripts\agentMission.sqf";
 	};
-	
+
+	// Задание на захват флэшки
+	_deviceMission = true;
+	_deviceBuilding = selectRandom _housesArray;
+	_housePositions = _randomHouse buildingPos -1;//Finds list of all available building positions in the selected building
+	_randomPosition = selectRandom _housePositions;//Picks a building position from the list of building positions
+	_devicePos = _randomPosition;
+    if (_deviceMission == true) then {
+		[_devicePos] execVM "scripts\deviceMission.sqf";
+    };
 	// systemChat str isNil "_agentBuilding";    // should be fine
 	// systemChat str count _agentBuildingPositions;    // may be empty
 	// systemChat str isNil "_agentPosition";  // may be nil
