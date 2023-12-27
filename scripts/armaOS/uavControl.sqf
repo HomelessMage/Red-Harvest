@@ -3,7 +3,14 @@ params ["_computer", "_options", "_commandName"];
 [_computer, "uavControl.cpp v0.1 - © 2023 HomelessMage"] call AE3_armaos_fnc_shell_stdout; 
 [_computer, "__________________________________________"] call AE3_armaos_fnc_shell_stdout;
 
-uav joinAsSilent [createGroup (side player), 5];
+if (isServer) then {
+  _group = createGroup (side player);
+  // [uav] joinSilent _group;
+  crew uav join _group;
+};
+
+
+// uav joinAsSilent [createGroup (side player), 5];
 
 ["Артиллерийский БПА получил сигнал взлома."] remoteExec ["systemChat"];
 

@@ -183,11 +183,9 @@ if (isServer) then {
 	// [] execVM "scripts\missionPVEFramework.sqf";
 };
 
-// РЭП инициализация
-if (isServer) then {
-    waitUntil { time > 3 };
-    radio_jammer_tower setVariable ["jamming", false, true];
-};
+
+[] spawn compile preprocessFile "scipts\defineJammers.sqf";
+
 
 // while {true} do {
 // 	sleep 900;
