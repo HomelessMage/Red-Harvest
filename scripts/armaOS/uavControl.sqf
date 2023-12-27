@@ -4,10 +4,12 @@ params ["_computer", "_options", "_commandName"];
 [_computer, "__________________________________________"] call AE3_armaos_fnc_shell_stdout;
 
 uav joinAsSilent [createGroup (side player), 5];
+
 ["Артиллерийский БПА получил сигнал взлома."] remoteExec ["systemChat"];
+
 ["warning_uav"] remoteExec ["playSound"];
 
-[_computer, format ["БПА подключена к стороне: %1", side uav]] call AE3_armaos_fnc_shell_stdout;
+[_computer, format ["БПА подключена к стороне: %1", side player]] call AE3_armaos_fnc_shell_stdout;
 
 [_computer, "SHELL"] call AE3_armaos_fnc_terminal_setInputMode;
 

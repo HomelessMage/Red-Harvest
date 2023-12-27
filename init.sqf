@@ -173,15 +173,20 @@ addMissionEventHandler ["Draw3d", {
 	};	
 }];
 */
+// Инициализация ноутбуков
 
 
 if (isServer) then {
-	// Инициализация ноутбуков
 	[] execVM "scripts\armaOS\initLaptops.sqf";
-	// Инициализация PvP миссий
 	[] execVM "scripts\missionFramework.sqf";
 	// Инициализация PvE миссий
 	// [] execVM "scripts\missionPVEFramework.sqf";
+};
+
+// РЭП инициализация
+if (isServer) then {
+    waitUntil { time > 3 };
+    radio_jammer_tower setVariable ["jamming", false, true];
 };
 
 // while {true} do {

@@ -1,7 +1,7 @@
 params ["_computer", "_options", "_commandName"];
 // [_computer, _options, _commandName] execVM "executedCode.sqf";
 
-_jamming = missionNamespace getVariable ["jamming", false];
+_jamming = radio_jammer_tower getVariable ["jamming", false];
 
 [_computer, "radioJammer.cpp v0.1 - © 2023 HomelessMage"] call AE3_armaos_fnc_shell_stdout;
 [_computer, "__________________________________________"] call AE3_armaos_fnc_shell_stdout;
@@ -26,10 +26,10 @@ if (toLower _userInput isEqualTo "n") exitWith {
 
 _nextJammingValue = !(_jamming);
 
-missionNamespace setVariable ["jamming", _nextJammingValue, true];
+radio_jammer_tower setVariable ["jamming", _nextJammingValue, true];
 
 if (_nextJammingValue) then {
-  [radio_jammer_tower, 10000, 10000, 10000, 10000, 10000, 10000] call kyk_ew_fnc_broadcastJammerAdd;
+  [radio_jammer_tower, 20000, 20000, 20000, 20000, 20000, 20000] call kyk_ew_fnc_broadcastJammerAdd;
   [_computer, "РЭП активирована"] call AE3_armaos_fnc_shell_stdout;
   ["Активирована РЭП. Связь недоступна."] remoteExec ["systemChat"];
   ["warning_jammer"] remoteExec ["playSound"];
