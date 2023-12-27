@@ -81,7 +81,7 @@ disableChannels[] = {
 	},
 	{
 		5,		// Direct
-		true,	// text chat is disabled
+		false,	// text chat is disabled
 		true	// voice chat is disabled
 	},
 };

@@ -173,10 +173,14 @@ addMissionEventHandler ["Draw3d", {
 	};	
 }];
 */
-[] execVM "scripts\armaOS\initLaptops.sqf";
+
 
 if (isServer) then {
+	// Инициализация ноутбуков
+	[] execVM "scripts\armaOS\initLaptops.sqf";
+	// Инициализация PvP миссий
 	[] execVM "scripts\missionFramework.sqf";
+	// Инициализация PvE миссий
 	// [] execVM "scripts\missionPVEFramework.sqf";
 };
 

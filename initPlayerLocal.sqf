@@ -6,7 +6,7 @@
 // waitUntil {!isNull (findDisplay 46)};
 
 // enableRadio false;
-// player setSpeaker "NoVoice";
+player setSpeaker "NoVoice";
 
 
 // Спавним игрока в случайном доме в деревне-спавне
@@ -23,7 +23,7 @@ _addMoney1000 = ["AddMoney","Добавить себе 1000 рублей","\A3\u
 [["ACE_ZeusActions"], _addMoney1000] call ace_interact_menu_fnc_addActionToZeus;
 _addMoney500 = ["AddMoney","Добавить себе 500 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 500] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _addMoney500] call ace_interact_menu_fnc_addActionToZeus;
-_removeTrash = ["RemoveTrash","Удалить мусор на базе","\A3\ui_f\data\map\groupicons\waypoint.paa",{
+_removeTrash = ["RemoveTrash","Удалить мусор на карте","\A3\ui_f\data\map\groupicons\waypoint.paa",{
   _trashArray = gradTrigger nearObjects ["GroundWeaponHolder", 100];
   for "_i" from 0 to count _trashArray - 1 do {
     deleteVehicle (_trashArray select _i);
@@ -254,7 +254,6 @@ params ["_unit","_container"];
 _override = false;
 _allUnitBackpackContainers = allUnits select {alive _x} apply {backpackContainer _x};
 if (_container in _allUnitBackpackContainers) then {
-//  systemChat "Ща как по ебальничку дам уебище";
   _override = true;
 };
 _override
@@ -280,6 +279,7 @@ player addEventHandler ["Respawn",{
 
 
 // Ломаем окна
+// Этот скрипт создаёт очень много объектов
 /*
 if (isDedicated || !hasInterface) exitWith {};
 if (!isNil "ifx_windowBreak_handle") then {
@@ -427,9 +427,3 @@ _allMarshals = [marshalWEST, marshalEAST, marshalINDEPENDENT];
 		[_unit, 0, ["ACE_MainActions", "EquipmentTree"], _givePersonalEquipment] call ace_interact_menu_fnc_addActionToObject;
 	} forEach _uidArray;
 } forEach _allMarshals;
-
-
-
-
-
-

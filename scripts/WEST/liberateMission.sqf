@@ -42,30 +42,17 @@ _randomIndex = str round(random 1000);
 _taskDescription = [format ["Освободить город %1 от присутствия сил противника", str _nearestLocationName], "Освободить город"];
 [WEST, _randomIndex, _taskDescription, _triggerMarker, "CREATED", -1, false, "Attack", false] call BIS_fnc_taskCreate;
 
-
-
-
-
-// [_randomIndex, 'SUCCEEDED'] call BIS_fnc_taskSetState;
-// [WEST, 1000] call HMG_fnc_giveMoneyToSide;
-// ['Награда за освобождение города: 1000Р. Деньги отправлены на банковский счёт.'] remoteExec ['systemChat', WEST];
-
 _missionTrigger = createTrigger ["EmptyDetector", _randomLocation];
 _missionTrigger setTriggerArea [500,500,0,false];
 
 waitUntil {player inArea _missionTrigger};
  
 while {true} do {
-	if ({side _x == RESISTANCE} count (allUnits (inArea _missionTrigger)) < 1) exitWith {
+	_sideUnits = {alive _x && side _x == RESISTANCE} count (allUnits inArea _missionTrigger);
+	if (_sideUnits == 0) exitWith {
 			[_randomIndex, 'SUCCEEDED'] call BIS_fnc_taskSetState;
 			[WEST, 1000] call HMG_fnc_giveMoneyToSide;
 			['Награда за освобождение города: 1000Р. Деньги отправлены на банковский счёт.'] remoteExec ['systemChat', WEST];
 	};
 	sleep 5;
 };
-
-/*
-[_randomIndex, 'SUCCEEDED'] call BIS_fnc_taskSetState;
-[WEST, 1000] call HMG_fnc_giveMoneyToSide;
-['Награда за освобождение города: 1000Р. Деньги отправлены на банковский счёт.'] remoteExec ['systemChat', WEST];
-*/
