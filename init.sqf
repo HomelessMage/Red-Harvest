@@ -174,17 +174,17 @@ addMissionEventHandler ["Draw3d", {
 }];
 */
 // Инициализация ноутбуков
-
+[] execVM "scipts\defineJammers.sqf";
+[] execVM "scripts\armaOS\initLaptops.sqf";
 
 if (isServer) then {
-	[] execVM "scripts\armaOS\initLaptops.sqf";
 	[] execVM "scripts\missionFramework.sqf";
 	// Инициализация PvE миссий
 	// [] execVM "scripts\missionPVEFramework.sqf";
 };
 
 
-[] spawn compile preprocessFile "scipts\defineJammers.sqf";
+
 
 
 // while {true} do {

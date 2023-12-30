@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=104;
+		nextID=105;
 	};
 	class Camera
 	{
-		pos[]={13712.545,170.83246,2907.689};
-		dir[]={-0.33490828,-0.71867067,0.60938829};
-		up[]={-0.34613907,0.6953491,0.62982357};
-		aside[]={0.87637299,4.0279701e-008,0.48163819};
+		pos[]={13695.228,196.33975,2934.2234};
+		dir[]={-0.61778826,-0.77213508,0.14881249};
+		up[]={-0.75066423,0.63545835,0.18081959};
+		aside[]={0.23418128,-7.4505806e-009,0.97219288};
 	};
 };
 binarizationWanted=0;
@@ -10406,14 +10406,14 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="ENH_doStop";
+							expression="if (!is3DEN && _value) then {doStop _this}";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=0;
+									value=1;
 								};
 							};
 						};
@@ -10458,14 +10458,14 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="ENH_doStop";
-							expression="if (!is3DEN && _value) then {doStop _this}";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=1;
+									value=0;
 								};
 							};
 						};
@@ -10616,7 +10616,7 @@ class Mission
 				class Attribute0
 				{
 					property="ENH_markerShowOnCondition";
-					expression="        if (!isServer || is3DEN || _value == 'false' || _value == '') exitWith {};        [_this, compile _value] spawn        {          params ['_marker', '_compiledValue'];          scriptName 'ENH_MarkerShowOnCondition';          waitUntil {sleep 1; call _compiledValue};          _marker setMarkerAlpha 1;        }";
+					expression="        if (!isServer || is3DEN || _value == 'false' || _value == '') exitWith {};        [_this, compile _value] spawn        {          params ['_marker', '_compiledValue'];          scriptName 'ENH_MarkerShowOnCondition';          waitUntil {sleep 0.5; call _compiledValue};          private _newAlpha = missionNamespace getVariable [format ['ENH_attributesMarker_%1_initAlpha', _marker], 1];          _marker setMarkerAlpha _newAlpha;        }";
 					class Value
 					{
 						class data
@@ -10952,7 +10952,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={12009.448,140.4305,12488.596};
-				angles[]={-0,3.5255654,0};
+				angles[]={0,3.5255654,0};
 			};
 			side="Empty";
 			flags=4;
@@ -11156,7 +11156,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={4378.896,339.40707,10332.08};
-				angles[]={-0,1.0471978,0};
+				angles[]={0,1.0471978,0};
 			};
 			side="Empty";
 			flags=4;
@@ -11191,7 +11191,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={4773.3892,9.1153002,2573.1594};
-				angles[]={-0,2.0943952,0};
+				angles[]={0,2.0943952,0};
 			};
 			side="Empty";
 			flags=4;

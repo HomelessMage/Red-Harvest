@@ -35,13 +35,3 @@ private _allPlayers = allPlayers select {side group _x == _ownerVariable}
 // Code without if here
 } forEach _allPlayers;
 */
-
-// Иницилиазация глушилки
-radio_jammer_tower spawn {
-	waitUntil {
-		time > 3
-	};
-	params ["_this"];
-	[_this, 0, 0, 0, 0, 0, 0] call kyk_ew_fnc_broadcastJammerAdd;
-	missionNamespace setVariable ["jamming", false, true];
-};
