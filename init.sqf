@@ -174,7 +174,7 @@ addMissionEventHandler ["Draw3d", {
 }];
 */
 // Инициализация ноутбуков
-[] execVM "scipts\defineJammers.sqf";
+// [] execVM "scipts\defineJammers.sqf";
 [] execVM "scripts\armaOS\initLaptops.sqf";
 
 if (isServer) then {

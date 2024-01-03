@@ -83,7 +83,7 @@ disableChannels[] = {
 		5,		// Direct
 		false,	// text chat is disabled
 		true	// voice chat is disabled
-	},
+	}
 };
 
 briefing = 0;

@@ -19,7 +19,9 @@ IF (!isnil ("COScomplete")) then {Hint "Check your call. COS was called twice!";
 COS_distance=500;//Set spawn distance
 _aerielActivation=false;// Set if flying units can activate civilian Zones
 
-blackListTowns = [];// Remove towns from COS
+
+// Спавн INDFOR
+blackListTowns = ["Балота"];// Remove towns from COS
 
 whiteListMkrs=[];// Add Custom Markers for COS to populate 
 
@@ -82,7 +84,7 @@ COSmotPool = ["UK3CB_CHC_C_Ikarus",
 
 
 
-COSmaxGrps=50;//Set Maximum group limit for COS at any one time (If limit is hit then civilians will be placed into a single group for each town)
+COSmaxGrps=15;//Set Maximum group limit for COS at any one time (If limit is hit then civilians will be placed into a single group for each town)
 
 // Browse to line 81 to customise number of civilians that spawn.
 private ["_sizeX","_sizeY","_name","_pos","_mSize","_rad","_civilians","_vehicles","_parked","_actCond"];

@@ -5,14 +5,14 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=33;
+	toggles=545;
 	mods[]=
 	{
 		"3denEnhanced"
 	};
 	class ItemIDProvider
 	{
-		nextID=4372;
+		nextID=4452;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=105;
+		nextID=106;
 	};
 	class Camera
 	{
-		pos[]={13695.228,196.33975,2934.2234};
-		dir[]={-0.61778826,-0.77213508,0.14881249};
-		up[]={-0.75066423,0.63545835,0.18081959};
-		aside[]={0.23418128,-7.4505806e-009,0.97219288};
+		pos[]={4720.061,90.272057,2498.3308};
+		dir[]={0.61357522,-0.75607425,-0.22776571};
+		up[]={0.70881349,0.65448576,-0.26311916};
+		aside[]={-0.34800702,1.4901161e-008,-0.93749189};
 	};
 };
 binarizationWanted=0;
@@ -695,7 +695,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=104;
+		items=105;
 		class Item0
 		{
 			dataType="Object";
@@ -10406,14 +10406,14 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="ENH_doStop";
-							expression="if (!is3DEN && _value) then {doStop _this}";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=1;
+									value=0;
 								};
 							};
 						};
@@ -10458,14 +10458,14 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="ENH_doStop";
+							expression="if (!is3DEN && _value) then {doStop _this}";
 							class Value
 							{
 								class data
 								{
 									singleType="BOOL";
-									value=0;
+									value=1;
 								};
 							};
 						};
@@ -11424,6 +11424,139 @@ class Mission
 			id=4371;
 			type="Land_Portable_generator_F_AE3";
 			atlOffset=0.00021362305;
+		};
+		class Item104
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4792.3096,8.7086191,2576.7676};
+			};
+			areaSize[]={1,-1,1};
+			id=4372;
+			type="ModuleEditTerrainObject_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#name";
+					expression="_this setVariable [""#name"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=7;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="#initServer";
+					expression="_this setVariable [""#initServer"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="#state";
+					expression="_this setVariable [""#state"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=0;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="#allowDamage";
+					expression="_this setVariable [""#allowDamage"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="#doorStates";
+					expression="_this setVariable [""#doorStates"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="ARRAY";
+							class value
+							{
+								items=3;
+								class Item0
+								{
+									class data
+									{
+										singleType="SCALAR";
+										value=0;
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										singleType="SCALAR";
+										value=0;
+									};
+								};
+								class Item2
+								{
+									class data
+									{
+										singleType="SCALAR";
+										value=0;
+									};
+								};
+							};
+						};
+					};
+				};
+				class Attribute6
+				{
+					property="#init";
+					expression="_this setVariable [""#init"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				nAttributes=7;
+			};
 		};
 	};
 	class Connections
