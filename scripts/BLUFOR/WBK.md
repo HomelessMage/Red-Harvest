@@ -1,4 +1,4 @@
-
+```
 
 [
 	_arsenal,
@@ -418,3 +418,6 @@
 		player setVariable ["Equipment", uniqueUnitItems player, true];
 	}
 ] spawn Wbk_AddKit;
+
+
+```
