@@ -182,6 +182,8 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"acm_cdf_r_clothes1_4",
 			"acm_cdf_r_clothes1_5",
 			"acm_cdf_r_clothes1_6",
+			// FROG DD16
+			"acm_cdf_r_clothes3_1",
 			// BACKPACKS
 			"rhs_assault_umbts",
 			// VESTS
@@ -204,6 +206,11 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"ItemMap",
 			"Binocular",
 			"ItemWatch",
+			"ACE_RangeTable_82mm",
+			"ACE_artilleryTable",
+			"ACE_MapTools",
+			"ACE_PlottingBoard",
+			"ACE_RangeCard",
 			// TFAR
 			"TFAR_rf7800str",
 			"TFAR_microdagr",

@@ -213,6 +213,11 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"ItemMap",
 			"Binocular",
 			"ItemWatch",
+			"ACE_RangeTable_82mm",
+			"ACE_artilleryTable",
+			"ACE_MapTools",
+			"ACE_PlottingBoard",
+			"ACE_RangeCard",
 			// TFAR
 			"TFAR_pnr1000a",
 			"TFAR_microdagr",

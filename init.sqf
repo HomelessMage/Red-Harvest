@@ -40,3 +40,16 @@ _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
         sleep 5;
     };
 };
+
+// Восстановление экипировки
+if (hasinterface) then {
+    [] spawn {
+        waitUntil {
+            alive player
+        };
+        player setVariable ["loadout", getUnitloadout player, false];
+        player addEventHandler ["Respawn", {
+            player setUnitLoadout (player getVariable "loadout");
+        }];
+    };
+};
