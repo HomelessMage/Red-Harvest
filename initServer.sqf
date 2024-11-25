@@ -8,14 +8,15 @@
 		} forEach _saveZones;
 	};
 };
-// [
-// 	{
-// 		[false, 30, "BLUFOR_BASE"] call grad_persistence_fnc_saveMission;
-// 		[false, 40, "OPFOR_BASE"] call grad_persistence_fnc_saveMission;
-// 	}, 
-// 	600,
-// 	[]
-// ] call CBA_fnc_addPerFrameHandler;
-
+/*
+[
+	{
+		[false, 30, "BLUFOR_BASE"] call grad_persistence_fnc_saveMission;
+		[false, 40, "OPFOR_BASE"] call grad_persistence_fnc_saveMission;
+	}, 
+	600,
+	[]
+] call CBA_fnc_addPerFrameHandler;
+*/
 // Alive Static Data
 [] execVM "scripts\aliveStaticData.sqf";
