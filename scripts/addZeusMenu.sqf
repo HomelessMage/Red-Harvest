@@ -32,17 +32,37 @@ if (_uidCheck != -1) then {
 
 
 
-_addMoneyMeny = ["AddMoneyMenu","Выдать деньги","\A3\ui_f\data\map\markers\military\destroy_CA.paa", {nil}, {true}] call ace_interact_menu_fnc_createAction;
-[["ACE_ZeusActions"], _addMoneyMeny] call ace_interact_menu_fnc_addActionToZeus;
+_moneyMenu = ["MoneyMenu","Денежное меню","\A3\ui_f\data\map\markers\military\destroy_CA.paa", {nil}, {true}] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions"], _moneyMenu] call ace_interact_menu_fnc_addActionToZeus;
 
-_addMoney10000 = ["AddMoney","Добавить себе 10000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 10000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
-[["ACE_ZeusActions", "AddMoneyMenu"], _addMoney10000] call ace_interact_menu_fnc_addActionToZeus;
+_checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить баланс всех игроков", "\a3\ui_f\data\igui\cfg\simpletasks\types\search_ca.paa", 
+	{
+		_dataArray = [];
+		{
+			_cashMoney = [_x, false] call grad_lbm_fnc_getFunds;
+			_bankMoney = _x getVariable "grad_moneymenu_myBankBalance";
+			// _playerData = format ["PLAYER: %1, STEAMID64: %2, WALLET: %3, BANK: %4", name _x, getPlayerUID _x, _cashMoney, _bankMoney];
+			_playerData = [name _x, getPlayerUID _x, _cashMoney, _bankMoney];
+			_dataArray pushBack _playerData;
 
-_addMoney1000 = ["AddMoney","Добавить себе 1000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 1000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
-[["ACE_ZeusActions", "AddMoneyMenu"], _addMoney1000] call ace_interact_menu_fnc_addActionToZeus;
+		} forEach allPlayers;
+		copyToClipboard str _dataArray;
+		systemChat "Данные скопированы в буфер обмена.";
+	}, 
+	{
+		true
+	}
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions", "MoneyMenu"], _checkAllCurrentPlayersBalance] call ace_interact_menu_fnc_addActionToZeus;
+
+_addMoney10000 = ["AddMoney","Добавить себе 10.000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 10000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions", "MoneyMenu"], _addMoney10000] call ace_interact_menu_fnc_addActionToZeus;
+
+_addMoney1000 = ["AddMoney","Добавить себе 1.000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 1000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions", "MoneyMenu"], _addMoney1000] call ace_interact_menu_fnc_addActionToZeus;
 
 _addMoney500 = ["AddMoney","Добавить себе 500 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 500] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
-[["ACE_ZeusActions", "AddMoneyMenu"], _addMoney500] call ace_interact_menu_fnc_addActionToZeus;
+[["ACE_ZeusActions", "MoneyMenu"], _addMoney500] call ace_interact_menu_fnc_addActionToZeus;
 
 _purgeDataMenu = ["PurgeDataMenu","Меню удаления сохранений","\a3\Ui_F_Curator\Data\CfgMarkers\minefield_ca.paa", {nil}, {true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _purgeDataMenu] call ace_interact_menu_fnc_addActionToZeus;
@@ -57,3 +77,9 @@ _purgeData = ["PurgeData", "ОЧИСТИТЬ СОХРАНЕНИЯ", "\a3\Ui_F_Cu
 		}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "PurgeDataMenu"], _purgeData] call ace_interact_menu_fnc_addActionToZeus;
+
+
+
+
+
+
