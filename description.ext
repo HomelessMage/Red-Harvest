@@ -206,15 +206,15 @@ class CfgGradPersistence {
 };
 
 class CfgGradMoneymenu {
-    canGiveDefault = 1;                                                    
+    canGiveDefault = 1;
     canTransferToSidesDefault[] = {"east","west","independent","civilian"};
-    canTakeFromDeadDefault = 1;        
-    canSendDirectlyDefault = 0;                                    
-    canTakeFromSurrenderedDefault = 1;                                     
-    startMoney = 50;                                                       
-    startBankBalance = 0;                                                  
+    canTakeFromDeadDefault = 1;
+    canSendDirectlyDefault = 0;
+    canTakeFromSurrenderedDefault = 1;
+    startMoney = 0;
+    startBankBalance = 0;
     playersLoseMoneyOnDeath = 1;
-    atmObjects[] = {"Land_Atm_01_F"};                                      
+    atmObjects[] = {"Land_Atm_01_F"};
 };
 
 
