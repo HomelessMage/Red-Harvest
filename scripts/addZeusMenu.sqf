@@ -29,11 +29,11 @@ if (_uidCheck != -1) then {
 };
 
 
-
-
-
 _moneyMenu = ["MoneyMenu","Денежное меню","\A3\ui_f\data\map\markers\military\destroy_CA.paa", {nil}, {true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _moneyMenu] call ace_interact_menu_fnc_addActionToZeus;
+
+/*
+
 
 _checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить баланс всех игроков", "\a3\ui_f\data\igui\cfg\simpletasks\types\search_ca.paa", 
 	{
@@ -41,7 +41,6 @@ _checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить б�
 		{
 			_cashMoney = [_x, false] call grad_lbm_fnc_getFunds;
 			_bankMoney = _x getVariable "grad_moneymenu_myBankBalance";
-			// _playerData = format ["PLAYER: %1, STEAMID64: %2, WALLET: %3, BANK: %4", name _x, getPlayerUID _x, _cashMoney, _bankMoney];
 			_playerData = [name _x, getPlayerUID _x, _cashMoney, _bankMoney];
 			_dataArray pushBack _playerData;
 
@@ -54,6 +53,10 @@ _checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить б�
 	}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "MoneyMenu"], _checkAllCurrentPlayersBalance] call ace_interact_menu_fnc_addActionToZeus;
+
+hintSilent ([cursorTarget, false] call grad_lbm_fnc_getFunds;)
+
+*/
 
 _addMoney10000 = ["AddMoney","Добавить себе 10.000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 10000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "MoneyMenu"], _addMoney10000] call ace_interact_menu_fnc_addActionToZeus;

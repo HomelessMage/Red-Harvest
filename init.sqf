@@ -1,3 +1,6 @@
+// Headless Client
+execVM "scripts\passToHC.sqf";
+
 // Инициализация арсеналов
 [BLUFOR_ARSENAL] execVM "scripts\BLUFOR\arsenal.sqf";
 [OPFOR_ARSENAL] execVM "scripts\OPFOR\arsenal.sqf";
