@@ -1,26 +1,22 @@
 _playerUID = getPlayerUID player;
-_zeusArray = [
+zeusmodule = [
+	"76561198891652541", //Adler
+	"76561198355023583", //Mertviy(Jarma)
 	"76561198040777688", // Терентьев
-	"76561198806755399", // Волков
-	"76561198891652541" // Прохоров
-];
-if (!(_playerUID in _zeusArray)) exitwith {};
-/*
-if (
-	// (group player != purpleSlots) && 
-	(_playerUID != "76561198891652541") && 
-	(_playerUID != "76561198040777688") && 
-	(_playerUID != "76561198806755399")
-) exitwith {};
-*/
+	"76561198806755399" // Волков
 
-_index = _zeusArray find _playerUID;;
+];
+if (!(_playerUID in zeusmodule)) exitwith {};
+if ((group player != purpleSlots) && (_playerUID != "76561198891652541") && (_playerUID != "76561198355023583") && (_playerUID != "76561198040777688") && (_playerUID != "76561198806755399")) exitwith {};
+
+_index = zeusmodule find _playerUID;;
 _dedman = format["dedman%1", _index];
-[_dedman] call { 
+[_dedman]  call { 
+	
 	missionNamespace setVariable [_this select 0, player, true];
 	[0, {
-		params ["_myName"]; 
-		private _curVarName = _myName+"Cur";
+		params ["_myName"]; private _curVarName = _myName+"Cur";
+		
 		if (isNil _curVarName) then {
 			[-1, compile format["if (player == %1) then {%1 sideChat 'creating Curator';}", _myName]] call CBA_fnc_globalExecute;
 			if (isNil "DedmenCur_group") then {DedmenCur_group = creategroup sideLogic;};

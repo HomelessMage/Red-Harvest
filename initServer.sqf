@@ -1,30 +1,36 @@
 if (isServer) then {
+    save_everest = 1;
 
-    [] execVM "modules\omzh_scripts\ehKillCrew.sqf";
-    [] spawn {execVM "modules\omzh_scripts\ini_markerFPS.sqf"};
-    [] execVM "modules\omzh_scripts\detectHeight.sqf";
-    [] execVM "modules\omzh_scripts\ini_zeus.sqf";
-    [] execVM "modules\omzh_script_base\defineJammers.sqf";
+    [] execVM "omzh_scripts\ehKillCrew.sqf";
+    [] spawn {execVM "omzh_scripts\ini_markerFPS.sqf"};
+    [] execVM "omzh_script_base\saver.sqf";
+    [] execVM "omzh_scripts\detectHeight.sqf";
+    [] execVM "omzh_scripts\ini_zeus.sqf";
+    [] execVM "omzh_script_base\defineJammers.sqf";
 
-	/*
     db_name = "everest";
+
+    /* Get extDB3 version */
 	_ret = "extDB3" callExtension "9:VERSION";
 	if(_ret == "") exitWith { diag_log "extDB3: Initialization failed" };
 	diag_log format ["extDB3 - Version %1", _ret];
 
+	/* Add database */
 	_ret = call compile ("extDB3" callExtension format["9:ADD_DATABASE:%1", db_name]);
 	if (_ret select 0 == 0) exitWith { diag_log format ["extDB3 - Database error %1", _ret] };
 	diag_log "extDB3 - Database connected";
 
+	/* Compute a random protocol ID */
 	protocol = ceil random 9999;
 
+	/* Add custom SQL protocol */
 	_ret = call compile ("extDB3" callExtension "9:ADD_DATABASE_PROTOCOL:everest:SQL:protocol");
 	//_ret = call compile ("extDB3" callExtension format["9:ADD_DATABASE_PROTOCOL:%1:SQL:%2:TEXT",db_name,protocol]);
 	if (_ret select 0 == 0) exitWith { diag_log format ["extDB3 - Database error %1", _ret] };
 	diag_log "extDB3 - Custom protocol added";
 
+	/* Store protocol ID */
 	uiNamespace setVariable ["protocol",protocol];
-	*/
 };
 
 // Сохраняем прогресс
