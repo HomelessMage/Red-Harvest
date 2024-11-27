@@ -1,4 +1,11 @@
+//A3\Missions_F_EPA\data\sounds\combat_deafness
+// https://vk.com/audio2386993_296546388_80b689e650676091f3
+
 params ["_oldUnit", "_killer", "_respawn", "_respawnDelay"];
+
+
+
+
 
 [] spawn 
 {		
@@ -29,7 +36,7 @@ switch (_passportType) do {
 				"Статус: " +
 				"</t>" +
 				"<t color='#ff0000' size='2'>" +
-				"ПОГИБ" +
+				"ЛИКВИДИРОВАН" +
 				"</t>",
 				_oldUnit getVariable "Name"
 				]
@@ -53,7 +60,7 @@ switch (_passportType) do {
 				"Статус: " +
 				"</t>" +
 				"<t color='#ff0000' size='2'>" +
-				"ПОГИБ" +
+				"ЛИКВИДИРОВАН" +
 				"</t>",
 				_oldUnit getVariable "Name"
 				]
@@ -77,7 +84,7 @@ switch (_passportType) do {
 				"Статус: " +
 				"</t>" +
 				"<t color='#ff0000' size='2'>" +
-				"ПОГИБ" +
+				"ЛИКВИДИРОВАН" +
 				"</t>",
 				_oldUnit getVariable "Name"
 				]
@@ -105,7 +112,7 @@ switch (_passportType) do {
 // 		"Статус: " +
 // 		"</t>" +
 // 		"<t color='#ff0000' size='2'>" +
-// 		"ПОГИБ" +
+// 		"ЛИКВИДИРОВАН" +
 // 		"</t>",
 // 		str playerSide,
 // 		// toUpper ((getPlayerID player) getUserInfo 3)
