@@ -1,6 +1,3 @@
-[] execVM "omzh_script_base\zeus\curator.sqf";
-player removeAllEventHandlers "HIT";
-
 params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 // Medic = 1
 // Doctor = 2

@@ -3,55 +3,11 @@ onLoadName		= "КРАСНАЯ ЖАТВА";
 onLoadMission	= "Прошло около десяти лет с момента начала гражданской войны в Чернаруси, но она так и не окончилась успехом для какой-либо стороны конфликта. Несмотря на мирное соглашение, подписанное под давлением совбеза ООН, новые чернорусские государства не собираются просто так сидеть сложа руки: пришло время реванша.";
 loadScreen		= "images\loadScreen.paa";
 
-
 class Header
 {
 	gameType = "Coop";	// Game type
 	minPlayers =  1;	// minimum number of players the mission supports
 	maxPlayers = 100;	// maximum number of players the mission supports
-};
-
-class CfgClient {
-    class SpawnerCfg {
-        #include "spawner\spawnerCfg.ext"
-    };
-};
-
-//Discord info
-class CfgDiscordRichPresence {
-    applicationID="1229387580299153518";             // Provided by discord
-    defaultDetails="Чернарусь | Звезда";            // Upper text
-    defaultState="Zvezda Project";              // Lower text  
-    defaultLargeImageKey="intro_background";      // Large image
-    defaultLargeImageText="";     // Large image hover text
-    defaultSmallImageKey="";      // Small image
-    defaultSmallImageText="";     // Small image hover text
-    defaultButtons[]={};          // Button texts and urls
-    useTimeElapsed=1;             // Show time elapsed since the player connected (1 - true, 0 - false)
-};
-
-class CfgDebriefing
-{
-	class shoot
-	{
-		title = "Стрельба на базе!";
-		description = "Перестань стрелять на базе, не нарушай правила!";
-		picture = "KIA";
-	};
-	
-	class ban
-	{
-		title = "Вы заблокированы";
-		description = "Бан - это плохо";
-		picture = "KIA";
-	};
-};
-
-class CfgDebriefingSections {
-    class acex_killTracker {
-        title = "Убитые вами";
-        variable = "acex_killTracker_outputText";
-    };
 };
 
 onLoadIntro		= "КРАСНАЯ ЖАТВА";
@@ -121,108 +77,6 @@ briefing = 0;
 class CfgSounds {
 	sounds[] = {};
     #include "modules\grad-leaveNotes\cfgSounds.hpp"
-
-    class CfgSounds {
-	sounds[] ={};
-
-	class hitlight1
-	{
-		name="hitlight1";
-		sound[] = {"ROS_hitreaction\sounds\light1.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitlight2
-	{
-		name="hitlight2";
-		sound[] = {"ROS_hitreaction\sounds\light2.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitlight3
-	{
-		name="hitlight3";
-		sound[] = {"ROS_hitreaction\sounds\light3.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitlight4
-	{
-		name="hitlight4";
-		sound[] = {"ROS_hitreaction\sounds\light4.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitmedium1
-	{
-		name="hitmedium1";
-		sound[] = {"ROS_hitreaction\sounds\medium1.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitmedium2
-	{
-		name="hitmedium2";
-		sound[] = {"ROS_hitreaction\sounds\medium2.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitmedium3
-	{
-		name="hitmedium3";
-		sound[] = {"ROS_hitreaction\sounds\medium3.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitmedium4
-	{
-		name="hitmedium4";
-		sound[] = {"ROS_hitreaction\sounds\medium4.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitheavy1
-	{
-		name="hitheavy1";
-		sound[] = {"ROS_hitreaction\sounds\heavy1.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitheavy2
-	{
-		name="hitheavy2";
-		sound[] = {"ROS_hitreaction\sounds\heavy2.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitheavy3
-	{
-		name="hitheavy3";
-		sound[] = {"ROS_hitreaction\sounds\heavy3.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class hitheavy4
-	{
-		name="hitheavy4";
-		sound[] = {"ROS_hitreaction\sounds\heavy4.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-
-	class battle_start
-	{
-		name="battle_start";
-		sound[] = {"audio\battle_start.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class battle_end
-	{
-		name="battle_end";
-		sound[] = {"audio\battle_end.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class CHDKS_victory
-	{
-		name="chdkz_victory";
-		sound[] = {"audio\chdkz_victory.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-	class CHSO_victory
-	{
-		name="chso_victory";
-		sound[] = {"audio\chso_victory.ogg", 1, 1, 100};
-		titles[] = {};
-	};
-};
 };
 
 
@@ -345,22 +199,6 @@ class CfgGradPersistence {
         };
         class combat_class {
             varName = "CombatClass";
-            varNamespace = "player";
-            public = 1;
-        };
-
-        class ACE_isUnconscious {
-            varName = "ACE_isUnconscious";
-            varNamespace = "player";
-            public = 1;
-        };
-        class ace_medical_bodyPartStatus {
-            varName = "ace_medical_bodyPartStatus";
-            varNamespace = "player";
-            public = 1;
-        };
-        class grad_lbm_myFunds {
-            varName = "grad_lbm_myFunds";
             varNamespace = "player";
             public = 1;
         };

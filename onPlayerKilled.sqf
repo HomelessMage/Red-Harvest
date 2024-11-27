@@ -36,7 +36,7 @@ switch (_passportType) do {
 				"Статус: " +
 				"</t>" +
 				"<t color='#ff0000' size='2'>" +
-				"ПОГИБ" +
+				"ЛИКВИДИРОВАН" +
 				"</t>",
 				_oldUnit getVariable "Name"
 				]
@@ -60,7 +60,7 @@ switch (_passportType) do {
 				"Статус: " +
 				"</t>" +
 				"<t color='#ff0000' size='2'>" +
-				"ПОГИБ" +
+				"ЛИКВИДИРОВАН" +
 				"</t>",
 				_oldUnit getVariable "Name"
 				]
@@ -84,7 +84,7 @@ switch (_passportType) do {
 				"Статус: " +
 				"</t>" +
 				"<t color='#ff0000' size='2'>" +
-				"ПОГИБ" +
+				"ЛИКВИДИРОВАН" +
 				"</t>",
 				_oldUnit getVariable "Name"
 				]
@@ -112,7 +112,7 @@ switch (_passportType) do {
 // 		"Статус: " +
 // 		"</t>" +
 // 		"<t color='#ff0000' size='2'>" +
-// 		"ПОГИБ" +
+// 		"ЛИКВИДИРОВАН" +
 // 		"</t>",
 // 		str playerSide,
 // 		// toUpper ((getPlayerID player) getUserInfo 3)
