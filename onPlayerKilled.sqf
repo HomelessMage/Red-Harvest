@@ -1,11 +1,4 @@
-//A3\Missions_F_EPA\data\sounds\combat_deafness
-// https://vk.com/audio2386993_296546388_80b689e650676091f3
-
 params ["_oldUnit", "_killer", "_respawn", "_respawnDelay"];
-
-
-
-
 
 [] spawn 
 {		

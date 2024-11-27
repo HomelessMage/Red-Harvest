@@ -1,47 +1,40 @@
-if (isDedicated) then {
+if (isDedicated) exitWith {};
 
-} else {
-    // null
-};
+["zvezda - Сохранения", "Форс сохранение миссии", { 
+    [false,0] call grad_persistence_fnc_saveMission;
+}] call zen_custom_modules_fnc_register;
 
-if (!isDedicated) then {
-    ["zvezda - Сохранения", "Форс сохранение миссии", { 
-        [false,0] call grad_persistence_fnc_saveMission;
-    }] call zen_custom_modules_fnc_register;
+["zvezda - Сохранения", "Форс загрузка", { 
+    [false,0] call grad_persistence_fnc_loadMission;
+}] call zen_custom_modules_fnc_register;
 
-    ["zvezda - Сохранения", "Форс загрузка", { 
-        [false,0] call grad_persistence_fnc_loadMission;
-    }] call zen_custom_modules_fnc_register;
+["zvezda - Сохранения", "Удаление сейва", { 
+    [] call grad_persistence_fnc_clearMissionData;
+}] call zen_custom_modules_fnc_register;
 
-    ["zvezda - Сохранения", "Удаление сейва", { 
-        ["EVRST_DONBASS_mission"] call grad_persistence_fnc_clearMissionData;
-    }] call zen_custom_modules_fnc_register;
+////////////////////////////////
 
-    ////////////////////////////////
+["Zvezda - Ивентологи", "Старт ивента", { 
+    [] call zvezda_fnc_start;
+}] call zen_custom_modules_fnc_register;
 
-    ["Zvezda - Ивентологи", "Старт ивента", { 
-        [] call zvezda_fnc_start;
-    }] call zen_custom_modules_fnc_register;
+["Zvezda - Ивентологи", "Победа ЧДКЗ", { 
+    [] call zvezda_fnc_winCHDKZ;
+}] call zen_custom_modules_fnc_register;
 
-    ["Zvezda - Ивентологи", "Победа ЧДКЗ", { 
-        [] call zvezda_fnc_winchdkz;
-    }] call zen_custom_modules_fnc_register;
+["Zvezda - Ивентологи", "Победа ЧСО", { 
+    [] call zvezda_fnc_winCDF;
+}] call zen_custom_modules_fnc_register;
 
-    ["Zvezda - Ивентологи", "Победа ЧСО", { 
-        [] call zvezda_fnc_winchso;
-    }] call zen_custom_modules_fnc_register;
+["Zvezda - Ивентологи", "Конец ивента", { 
+    [] call zvezda_fnc_end;
+}] call zen_custom_modules_fnc_register;
 
-    ["Zvezda - Ивентологи", "Конец ивента", { 
-        [] call zvezda_fnc_end;
-    }] call zen_custom_modules_fnc_register;
-} else {
-    // null
-};
 
 zvezda_fnc_end = {
     [{
         [] spawn {
-            ["audio\battle_end.paa"] spawn BIS_fnc_textTiles;
+            ["images\battle_end.paa"] spawn BIS_fnc_textTiles;
             titleText ["<t color='#ff0000' size='8'>ВНИМАНИЕ!</t><br/>", "PLAIN", -1, true, true];
             sleep 3;
             titleText ["<t color='#f06767' size='4'>До конца</t><br/>", "PLAIN", -1, true, true];
@@ -64,7 +57,7 @@ zvezda_fnc_end = {
 zvezda_fnc_start = {
     [{
         [] spawn {
-            ["audio\prigo.paa"] spawn BIS_fnc_textTiles;
+            ["images\prigo.paa"] spawn BIS_fnc_textTiles;
             titleText ["<t color='#ff0000' size='8'>ВНИМАНИЕ!</t><br/>", "PLAIN", -1, true, true];
             sleep 3;
             titleText ["<t color='#f06767' size='4'>Старт через...</t><br/>", "PLAIN", -1, true, true];
@@ -88,7 +81,7 @@ zvezda_fnc_winCHDKZ = {
     [{
         [] spawn {
             playSound "chdkz_victory";
-            ["audio\chdkz_victory.paa"] spawn BIS_fnc_textTiles;
+            ["images\chdkz_victory.paa"] spawn BIS_fnc_textTiles;
             titleText ["<t color='#ffffff' size='8'>Победа</t><t color='#ff0000' size='8'> ЧДКЗ!</t><br/>", "PLAIN", -1, true, true];
         };
     }] remoteExec ["call", -2, false];
@@ -104,11 +97,11 @@ zvezda_fnc_winCHDKZ = {
     } forEach allPlayers;
 };
 
-zvezda_fnc_winCHSO = {
+zvezda_fnc_winCDF = {
     [{
         [] spawn {
-            playSound "chso_victory";
-            ["audio\chso_victory.paa"] spawn BIS_fnc_textTiles;
+            playSound "cdf_victory";
+            ["images\cdf_victory.paa"] spawn BIS_fnc_textTiles;
             titleText ["<t color='#ffffff' size='8'>Победа</t><t color='#0000FF' size='8'> ЧСО!</t><br/>", "PLAIN", -1, true, true];
         };
     }] remoteExec ["call", -2, false];

@@ -1,4 +1,13 @@
-[] execVM "onPlayerRespawn.sqf";
+params ["_player", "_didJIP"];
+// Temporary fix for Advanced Movement
+AVS_IsUseRollOnEnd = false;
+// Меню выдачи денег для Зевса
+[_player] execVM "scripts\addZeusMenu.sqf";
+// Получение информации о личности игрока
+[_player] execVM "scripts\getExistingIdentity.sqf";
+// Создание DiaryRecord
+[_player, playerSide] execVM "scripts\createDiary.sqf";
+
 
 _EndSplashScreen = {
     for "_x" from 1 to 4 do {
@@ -7,31 +16,16 @@ _EndSplashScreen = {
     };
 };
 [] spawn _EndSplashScreen;
-//////////////////////////////////////////////////////
 
 // Add EH
 waitUntil{!(isNull player)};
 waitUntil{local player};
 
-[] execVM "intro\introtext.sqf";
-[] execVM "omzh_scripts\ini_zeus.sqf";
-[] execVM "onPlayerConnected.sqf";
-[] execVM "omzh_scripts\ini_safeZone.sqf";
-0 spawn {[] execVM "omzh_scripts\ini_arsenalRestrict.sqf"};
-
-// Copyright 2022 Sysroot
-
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-
-    // http://www.apache.org/licenses/LICENSE-2.0
-
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// [] execVM "modules\intro\introtext.sqf";
+[] execVM "modules\omzh_scripts\ini_zeus.sqf";
+// [] execVM "scripts\onPlayerConnected.sqf";
+// [] execVM "modules\omzh_scripts\ini_safeZone.sqf";
+// 0 spawn {[] execVM "modules\omzh_scripts\ini_arsenalRestrict.sqf"};
 
 // Remove existing ace medical damage event handler
 player removeEventHandler ["HandleDamage", player getVariable ["ACE_medical_HandleDamageEHID", -1]];
@@ -105,17 +99,7 @@ player setVariable [
 	}]
 ];
 
-[] execVM "scripts\addDonate.sqf";
 
-params ["_player", "_didJIP"];
-// Temporary fix for Advanced Movement
-AVS_IsUseRollOnEnd = false;
-// Меню выдачи денег для Зевса
-[_player] execVM "scripts\addZeusMenu.sqf";
-// Получение информации о личности игрока
-[_player] execVM "scripts\getExistingIdentity.sqf";
-// Создание DiaryRecord
-[_player, playerSide] execVM "scripts\createDiary.sqf";
 
 
 

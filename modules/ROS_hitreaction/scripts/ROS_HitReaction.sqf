@@ -9,7 +9,7 @@ Credit must be given on both the Steam Workshop page and within the mission / de
 
 INSTALLATION
 Place the following line into the init.sqf
-[] execVM "ROS_hitreaction\scripts\ROS_HitReaction.sqf";
+[] execVM "modules\ROS_hitreaction\scripts\ROS_HitReaction.sqf";
 
 Place the following line in the onPlayerRespawn.sqf file :
 player removeAllEventHandlers "HIT";

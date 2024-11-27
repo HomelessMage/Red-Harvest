@@ -1,11 +1,66 @@
-[] call compile preProcessFilelineNumbers "omzh_script_base\chat\config.sqf";
-[] call compile preProcessFilelineNumbers "omzh_script_base\chat\commands.sqf";
-[] execVM "ROS_hitreaction\scripts\ROS_HitReaction.sqf";
-[] execVM "omzh_scripts\ini_arsenalRestrict.sqf";
-[] execVM "omzh_script_base\zeusList.sqf";
-[] execVM "omzh_script_base\zeus\opened_eh.sqf";
 
-pvpfw_chatIntercept_executeCommand = compile preProcessFilelineNumbers "omzh_script_base\chat\executeCommand.sqf";
+// Headless Client
+execVM "scripts\passToHC.sqf";
+
+// Инициализация арсеналов
+[BLUFOR_ARSENAL] execVM "scripts\BLUFOR\arsenal.sqf";
+[OPFOR_ARSENAL] execVM "scripts\OPFOR\arsenal.sqf";
+
+// Инициализация офицеров
+[BLUFOR_OFFICER] execVM "scripts\BLUFOR\officer.sqf";
+[OPFOR_OFFICER] execVM "scripts\OPFOR\officer.sqf";
+
+// Чёрный список зданий для мебели
+_furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
+{
+	_x setVariable ["tint_house_blacklisted", true];
+} forEach _furnitureBlacklist;
+
+// Показываем маркеры только той стороне, для которой они предназначены
+// Маркеру нужен префикс WEST, EAST, GUER, CIV
+[] spawn {
+    while { !isDedicated } do {
+        waitUntil { sleep 1; alive player};
+        {
+            _arr = _x splitString "_";
+            _pre = _arr select 0;
+            if (_pre in ["WEST","EAST","GUER","CIV"]) then {
+                if (format["%1",side player] == _pre) then {
+                    _x setMarkerAlphaLocal 1;
+                } else {
+                    _x setMarkerAlphaLocal 0;
+                };
+            };
+        } count allMapMarkers;
+    };
+};
+
+
+// Крепим маркер на КШМ
+[] spawn {
+    while {true} do {
+        "WEST_MHQ" setmarkerpos getpos BLUFOR_MHQ;
+        "EAST_MHQ" setmarkerpos getpos OPFOR_MHQ;
+        sleep 5;
+    };
+};
+
+// Восстановление экипировки
+if (hasinterface) then {
+    [] spawn {
+        waitUntil {
+            alive player
+        };
+        player setVariable ["loadout", getUnitloadout player, false];
+        player addEventHandler ["Respawn", {
+            player setUnitLoadout (player getVariable "loadout");
+        }];
+    };
+};
+
+
+
+
 
 0 enableChannel [false, false]; // Global (can't be disabled for admins)
 1 enableChannel [false, true]; // Side
@@ -76,66 +131,10 @@ addMissionEventHandler ["EntityKilled", {
 
 addMissionEventHandler ["HandleDisconnect", { false }];
 
+
+/*
 if (!isDedicated) then {
 	sleep 1.5;
-	[[play_zone],[], true, true, false] execVM "omzh_scripts\ini_zone.sqf";
+	[[play_zone],[], true, true, false] execVM "modules\omzh_scripts\ini_zone.sqf";
 };
-
-// Headless Client
-execVM "scripts\passToHC.sqf";
-
-// Инициализация арсеналов
-[BLUFOR_ARSENAL] execVM "scripts\BLUFOR\arsenal.sqf";
-[OPFOR_ARSENAL] execVM "scripts\OPFOR\arsenal.sqf";
-
-// Инициализация офицеров
-[BLUFOR_OFFICER] execVM "scripts\BLUFOR\officer.sqf";
-[OPFOR_OFFICER] execVM "scripts\OPFOR\officer.sqf";
-
-// Чёрный список зданий для мебели
-_furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
-{
-	_x setVariable ["tint_house_blacklisted", true];
-} forEach _furnitureBlacklist;
-
-// Показываем маркеры только той стороне, для которой они предназначены
-// Маркеру нужен префикс WEST, EAST, GUER, CIV
-[] spawn {
-    while { !isDedicated } do {
-        waitUntil { sleep 1; alive player};
-        {
-            _arr = _x splitString "_";
-            _pre = _arr select 0;
-            if (_pre in ["WEST","EAST","GUER","CIV"]) then {
-                if (format["%1",side player] == _pre) then {
-                    _x setMarkerAlphaLocal 1;
-                } else {
-                    _x setMarkerAlphaLocal 0;
-                };
-            };
-        } count allMapMarkers;
-    };
-};
-
-
-// Крепим маркер на КШМ
-[] spawn {
-    while {true} do {
-        "WEST_MHQ" setmarkerpos getpos BLUFOR_MHQ;
-        "EAST_MHQ" setmarkerpos getpos OPFOR_MHQ;
-        sleep 5;
-    };
-};
-
-// Восстановление экипировки
-if (hasinterface) then {
-    [] spawn {
-        waitUntil {
-            alive player
-        };
-        player setVariable ["loadout", getUnitloadout player, false];
-        player addEventHandler ["Respawn", {
-            player setUnitLoadout (player getVariable "loadout");
-        }];
-    };
-};
+*/
