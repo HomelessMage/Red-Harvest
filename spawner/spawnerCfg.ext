@@ -1,0 +1,143 @@
+class vdv25_spawner_class
+{
+    conditionToAccess = "((group player) getVariable ""regSpawner"") == vdv25_spawner"; // "(playerSide in [west,independent])"
+    
+    class vdv25_spawner_class
+    {
+        displayName = "Техника 25 ОПДБр";
+        vehicles[] =
+        {
+			{"b_afougf_t80bv",1,"true"},
+			{"b_afougf_bmd2",2,"true"},
+			{"b_afougf_bmp2",2,"true"},
+			{"b_afougf_yt_btr80",2,"true"},
+			{"b_afougf_yt_UAZ_Base",2,"true"},
+			{"b_afougf_yt_gaz66_truck",2,"true"},
+			{"b_afougf_yt_gaz66_zu23",2,"true"},
+			{"b_afougf_yt_gaz66_flat",1,"true"},
+            {"tbd_120mm_pm_43",2,"true"},
+			{"rhs_weapon_crate",3,"true"}
+            
+        };
+        spawnPoints[] =
+        {
+            {"1",{"vdv25_SPAWN"}}
+        };
+        
+    };
+};
+
+class otb1_spawner_class
+{
+    conditionToAccess = "((group player) getVariable ""regSpawner"") == otb1_spawner"; // "(playerSide in [west,independent])"
+    
+    class otb1_spawner_class
+    {
+        displayName = "Техника 1 ОТБр";
+        vehicles[] =
+        {
+			{"mkk_t64_bv",2,"true"},
+			{"b_afougf_yt_bmp2d",2,"true"},
+			{"b_afougf_yt_bmp1p",2,"true"},
+			{"b_afougf_yt_uaf_btr4",1,"true"},
+			{"b_afougf_yt_BRDM2",2,"true"},
+			{"b_afougf_yt_Ural_Open_Flat",1,"true"},
+			{"b_afougf_yt_Ural_Zu23",2,"true"},
+			{"b_afougf_yt_zil131",2,"true"},
+            {"rhs_weapon_crate",3,"true"}
+            
+        };
+        spawnPoints[] =
+        {
+            {"1",{"otb1_SPAWN"}}
+        };
+        
+    };
+};
+
+class spn45_spawner_class
+{
+    conditionToAccess = "((group player) getVariable ""regSpawner"") == spn45_spawner"; // "(playerSide in [west,independent])"
+    
+    class spn45_spawner_class
+    {
+        displayName = "Техника 45 ОБрСпН";
+        vehicles[] =
+        {
+			{"rhs_bmd1p",2,"true"},
+            {"rhs_bmd2",2,"true"},
+			{"rhs_btr80_vdv",2,"true"},
+			{"rhs_uaz_vdv",2,"true"},
+			{"rhs_kamaz5350_vdv",2,"true"},
+			{"VTN_KAMAZ5350_ZU23_FLR",1,"true"},
+			{"UK3CB_B_G_MTLB_Zu23",1,"true"},
+            {"tbd_2b9_vasilek",1,"true"},
+			{"rhs_weapon_crate",3,"true"}
+            
+        };
+        spawnPoints[] =
+        {
+            {"1",{"spn45_SPAWN"}}
+        };
+        
+    };
+};
+
+class sobr_spawner_class
+{
+    conditionToAccess = "((group player) getVariable ""regSpawner"") == sobr_spawner"; // "(playerSide in [west,independent])"
+    
+    class sobr_spawner_class
+    {
+        displayName = "Техника СОБР НМ ДНР";
+        vehicles[] =
+        {
+			{"rhs_bmd2",2,"true"},
+			{"rhs_bmp1p_msv",2,"true"},
+			{"VAZ2107_UCG_Ton_mat",2,"true"},
+			{"VAZ2115_UCG_Ton",2,"true"},
+			{"UK3CB_O_G_Hilux_Pkm",2,"true"},
+			{"RHS_UAZ_MSV_01",2,"true"},
+			{"rhs_btr80_vv",2,"true"},
+			{"rhs_uaz_vdv",2,"true"},
+			{"rhs_kamaz5350_msv",2,"true"},
+            {"tbd_120mm_pm_43",2,"true"},
+			{"rhs_weapon_crate",3,"true"}
+            
+        };
+        spawnPoints[] =
+        {
+            {"1",{"sobr_SPAWN"}}
+        };
+        
+    };
+};
+
+class MSB5_spawner_class
+{
+    conditionToAccess = "((group player) getVariable ""regSpawner"") == MSB5_spawner"; // "(playerSide in [west,independent])"
+    
+    class MSB5_spawner_class
+    {
+        displayName = "Техника ОРБ Спарта";
+        vehicles[] =
+        {
+			{"rhs_bmd2",2,"true"},
+            {"rhs_bmd2",2,"true"},
+			{"rhs_btr80_msv",2,"true"},
+			{"mkk_uaz452b",2,"true"},
+			{"mkk_uaz452b_med",1,"true"},
+			{"rhs_kamaz5350_vdv",2,"true"},
+			{"UK3CB_O_G_MTLB_Zu23",1,"true"},
+			{"rhsgref_BRDM2_vdv",2,"true"},
+            {"tbd_120mm_pm_43",2,"true"},
+			{"rhs_weapon_crate",3,"true"}
+            
+        };
+        spawnPoints[] =
+        {
+            {"1",{"MSB5_SPAWN"}}
+        };
+        
+    };
+};
