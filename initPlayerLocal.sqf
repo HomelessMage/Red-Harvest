@@ -1,5 +1,21 @@
 [] execVM "onPlayerRespawn.sqf";
 
+params ["_player", "_didJIP"];
+// Temporary fix for Advanced Movement
+AVS_IsUseRollOnEnd = false;
+// Меню выдачи денег для Зевса
+[_player] execVM "scripts\addZeusMenu.sqf";
+// Получение информации о личности игрока
+[_player] execVM "scripts\getExistingIdentity.sqf";
+// Создание DiaryRecord
+[_player, playerSide] execVM "scripts\createDiary.sqf";
+
+[] execVM "intro\introtext.sqf";
+[] execVM "omzh_scripts\ini_zeus.sqf";
+[] execVM "onPlayerConnected.sqf";
+[] execVM "omzh_scripts\ini_safeZone.sqf";
+0 spawn {[] execVM "omzh_scripts\ini_arsenalRestrict.sqf"};
+
 _EndSplashScreen = {
     for "_x" from 1 to 4 do {
         endLoadingScreen;
@@ -12,12 +28,6 @@ _EndSplashScreen = {
 // Add EH
 waitUntil{!(isNull player)};
 waitUntil{local player};
-
-[] execVM "intro\introtext.sqf";
-[] execVM "omzh_scripts\ini_zeus.sqf";
-[] execVM "onPlayerConnected.sqf";
-[] execVM "omzh_scripts\ini_safeZone.sqf";
-0 spawn {[] execVM "omzh_scripts\ini_arsenalRestrict.sqf"};
 
 // Copyright 2022 Sysroot
 
@@ -107,15 +117,7 @@ player setVariable [
 
 [] execVM "scripts\addDonate.sqf";
 
-params ["_player", "_didJIP"];
-// Temporary fix for Advanced Movement
-AVS_IsUseRollOnEnd = false;
-// Меню выдачи денег для Зевса
-[_player] execVM "scripts\addZeusMenu.sqf";
-// Получение информации о личности игрока
-[_player] execVM "scripts\getExistingIdentity.sqf";
-// Создание DiaryRecord
-[_player, playerSide] execVM "scripts\createDiary.sqf";
+
 
 
 
