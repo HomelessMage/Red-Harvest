@@ -164,6 +164,8 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"rhs_weap_aks74un",
 			"rhs_weap_ak74m",
 			"rhs_weap_ak74m_fullplum",
+			// ACCESSORIES
+			"rhs_acc_dtk1983",
 			// MAGS
 			"rhs_30Rnd_545x39_7N10_AK",
 			"rhs_30Rnd_545x39_7N22_AK",
@@ -202,7 +204,7 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"rhs_beanie_green",
 			// Misc
 			"ItemGPS",
-			"ItemGPS",
+			"ItemCompass",
 			"ItemMap",
 			"Binocular",
 			"ItemWatch",

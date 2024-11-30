@@ -164,6 +164,8 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"rhs_weap_aks74un",
 			"rhs_weap_ak74m",
 			"rhs_weap_ak74m_fullplum",
+			// ACCESSORIES
+			"rhs_acc_dtk1983",
 			// MAGS
 			"rhs_30Rnd_545x39_7N10_AK",
 			"rhs_30Rnd_545x39_7N22_AK",
@@ -183,6 +185,9 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"rhs_6b3",
 			"ACM_szavb_r_vest_6B23",
 			// HEADGEAR
+			"H_Booniehat_oli",
+			"rhs_Booniehat_digi",
+			"rhs_Booniehat_flora",
 			"ACM_szavb_R_6B47_6B50",
 			"ACM_szavb_R_6B47_NVG",
 			"ACM_szavb_R_6B47_Patchless",
@@ -209,7 +214,7 @@ _openArsenal = ["OpenArsenal", "Арсенал", "\a3\ui_f\data\igui\cfg\simplet
 			"rhssaf_bandana_smb",
 			// Misc
 			"ItemGPS",
-			"ItemGPS",
+			"ItemCompass",
 			"ItemMap",
 			"Binocular",
 			"ItemWatch",

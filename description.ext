@@ -169,7 +169,27 @@ class CfgGradPersistence {
 
     saveTeamAccounts = 1;
 
-    blacklist[] = { };
+    blacklist[] = {
+        // Эти объекты почему-то сохраняются, поэтому исключительно отключаем сохранение этих объектов.
+        "Sign_Arrow_Blue_F", 
+        "Sign_Arrow_Cyan_F", 
+        "Sign_Arrow_Direction_Blue_F", 
+        "Sign_Arrow_Direction_Cyan_F", 
+        "Sign_Arrow_Direction_Green_F", 
+        "Sign_Arrow_Direction_Pink_F", 
+        "Sign_Arrow_Direction_F", 
+        "Sign_Arrow_Direction_Yellow_F", 
+        "Sign_Arrow_Green_F", 
+        "Sign_Arrow_Large_Blue_F", 
+        "Sign_Arrow_Large_Cyan_F", 
+        "Sign_Arrow_Large_Green_F", 
+        "Sign_Arrow_Large_Pink_F", 
+        "Sign_Arrow_Large_F", 
+        "Sign_Arrow_Large_Yellow_F", 
+        "Sign_Arrow_Pink_F", 
+        "Sign_Arrow_F", 
+        "Sign_Arrow_Yellow_F"
+    };
 
     class customVariables {
         class Name {
