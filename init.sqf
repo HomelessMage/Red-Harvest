@@ -34,8 +34,8 @@ _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
     };
 };
 
-
 // Крепим маркер на КШМ
+
 [] spawn {
     while {true} do {
         "WEST_MHQ" setmarkerpos getpos BLUFOR_MHQ;
