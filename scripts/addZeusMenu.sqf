@@ -58,6 +58,84 @@ _checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить б�
 [["ACE_ZeusActions", "MoneyMenu"], _checkAllCurrentPlayersBalance] call ace_interact_menu_fnc_addActionToZeus;
 // */
 
+_addMoneyToSide = ["AddMoney", "Добавить деньги стороне", "",
+	{
+		// Disable cancel option
+		[
+			[
+				[
+					[
+						["ЧСО"],
+						[format["%1 активных игроков",west countSide allPlayers]],
+						[
+							getText(configfile >> "RscDisplayMultiplayerSetup" >> "west"),
+							(configfile >> "RscDisplayMultiplayerSetup" >> "controls" >> "CA_B_West" >> "colorActive") call BIS_fnc_colorConfigToRGBA
+						],
+						[], 
+						"Чернорусские Силы Обороны", "WEST", 1
+					],
+					[
+						["ЧДКЗ"],
+						[format["%1 активных игроков",east countSide allPlayers]],
+						[
+							getText(configfile >> "RscDisplayMultiplayerSetup" >> "east"),
+							(configfile >> "RscDisplayMultiplayerSetup" >> "controls" >> "CA_B_East" >> "colorActive") call BIS_fnc_colorConfigToRGBA
+						],
+						[], 
+						"Чернорусское Движение Красной Звезды", "EAST", 0
+					]
+				],
+				0,false
+			],
+			"Выбор стороны",
+			[
+				{
+					player setVariable ["SelectedAwardSide", _data];
+					[
+						[false, "1000"],
+						"Введите сумму",
+						{
+							_data = player getVariable "SelectedAwardSide";
+							_keys = ["WEST", "EAST", "INDEPENDENT", "CIVILIAN"];
+							_values = [WEST, EAST, INDEPENDENT, CIVILIAN];
+							_sideVariable = _values select (_keys find _data);
+							if _confirmed then {
+								[_sideVariable, _text call BIS_fnc_parseNumber] call hmg_fnc_giveMoneyToSide;
+								systemchat format["Стороне %1 выдано: %2Р", _sideVariable, _text];
+								player setVariable ["SelectedAwardSide", nil];
+							} else {
+								systemchat "Выдача отменена";
+								player setVariable ["SelectedAwardSide", nil];
+							};
+						},
+						"Подтвердить",
+						"Отменить" 
+					] call CAU_UserInputMenus_fnc_text;
+				},
+				_confirmed, _index, _data, _value
+
+			],
+			/*
+			{
+				if (!_confirmed) exitWith {
+					systemChat "Выдача отменена";
+				};
+				systemchat format["_confirmed: %1",_confirmed];
+				systemchat format["_index: %1",_index];
+				systemchat format["_data: %1",_data];
+				systemchat format["_value: %1",_value];
+
+			},
+			*/
+			"Подтвердить",
+			"Отменить"
+		] call CAU_UserInputMenus_fnc_listbox;
+	},
+	{true}
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions", "MoneyMenu"], _addMoneyToSide] call ace_interact_menu_fnc_addActionToZeus;
+
+
 
 _addMoney10000 = ["AddMoney","Добавить себе 10.000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 10000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "MoneyMenu"], _addMoney10000] call ace_interact_menu_fnc_addActionToZeus;
