@@ -1,5 +1,8 @@
 params ["_unit"];
 
+// Не выполняем на HC
+if (!hasInterface) exitWith {};
+
 systemChat "Получение информации о личности игрока";
 sleep 10;
 
