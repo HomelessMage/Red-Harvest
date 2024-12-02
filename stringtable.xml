@@ -5,72 +5,88 @@
 			<Key ID="STR_CAU_xChat_channel_custom">
 				<Original>Custom channel</Original>
 				<English>Custom channel</English>
+				<Russian>Пользовательский канал</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_channels_custom">
 				<Original>Custom channels</Original>
 				<English>Custom channels</English>
+				<Russian>Пользовательские каналы</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_channel_command">
 				<Original>Command Logs</Original>
 				<English>Command Logs</English>
+				<Russian>Логи команд</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_channel_system">
 				<Original>System logs</Original>
 				<English>System logs</English>
+				<Russian>Системные логи</Russian>
 			</Key>
 		</Container>
 		<Container name="Chat_UI">
 			<Key ID="STR_CAU_xChat_chat_character_count">
 				<Original>Character count: %1/150</Original>
 				<English>Character count: %1/150</English>
+				<Russian>Количество символов: %1/150</Russian>
 			</Key>
 		</Container>
 		<Container name="Interrupt_UI">
 			<Key ID="STR_CAU_xChat_interrupt_history">
 				<Original>Extended Chat History</Original>
 				<English>Extended Chat History</English>
+				<Russian>История чата</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_interrupt_settings">
 				<Original>Extended Chat Settings</Original>
 				<English>Extended Chat Settings</English>
+				<Russian>Настройки чата</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_interrupt_history_ww2">
 				<Original>History</Original>
 				<English>History</English>
+				<Russian>История</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_interrupt_settings_ww2">
 				<Original>Settings</Original>
 				<English>Settings</English>
+				<Russian>Параметры</Russian>
 			</Key>
 		</Container>
 		<Container name="History_UI">
 			<Key ID="STR_CAU_xChat_history_title">
 				<Original>Extended Chat History</Original>
 				<English>Extended Chat History</English>
+				<Russian>История чата</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_history_filter_title">
 				<Original>Filter Options</Original>
 				<English>Filter Options</English>
+				<Russian>Настройки фильтров</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_history_time_past">
 				<Original>%1h %2m ago</Original>
 				<English>%1h %2m ago</English>
+				<Russian>%1ч %2м назад</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_history_sent_by">
 				<Original>Sent by:</Original>
 				<English>Sent by:</English>
+				<Russian>Отправил:</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_history_channel">
 				<Original>Channel:</Original>
 				<English>Channel:</English>
+				<Russian>Канал:</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_history_received">
 				<Original>Received:</Original>
 				<English>Received:</English>
+				<Russian>Получено:</Russian>
 			</Key>
 			<Key ID="STR_CAU_xChat_history_message">
 				<Original>Message:</Original>
 				<English>Message:</English>
+				<Russian>Сообщение:</Russian>
 			</Key>
 		</Container>
 		<Container name="Settings_UI">
