@@ -97,9 +97,79 @@ class Extended_Init_EventHandlers {
 
 
 
+
+
+
+
+
+
+// ConnorAU configuration
+// Enables the extended chat mod
+CAU_xChat_enabled = 1; // 0 - disabled, 1 - enabled (default)
+// Enables the use of emojis in chat. Automatically disabled if no emojis are found on the client
+CAU_xChat_emojis = 1; // 0 - disabled, 1 - enabled (default)
+// Toggle "<Name> connected" logs when a player loads into mission
+CAU_xChat_connectMessages = 1; // 0 - disabled, 1 - enabled (default)
+// Toggle "<Name> disconnected" logs when a player leaves the mission
+CAU_xChat_disconnectMessages = 1; // 0 - disabled, 1 - enabled (default)
+// Toggle "<Name1> was killed by <Name2>" and "<Name> was killed" when a player dies
+CAU_xChat_deathMessages = 1; // 0 - disabled, 1 - enabled (default)
+// Enables mentioning groups
+CAU_xChat_mentionGroups = 1; // 0 - disabled, 1 - enabled (groups of player's side, default), 2 - enabled (all groups)
+//Enables whisper command. Allows sending private chat messages to other players, groups and roles
+CAU_xChat_whisperCommand = 1; // 0 - disabled, 1 - enabled (default)
+// System logs printed to chat when the player loads into the mission
+CAU_xChat_MOTD[]={
+//  {delay before printing,message}
+        {0, "Добро пожаловать на сервер RP проекта 'Звезда'!"},
+        {2, "Мы используем мод 'TFAR' для общения в игре."},
+        {4, "Наш сайт: 'zvezdarp.duckdns.org'"},
+        {6, "Наш сервер TS: 'zvezdarp.duckdns.org'"},
+        {8, "Наш сервер Discord: 'discord.gg/6Kk74CR'"}
+};
+
+class CfgRemoteExec {
+	class Functions	{
+		mode = 1; // whitelist
+		class CAU_xChat_fnc_sendMessage {allowedTargets=0;};
+		class CAU_xChat_fnc_log {allowedTargets=2;};
+		class CAU_xChat_fnc_radioChannelCustom {allowedTargets=2;};
+	};
+};
+
+class RscTitles {
+    // ConnorAU Lib
+	#include "modules\cau\extendedchat\RscTitles.cpp"
+};
+
+class CfgEmoji {
+    // ConnorAU Lib
+	#include "modules\cau\extendedchat\emojipack\config.cpp"
+};
+
+// ConnorAU Lib
+#include "modules\cau\userinputmenus\systems\_macros.inc"
+#include "modules\cau\userinputmenus\systems\_defines.inc"
+#include "modules\cau\userinputmenus\controls.cpp"
+#include "modules\cau\userinputmenus\systems\displayColorPicker.cpp"
+#include "modules\cau\userinputmenus\systems\displayGuiMessage.cpp"
+#include "modules\cau\userinputmenus\systems\displayListbox.cpp"
+#include "modules\cau\userinputmenus\systems\displayListboxMulti.cpp"
+#include "modules\cau\userinputmenus\systems\displayProgressBar.cpp"
+#include "modules\cau\userinputmenus\systems\displaySlider.cpp"
+#include "modules\cau\userinputmenus\systems\displayText.cpp"
+#include "modules\cau\userinputmenus\systems\displayTextMulti.cpp"
+
+
+
 class CfgFunctions {
+    // ConnorAU Lib
+	#include "modules\cau\extendedchat\CfgFunctions.cpp"
+    // ConnorAU Lib
+    #include "modules\cau\userinputmenus\CfgFunctions.cpp"
 	// Tinter Furniture
 	#include "modules\furniture\func.hpp"
+    // HomelessMage Lib
 	#include "modules\homelessmage\config.hpp"
 	// GRAD Passport
 	#include "modules\grad-passport\cfgFunctions.hpp"
