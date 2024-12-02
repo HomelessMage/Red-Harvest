@@ -1,5 +1,6 @@
 // Headless Client
-execVM "scripts\passToHC.sqf";
+// Не уверен что это нужно, поскольку ACE самостоятельно выполняет round-robin распределение между HC
+// execVM "scripts\passToHC.sqf";
 
 // Инициализация арсеналов
 [BLUFOR_ARSENAL] execVM "scripts\BLUFOR\arsenal.sqf";
