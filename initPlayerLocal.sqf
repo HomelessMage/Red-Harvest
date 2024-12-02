@@ -6,7 +6,7 @@ AVS_IsUseRollOnEnd = false;
 // Получение информации о личности игрока
 [_player] execVM "scripts\getExistingIdentity.sqf";
 // Получении информации об отряде игрока
-// [_player] execVM "scripts\handleSquadLogic.sqf";
+[_player] execVM "scripts\handleSquadLogic.sqf";
 // Создание DiaryRecord
 [_player, playerSide] execVM "scripts\createDiary.sqf";
 

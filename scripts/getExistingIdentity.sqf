@@ -12,17 +12,21 @@ if (!isNil {_unit getVariable "Name"}) exitWith {
 		case "cdfPassport": { 
 			titleText [
 				(format [
+					"<t color='#ffffff' size='3'>" +
+					"<img image='images\WEST.jpg' />" +
+					"</t>" +
+					"<br />" +
 					"<t color='#ffffff' size='2'>" +
 					"%1" +
 					"<br />" +
-					"<img image='images\WEST.jpg' />" +
-					" %2" +
+					" %2, %3" +
 					"</t>" +
 					"<br />" +
 					"<t color='#00ff2a' size='2'>" +
 					"ВЫСАДКА" +
 					"</t>",
-					_unit getVariable "Name", 
+					_unit getVariable "Name",
+					_unit getVariable ["CombatClass", "Призывник"],
 					_unit getVariable "SquadAssignment"
 					]
 				),
@@ -35,17 +39,21 @@ if (!isNil {_unit getVariable "Name"}) exitWith {
 		case "chdkzPassport": { 
 			titleText [
 				(format [
+					"<t color='#ffffff' size='3'>" +
+					"<img image='images\EAST.jpg' />" +
+					"</t>" +
+					"<br />" +
 					"<t color='#ffffff' size='2'>" +
 					"%1" +
 					"<br />" +
-					"<img image='images\EAST.jpg' />" +
-					" %2" +
+					" %2, %3" +
 					"</t>" +
 					"<br />" +
 					"<t color='#00ff2a' size='2'>" +
 					"ВЫСАДКА" +
 					"</t>",
-					_unit getVariable "Name", 
+					_unit getVariable "Name",
+					_unit getVariable ["CombatClass", "Призывник"],
 					_unit getVariable "SquadAssignment"
 					]
 				),
@@ -58,17 +66,21 @@ if (!isNil {_unit getVariable "Name"}) exitWith {
 		case "rfPassport": { 
 			titleText [
 				(format [
+					"<t color='#ffffff' size='3'>" +
+					"<img image='images\RF.jpg' />" +
+					"</t>" +
+					"<br />" +
 					"<t color='#ffffff' size='2'>" +
 					"%1" +
 					"<br />" +
-					"<img image='images\EAST.jpg' />" +
-					" %2" +
+					" %2, %3" +
 					"</t>" +
 					"<br />" +
 					"<t color='#00ff2a' size='2'>" +
 					"ВЫСАДКА" +
 					"</t>",
-					_unit getVariable "Name", 
+					_unit getVariable "Name",
+					_unit getVariable ["CombatClass", "Призывник"],
 					_unit getVariable "SquadAssignment"
 					]
 				),

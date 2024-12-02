@@ -106,19 +106,22 @@ switch (_passportType) do {
 	case "cdfPassport": { 
 		titleText [
 			(format [
-				"<t color='#ffffff' size='5'>" +
-				"<img image='images\WEST.jpg' />" +
-				"</t>" +
-				"<t color='#ffffff' size='2'>" +
-				"<br />" +
-				"Боец: %1" +
-				"<br />" +
-				"Статус: " +
-				"</t>" +
-				"<t color='#00ff2a' size='2'>" +
-				"ВЫСАДКА" +
-				"</t>",
-				_newUnit getVariable "Name"
+					"<t color='#ffffff' size='3'>" +
+					"<img image='images\WEST.jpg' />" +
+					"</t>" +
+					"<br />" +
+					"<t color='#ffffff' size='2'>" +
+					"%1" +
+					"<br />" +
+					" %2, %3" +
+					"</t>" +
+					"<br />" +
+					"<t color='#00ff2a' size='2'>" +
+					"ВЫСАДКА" +
+					"</t>",
+					_newUnit getVariable "Name",
+					_newUnit getVariable ["CombatClass", "Призывник"],
+					_newUnit getVariable "SquadAssignment"
 				]
 			),
 			"PLAIN DOWN",
@@ -130,19 +133,22 @@ switch (_passportType) do {
 	case "chdkzPassport": { 
 		titleText [
 			(format [
-				"<t color='#ffffff' size='5'>" +
-				"<img image='images\EAST.jpg' />" +
-				"</t>" +
-				"<t color='#ffffff' size='2'>" +
-				"<br />" +
-				"Боец: %1" +
-				"<br />" +
-				"Статус: " +
-				"</t>" +
-				"<t color='#00ff2a' size='2'>" +
-				"ВЫСАДКА" +
-				"</t>",
-				_newUnit getVariable "Name"
+					"<t color='#ffffff' size='3'>" +
+					"<img image='images\EAST.jpg' />" +
+					"</t>" +
+					"<br />" +
+					"<t color='#ffffff' size='2'>" +
+					"%1" +
+					"<br />" +
+					" %2, %3" +
+					"</t>" +
+					"<br />" +
+					"<t color='#00ff2a' size='2'>" +
+					"ВЫСАДКА" +
+					"</t>",
+					_newUnit getVariable "Name",
+					_newUnit getVariable ["CombatClass", "Призывник"],
+					_newUnit getVariable "SquadAssignment"
 				]
 			),
 			"PLAIN DOWN",
@@ -154,19 +160,22 @@ switch (_passportType) do {
 	case "rfPassport": { 
 		titleText [
 			(format [
-				"<t color='#ffffff' size='5'>" +
-				"<img image='images\RF.jpg' />" +
-				"</t>" +
-				"<t color='#ffffff' size='2'>" +
-				"<br />" +
-				"Боец: %1" +
-				"<br />" +
-				"Статус: " +
-				"</t>" +
-				"<t color='#00ff2a' size='2'>" +
-				"ВЫСАДКА" +
-				"</t>",
-				_newUnit getVariable "Name"
+					"<t color='#ffffff' size='3'>" +
+					"<img image='images\RF.jpg' />" +
+					"</t>" +
+					"<br />" +
+					"<t color='#ffffff' size='2'>" +
+					"%1" +
+					"<br />" +
+					" %2, %3" +
+					"</t>" +
+					"<br />" +
+					"<t color='#00ff2a' size='2'>" +
+					"ВЫСАДКА" +
+					"</t>",
+					_newUnit getVariable "Name",
+					_newUnit getVariable ["CombatClass", "Призывник"],
+					_newUnit getVariable "SquadAssignment"
 				]
 			),
 			"PLAIN DOWN",
