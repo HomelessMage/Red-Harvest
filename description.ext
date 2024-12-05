@@ -64,14 +64,7 @@ saving = 0;
 skipLobby = 0;
 briefing = 0;
 
-// GRAD Passport
-#include "modules\grad-passport\grad_passport.hpp"
-// GRAD listBuyMenu
-#include "modules\grad-listBuymenu\grad_listBuymenu.hpp"
-// GRAD moneyMenu
-#include "modules\grad-moneymenu\grad_moneymenu.hpp"
-// GRAD leaveNotes
-#include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
+
 
 
 class CfgSounds {
@@ -128,6 +121,7 @@ CAU_xChat_MOTD[]={
         {8, "Наш сервер Discord: 'discord.gg/6Kk74CR'"}
 };
 
+/*
 class CfgRemoteExec {
 	class Functions	{
 		mode = 1; // whitelist
@@ -136,6 +130,7 @@ class CfgRemoteExec {
 		class CAU_xChat_fnc_radioChannelCustom {allowedTargets=2;};
 	};
 };
+*/
 
 class RscTitles {
     // ConnorAU Lib
@@ -159,6 +154,14 @@ class CfgEmoji {
 #include "modules\cau\userinputmenus\systems\displaySlider.cpp"
 #include "modules\cau\userinputmenus\systems\displayText.cpp"
 #include "modules\cau\userinputmenus\systems\displayTextMulti.cpp"
+// GRAD Passport
+#include "modules\grad-passport\grad_passport.hpp"
+// GRAD listBuyMenu
+#include "modules\grad-listBuymenu\grad_listBuymenu.hpp"
+// GRAD moneyMenu
+#include "modules\grad-moneymenu\grad_moneymenu.hpp"
+// GRAD leaveNotes
+#include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
 
 
 

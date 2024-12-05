@@ -1,6 +1,6 @@
 params ["_unit"];
 
-if (isPlayer _unit) exitWith {};
+if (hasInterface) exitWith {};
 
 [_unit, round(random 200)] call grad_moneymenu_fnc_setFunds;
 
