@@ -6,12 +6,17 @@ _unit allowDamage false;
 
 // [_unit] call grad_moneymenu_fnc_setStorage;
 
+/*
 [_unit,"eastShop",OPFOR_ARSENAL,OPFOR_HELIPAD,"Барахолка","Барахолка",{
 	playerSide == EAST
 }] call grad_lbm_fnc_addInteraction;
+*/
 
 _saveProgress = ["SaveProgress","Сохранить прогресс","\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa",
-	{[true, 30, "OPFOR_BASE"] call grad_persistence_fnc_saveMission},
+	{
+		// Rework this logic
+		// [true, 30, "OPFOR_BASE"] call grad_persistence_fnc_saveMission;
+	},
 	{playerSide == EAST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  
 [_unit, 0, ["ACE_MainActions"], _saveProgress] call ace_interact_menu_fnc_addActionToObject; 
  

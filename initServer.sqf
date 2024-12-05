@@ -4,7 +4,7 @@
 	while {true} do {
 		sleep 900;
 		{
-			[false, 30, _x] call grad_persistence_fnc_saveMission;
+			// [false, 30, _x] call grad_persistence_fnc_saveMission;
 		} forEach _saveZones;
 	};
 };
