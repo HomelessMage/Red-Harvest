@@ -1,4 +1,12 @@
 params ["_player", "_didJIP"];
+
+// Не выполняем код клиента на HC
+if(!hasInterface) exitWith {}; 
+
+[] execVM "modules\hoverguy\setup\fn_clientInitialization.sqf";
+
+
+
 // Temporary fix for Advanced Movement
 AVS_IsUseRollOnEnd = false;
 // Меню выдачи денег для Зевса

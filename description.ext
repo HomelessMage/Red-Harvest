@@ -64,25 +64,43 @@ saving = 0;
 skipLobby = 0;
 briefing = 0;
 
+
+
+
+// HoverGuy libary
+__EXEC(HG_Profile = allVariables profileNamespace)
+#include "modules\hoverguy\UI\HG_DialogsMaster.h"
+
+class CfgClient
+{
+    #include "modules\hoverguy\Config\HG_Config.h"
+};
+
+class CfgDebriefing
+{
+    #include "modules\hoverguy\config\HG_Debriefing.h"
+};
+
+
 // GRAD Passport
 #include "modules\grad-passport\grad_passport.hpp"
 // GRAD leaveNotes
 #include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
 
-
 class CfgSounds {
 	sounds[] = {};
     #include "modules\grad-leaveNotes\cfgSounds.hpp"
+    #include "modules\hoverguy\sounds\HG_Sounds.h"
 };
 
-
+// CBA preinit handlers
 class Extended_PreInit_EventHandlers {
     // Tinter Furniture
 	class tinter_furniture_pre_init {
 		init = "call compile preprocessFileLineNumbers 'modules\furniture\XEH_preInit.sqf'";
 	};
 };
-
+// CBA init handlers
 // Добавляем скрипт к ИИ
 class Extended_Init_EventHandlers {
     class Man {
@@ -90,14 +108,7 @@ class Extended_Init_EventHandlers {
         init = "_this call (compile preprocessFileLineNumbers 'scripts\generateAIIdentity.sqf')";
     };
 };
-
-
-
-
-
-
-
-
+// No CBA postinit handlers are required
 
 // ConnorAU configuration
 // Enables the extended chat mod
@@ -136,6 +147,9 @@ class CfgRemoteExec {
 class RscTitles {
     // ConnorAU Lib
 	#include "modules\cau\extendedchat\RscTitles.cpp"
+    // HoverGuy Library
+    #include "modules\hoverguy\UI\Dialogs\HG_HUD.h"
+	#include "modules\hoverguy\UI\Dialogs\HG_Tags.h"
 };
 
 class CfgEmoji {
@@ -159,6 +173,8 @@ class CfgEmoji {
 
 
 class CfgFunctions {
+    // HoverGuy Library
+   	#include "modules\hoverguy\functions\HG_Functions.h"
     // ConnorAU Lib
 	#include "modules\cau\extendedchat\CfgFunctions.cpp"
     // ConnorAU Lib

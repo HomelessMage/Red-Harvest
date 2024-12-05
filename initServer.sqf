@@ -1,3 +1,6 @@
+// Инциализация HG
+[] execVM "modules\hoverguy\setup\fn_serverInitialization.sqf";
+
 // Сохраняем прогресс
 [] spawn {
 	_saveZones = ["BLUFOR_BASE", "OPFOR_BASE"];
