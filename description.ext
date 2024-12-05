@@ -88,7 +88,6 @@ class CfgDebriefing
 #include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
 
 class CfgSounds {
-	sounds[] = {};
     #include "modules\grad-leaveNotes\cfgSounds.hpp"
     #include "modules\hoverguy\sounds\HG_Sounds.h"
 };

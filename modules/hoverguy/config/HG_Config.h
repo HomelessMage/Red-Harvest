@@ -76,7 +76,7 @@ cashVariable = "HG_Cash";
 bankVariable = "HG_Bank";
 
 /* SYSTEMS */
-resetSavedMoney = false;
+resetSavedMoney = true;
 enableHUD = true;
 hudType = 1;
 enablePaycheck = true;
@@ -97,24 +97,29 @@ enableKillCount = true;
 enableTags = true;
 enableMarkers = true;
 enableATM = true;
-enableWhitelist = false;
+enableWhitelist = true;
 
 /* WHITELIST */
-whitelistSides[] = {"west"};
+whitelistSides[] = {"civilian"};
 
 /* ADMINS */
-admins[] = {"_SP_PLAYER_"};
+admins[] = {
+	"_SP_PLAYER_",
+	// Демьян Терентьев
+	"76561198040777688"
+};
 
 /* KEYS */
 atmKey = 0x14;
-lockUnlockKey = 0x15;
-giveMoneyKey = 0x23;
-giveKeyKey = 0x21;
-adminKey = 0xDB;
+lockUnlockKey = 0xD2;
+giveMoneyKey = 0xC7;
+giveKeyKey = 0xD3;
+adminKey = 0x46;
 hudKey = 0x37;
 
 /* SAVING */
-savingMethod = "Profile";
+// savingMethod = "Profile";
+savingMethod = "extDB";
 extDBDatabase = "HG";
 extDBProtocol = "SQL_CUSTOM";
 extDBCustomFile = "custom.ini";
