@@ -14,14 +14,14 @@
 	};
 */
 
-class HG_DefaultTrader // HG_DefaultTrader is just a placeholder for testing purposes, you can delete it completely and make your own
+class HG_EASTTrader // HG_DefaultTrader is just a placeholder for testing purposes, you can delete it completely and make your own
 {
 	conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
 	
 	interestedIn[] = 
 	{
-		{"ItemMap",50},
-		{"ItemRadio",50},
-		{"ItemCompass",50}
+		{"ItemMap", 50},
+		{"ItemRadio", 50},
+		{"ItemCompass", 50}
 	};
 };

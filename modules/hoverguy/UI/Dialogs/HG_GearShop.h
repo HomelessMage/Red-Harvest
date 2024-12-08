@@ -138,7 +138,7 @@ class HG_GearShop
 		class ShopPicture: HG_RscPicture
 		{
 			text = "modules\hoverguy\UI\Icons\money.paa";
-			tooltip = "$STR_HG_DLG_TOOLTIP";
+			// tooltip = "$STR_HG_DLG_TOOLTIP";
 			x = 0.29375 * safeZoneW + safeZoneX;
 			y = 0.00500001 * safeZoneH + safeZoneY;
 			w = 0.0309375 * safeZoneW;

@@ -18,7 +18,7 @@
 	};
 */
 
-class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
+class HG_EASTShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
 {
 	conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
 	
@@ -31,7 +31,7 @@ class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purpose
 			{"G_Bandanna_shades",50,"true"}
 		};
 	};
-	
+
 	class Headgear
 	{
 		displayName = "$STR_HG_SHOP_HEADGEARS";
@@ -40,7 +40,7 @@ class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purpose
 			{"H_HelmetB_light_grass",1500,"true"}
 	    };
 	};
-	
+
 	class Uniform
 	{
 		displayName = "$STR_HG_SHOP_UNIFORMS";
@@ -49,7 +49,7 @@ class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purpose
 		    {"U_B_FullGhillie_ard",150,"true"}
 		};
 	};
-	
+
 	class Vest
 	{
 		displayName = "$STR_HG_SHOP_VESTS";

@@ -10,6 +10,9 @@
 [BLUFOR_OFFICER] execVM "scripts\BLUFOR\officer.sqf";
 [OPFOR_OFFICER] execVM "scripts\OPFOR\officer.sqf";
 
+// Инициализация гаражей
+[OPFOR_GARAGE_HANDLER] execVM "scripts\OPFOR\garage.sqf";
+
 // Чёрный список зданий для мебели
 _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
 {
@@ -18,6 +21,7 @@ _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
 
 // Показываем маркеры только той стороне, для которой они предназначены
 // Маркеру нужен префикс WEST, EAST, GUER, CIV
+/*
 [] spawn {
     while { !isDedicated } do {
         waitUntil { sleep 1; alive player};
@@ -34,9 +38,11 @@ _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
         } count allMapMarkers;
     };
 };
+*/
 
 // Крепим маркер на КШМ
 
+/*
 [] spawn {
     while {true} do {
         "WEST_MHQ" setmarkerpos getpos BLUFOR_MHQ;
@@ -44,6 +50,7 @@ _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];
         sleep 5;
     };
 };
+*/
 
 // Восстановление экипировки
 if (hasinterface) then {

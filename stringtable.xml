@@ -1705,7 +1705,7 @@
 			<French>Commerçant</French>
 			<Chinese>二手收購商</Chinese>
 			<Chinesesimp>二手收购商</Chinesesimp>
-			<Russian>Торговец</Russian>
+			<Russian>Скупщик предметов</Russian>
 		</Key>
 		<Key ID="STR_HG_DEALER">
 		    <Original>Car Dealer</Original>
@@ -1713,7 +1713,7 @@
 			<French>Commerçant de véhicules</French>
 			<Chinese>載具二手收購商</Chinese>
 			<Chinesesimp>载具二手收购商</Chinesesimp>
-			<Russian>Продавец техники</Russian>
+			<Russian>Скупщик техники</Russian>
 		</Key>
 		<Key ID="STR_HG_SHOP_ASSIGNED">
 		    <Original>Assigned Items</Original>

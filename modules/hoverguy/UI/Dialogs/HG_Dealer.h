@@ -54,7 +54,7 @@ class HG_Dealer
 		{
 			moving = true;
 			text = "modules\hoverguy\UI\Icons\car.paa";
-			tooltip = "$STR_HG_DLG_TOOLTIP";
+			// tooltip = "$STR_HG_DLG_TOOLTIP";
 			x = 0.29375 * safezoneW + safezoneX;
 			y = 0.225 * safezoneH + safezoneY;
 			w = 0.0309375 * safeZoneW;

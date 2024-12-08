@@ -53,7 +53,7 @@ class HG_GiveKey
 		{
 			moving = true;
 			text = "modules\hoverguy\UI\Icons\key.paa";
-			tooltip = "$STR_HG_DLG_TOOLTIP";
+			// tooltip = "$STR_HG_DLG_TOOLTIP";
 			x = 0.407187 * safezoneW + safezoneX;
 			y = 0.313 * safezoneH + safezoneY;
 			w = 0.0309375 * safezoneW;

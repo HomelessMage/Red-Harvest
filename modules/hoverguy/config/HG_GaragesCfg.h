@@ -16,15 +16,28 @@
 	};
 */
 
-class HG_DefaultGarage // HG_DefaultGarage is just a placeholder for testing purposes, you can delete it completely and make your own
+class HG_EASTGarage
 {
 	conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
-    allowedTypes[] = {"Car","Truck","Tank","Air"};
+    allowedTypes[] = {"Car", "Truck", "Tank"};
 	spawnPoints[] = 
 	{
-		{"Spawn 1",{"garage_spawn_1"}},
-		{"Spawn 2",{"garage_spawn_2","garage_spawn_3"}}
+		{"Гараж", {"OPFOR_GARAGE_1", "OPFOR_GARAGE_2", "OPFOR_GARAGE_3", "OPFOR_GARAGE_4"}}
 	};
-	storePoint = "garage_store";
-	storePointRadius = 8;
+	storePoint = "OPFOR_GARAGE_1";
+	storePointRadius = 100;
 };
+
+/*
+class HG_WESTGarage
+{
+	conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
+    allowedTypes[] = {"Car", "Truck", "Tank"};
+	spawnPoints[] = 
+	{
+		{"Гараж", {"BLUFOR_GARAGE_1", "BLUFOR_GARAGE_2", "BLUFOR_GARAGE_3", "BLUFOR_GARAGE_4"}}
+	};
+	storePoint = "BLUFOR_GARAGE_1";
+	storePointRadius = 25;
+};
+*/

@@ -54,7 +54,7 @@ class HG_Garage
 		{
 			moving = true;
 			text = "modules\hoverguy\UI\Icons\garage.paa";
-			tooltip = "$STR_HG_DLG_TOOLTIP";
+			// tooltip = "$STR_HG_DLG_TOOLTIP";
 			x = 0.386562 * safeZoneW + safeZoneX;
 			y = 0.291 * safeZoneH + safeZoneY;
 			w = 0.0309375 * safeZoneW;

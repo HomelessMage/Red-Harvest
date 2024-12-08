@@ -54,7 +54,7 @@ class HG_ATM
 		{
 			moving = true;
 			text = "modules\hoverguy\UI\Icons\atm.paa";
-			tooltip = "$STR_HG_DLG_TOOLTIP";
+			// tooltip = "$STR_HG_DLG_TOOLTIP";
 			x = 0.391719 * safezoneW + safezoneX;
 			y = 0.302 * safezoneH + safezoneY;
 			w = 0.0309375 * safeZoneW;

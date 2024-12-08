@@ -54,7 +54,7 @@ class HG_ItemsShop
 		{
 			moving = true;
 			text = "modules\hoverguy\UI\Icons\money.paa";
-			tooltip = "$STR_HG_DLG_TOOLTIP";
+			// tooltip = "$STR_HG_DLG_TOOLTIP";
 			x = 0.324687 * safezoneW + safezoneX;
 			y = 0.28 * safeZoneH + safeZoneY;
 			w = 0.0309375 * safeZoneW;

@@ -12,10 +12,34 @@ _unit allowDamage false;
 }] call grad_lbm_fnc_addInteraction;
 */
 
+_shopMenu = ["ShopMenu", "Магазин", "modules\hoverguy\UI\Icons\money.paa",{nil},{playerSide == EAST}] call ace_interact_menu_fnc_createAction;
+[_unit, 0, ["ACE_MainActions"], _shopMenu] call ace_interact_menu_fnc_addActionToObject; 
+
+_vehicleShop = ["VehicleShop", localize "STR_HG_VEHICLES_SHOP", "modules\hoverguy\UI\Icons\money.paa",
+	{
+		[_unit, player, nil, "HG_EASTShop"] call HG_fnc_dialogOnLoadVehicles;
+	},
+	{playerSide == EAST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  
+[_unit, 0, ["ACE_MainActions", "ShopMenu"], _vehicleShop] call ace_interact_menu_fnc_addActionToObject;
+
+_gearShop = ["GearShop", localize "STR_HG_GEAR_SHOP", "modules\hoverguy\UI\Icons\money.paa",
+	{
+		[_unit, player, nil, "HG_EASTShop"] call HG_fnc_dialogOnLoadGear;
+	},
+	{playerSide == EAST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  
+[_unit, 0, ["ACE_MainActions", "ShopMenu"], _gearShop] call ace_interact_menu_fnc_addActionToObject;
+
+/*
+_unit addAction["<img image='modules\hoverguy\UI\Icons\units.paa' size='2' shadow='0'/><t color='#FF0000' font='RobotoCondensedBold'>"+(localize "STR_HG_UNITS_SHOP")+"</t>",{_this call HG_fnc_dialogOnLoadUnits},"HG_EASTShop",0,false,false,"",'(alive player) && !dialog && player distance _target < 3'];
+
+_unit addAction["<img image='modules\hoverguy\UI\Icons\atm.paa' size='2' shadow='0'/><t color='#FF0000' font='RobotoCondensedBold'>"+(localize "STR_HG_ATM")+"</t>",{_this call HG_fnc_dialogOnLoadATM},"",0,false,false,"",'(alive player) && !dialog && player distance _target < 3'];
+*/
+
 _saveProgress = ["SaveProgress","Сохранить прогресс","\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa",
 	{
 		// Rework this logic
 		// [true, 30, "OPFOR_BASE"] call grad_persistence_fnc_saveMission;
+		systemChat "Данная кнопка пока не работает.";
 	},
 	{playerSide == EAST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  
 [_unit, 0, ["ACE_MainActions"], _saveProgress] call ace_interact_menu_fnc_addActionToObject; 

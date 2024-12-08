@@ -136,7 +136,7 @@ CAU_xChat_MOTD[]={
 
 class CfgRemoteExec {
 	class Functions	{
-		mode = 1; // whitelist
+		mode = 2; // no whitelist
 		class CAU_xChat_fnc_sendMessage {allowedTargets=0;};
 		class CAU_xChat_fnc_log {allowedTargets=2;};
 		class CAU_xChat_fnc_radioChannelCustom {allowedTargets=2;};

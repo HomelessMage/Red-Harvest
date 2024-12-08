@@ -22,9 +22,10 @@
 	};
 */
 
-class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
+/*
+class HG_WESTShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
 {
-    conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
+    conditionToAccess = "playerSide == WEST"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
 	
     class Civilian
 	{
@@ -35,7 +36,7 @@ class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purpose
 		};
 	    spawnPoints[] =
 		{
-			{"$STR_HG_MARKER_1",{"civilian_vehicles_spawn_1"}}
+			{"$STR_HG_MARKER_2",{"BLUFOR_HELIPAD"}}
 		};
 	};
 	
@@ -48,7 +49,42 @@ class HG_DefaultShop // HG_DefaultShop is just a placeholder for testing purpose
 	    };
 		spawnPoints[] =
 		{
-			{"$STR_HG_MARKER_2",{"military_vehicles_spawn_1"}}
+			{"$STR_HG_MARKER_2",{"BLUFOR_HELIPAD"}}
 		};
 	};
+};
+*/
+
+class HG_EASTShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
+{
+    conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
+	class Military
+	{
+	    displayName = "$STR_HG_SHOP_MILITARY";
+		vehicles[] =
+		{
+			{"ACM_O_SZAVB_Vehicle_UAZ", 5, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_open", 5, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_dshkm", 5, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_spg9", 5, "true"}
+	    };
+		spawnPoints[] =
+		{
+			{"$STR_HG_MARKER_2", {"OPFOR_GARAGE_1", "OPFOR_GARAGE_2", "OPFOR_GARAGE_3", "OPFOR_GARAGE_4"}}
+		};
+	};
+	/*
+    class Civilian
+	{
+	    displayName = "$STR_HG_SHOP_CIVILIAN";
+		vehicles[] =
+		{
+		    {"C_SUV_01_F", 15000, "true"}
+		};
+	    spawnPoints[] =
+		{
+			{"$STR_HG_MARKER_1", {"OPFOR_HELIPAD"}}
+		};
+	};
+	*/
 };
