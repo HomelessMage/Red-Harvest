@@ -29,9 +29,9 @@ respawnDelay					= 5;
 respawnVehicleDelay				= 5;
 respawnDialog					= 0;
 respawnOnStart					= -1;
-    // -1 - Dont respawn on start. Don't run respawn script on start.
-    //  0 - Dont respawn on start. Run respawn script on start.
-    //  1 - Respawn on start. Run respawn script on start.
+// -1 - Dont respawn on start. Don't run respawn script on start.
+//  0 - Dont respawn on start. Run respawn script on start.
+//  1 - Respawn on start. Run respawn script on start.
 reviveMode						= 0;
 reviveUnconsciousStateMode		= 0;
 reviveRequiredTrait				= 0;
@@ -41,28 +41,28 @@ reviveDelay						= 5;
 reviveBleedOutDelay				= 120;
 enablePlayerAddRespawn			= 0;
 
-corpseManagerMode	= 1;
-corpseLimit			= 25;
-corpseRemovalMinTime	= 60;
-corpseRemovalMaxTime	= 1200;
-disposalCheckPeriod		= 10;
-minPlayerDistance		= 50;
-weaponholderManagerMode	= 1;
-weaponholderLimit		= 1;
-weaponholderRemovalMinTime	= 60;
-weaponholderRemovalMaxTime	= 1200;
-wreckManagerMode	= 1;
-wreckLimit			= 1;
-wreckRemovalMinTime	= 60;
-wreckRemovalMaxTime	= 1800;
+corpseManagerMode	            = 1;
+corpseLimit			            = 25;
+corpseRemovalMinTime	        = 60;
+corpseRemovalMaxTime	        = 1200;
+disposalCheckPeriod		        = 10;
+minPlayerDistance		        = 50;
+weaponholderManagerMode	        = 1;
+weaponholderLimit		        = 1;
+weaponholderRemovalMinTime	    = 60;
+weaponholderRemovalMaxTime	    = 1200;
+wreckManagerMode	            = 1;
+wreckLimit			            = 1;
+wreckRemovalMinTime	            = 60;
+wreckRemovalMaxTime	            = 1800;
 
-disabledAI = 1;
-enableDebugConsole = 1;
-forceRotorLibSimulation = 1;
-joinUnassigned = 0;
-saving = 0;
-skipLobby = 0;
-briefing = 0;
+disabledAI                      = 1;
+enableDebugConsole              = 1;
+forceRotorLibSimulation         = 1;
+joinUnassigned                  = 0;
+saving                          = 0;
+skipLobby                       = 0;
+briefing                        = 0;
 
 
 

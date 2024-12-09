@@ -71,14 +71,14 @@
 */
 
 /* MONEY */
-currencyType = "USD";
+currencyType = "RUB";
 cashVariable = "HG_Cash";
 bankVariable = "HG_Bank";
 
 /* SYSTEMS */
-resetSavedMoney = true;
+resetSavedMoney = false;
 enableHUD = true;
-hudType = 0;
+hudType = 1;
 enablePaycheck = true;
 enableKillReward = true;
 enableDeathPenalty = true;
@@ -86,16 +86,16 @@ enableTeamKillPenalty = true;
 enableGiveMoney = true;
 enableBuyToGarage = true;
 clearInventory = true;
-storeVehiclesOnDisconnect = true;
+storeVehiclesOnDisconnect = false;
 vehiclesCleanupPeriod = 1;
-deleteBodyOnDisconnect = false;
+deleteBodyOnDisconnect = true;
 resetGaragesOnServerStart = false;
 enablePlayerInventorySave = true;
 enableVehicleInventorySave = true;
-enableXP = true;
-enableKillCount = true;
+enableXP = false;
+enableKillCount = false;
 enableTags = true;
-enableMarkers = true;
+enableMarkers = false;
 enableATM = true;
 enableWhitelist = true;
 
@@ -131,8 +131,8 @@ class HG_MasterCfg
 	{
 		paycheck = 2000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 500;
 		xpPenaltyDeath = 25;
 		tkPenaltyPlayer = 500;
@@ -149,8 +149,8 @@ class HG_MasterCfg
 	{
 		paycheck = 4000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 1000;
 		xpPenaltyDeath = 50;
 		tkPenaltyPlayer = 1000;
@@ -167,8 +167,8 @@ class HG_MasterCfg
 	{
 		paycheck = 6000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 1500;
 		xpPenaltyDeath = 75;
 		tkPenaltyPlayer = 1500;
@@ -185,8 +185,8 @@ class HG_MasterCfg
 	{
 		paycheck = 8000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 2000;
 		xpPenaltyDeath = 100;
 		tkPenaltyPlayer = 2000;
@@ -203,8 +203,8 @@ class HG_MasterCfg
 	{
 		paycheck = 10000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 2500;
 		xpPenaltyDeath = 125;
 		tkPenaltyPlayer = 2500;
@@ -221,8 +221,8 @@ class HG_MasterCfg
 	{
 		paycheck = 12000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 3000;
 		xpPenaltyDeath = 150;
 		tkPenaltyPlayer = 3000;
@@ -239,8 +239,8 @@ class HG_MasterCfg
 	{
 		paycheck = 14000;
 		paycheckPeriod = 30;
-		startCash = 5000;
-		startBank = 50000;
+		startCash = 0;
+		startBank = 0;
 		killedReward = 3500;
 		xpPenaltyDeath = 175;
 		tkPenaltyPlayer = 3500;

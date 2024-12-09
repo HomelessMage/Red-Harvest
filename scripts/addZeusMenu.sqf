@@ -34,7 +34,7 @@ _moneyMenu = ["MoneyMenu","Денежное меню","\A3\ui_f\data\map\markers
 
 
 
-// /*
+/*
 _checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить баланс всех игроков", "\a3\ui_f\data\igui\cfg\simpletasks\types\search_ca.paa", 
 	{
 		private _players = allPlayers - entities "HeadlessClient_F";
@@ -56,7 +56,7 @@ _checkAllCurrentPlayersBalance = ["CheckPlayersBalance", "Проверить б�
 	}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "MoneyMenu"], _checkAllCurrentPlayersBalance] call ace_interact_menu_fnc_addActionToZeus;
-// */
+*/
 
 _addMoneyToSide = ["AddMoney", "Добавить деньги стороне", "",
 	{
@@ -136,7 +136,7 @@ _addMoneyToSide = ["AddMoney", "Добавить деньги стороне", "
 [["ACE_ZeusActions", "MoneyMenu"], _addMoneyToSide] call ace_interact_menu_fnc_addActionToZeus;
 
 
-
+/*
 _addMoney10000 = ["AddMoney","Добавить себе 10.000 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 10000] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "MoneyMenu"], _addMoney10000] call ace_interact_menu_fnc_addActionToZeus;
 
@@ -145,13 +145,14 @@ _addMoney1000 = ["AddMoney","Добавить себе 1.000 рублей","\A3\
 
 _addMoney500 = ["AddMoney","Добавить себе 500 рублей","\A3\ui_f\data\map\markers\military\destroy_CA.paa",{[player, 500] call grad_moneymenu_fnc_addFunds},{true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "MoneyMenu"], _addMoney500] call ace_interact_menu_fnc_addActionToZeus;
-
+*/
 _purgeDataMenu = ["PurgeDataMenu","Меню удаления сохранений","\a3\Ui_F_Curator\Data\CfgMarkers\minefield_ca.paa", {nil}, {true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _purgeDataMenu] call ace_interact_menu_fnc_addActionToZeus;
 
+
 _purgeData = ["PurgeData", "ОЧИСТИТЬ СОХРАНЕНИЯ", "\a3\Ui_F_Curator\Data\CfgMarkers\minefieldAP_ca.paa",
 		{
-			[] remoteExec ["grad_persistence_fnc_clearMissionData", 2];
+			// [] remoteExec ["grad_persistence_fnc_clearMissionData", 2];
 			[] remoteExec ["ALiVE_fnc_ProfileNameSpaceWipe", 2];
 		},
 		{

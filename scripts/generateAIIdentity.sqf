@@ -1,6 +1,6 @@
 params ["_unit"];
 
-if !(hasInterface) exitWith {};
+if (hasInterface) exitWith {};
 waitUntil { not isNull _unit };
 
 // Replace this with HG function
