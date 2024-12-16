@@ -69,7 +69,7 @@ class HG_WESTShop // HG_DefaultShop is just a placeholder for testing purposes, 
 	    };
 		spawnPoints[] =
 		{
-			{"$STR_HG_MARKER_2", {"OPFOR_GARAGE_1", "OPFOR_GARAGE_2", "OPFOR_GARAGE_3", "OPFOR_GARAGE_4"}}
+			{"$STR_HG_MARKER_2", {"BLUFOR_GARAGE_1", "BLUFOR_GARAGE_2", "BLUFOR_GARAGE_3", "BLUFOR_GARAGE_4"}}
 		};
 	};
     class Civilian
