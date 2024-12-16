@@ -4,19 +4,25 @@ params ["_unit"];
 _unit disableAI "ALL";
 _unit allowDamage false;
 
-// Not required
-// [_unit] call grad_moneymenu_fnc_setStorage;
+_shopMenu = ["ShopMenu", "Магазин", "modules\hoverguy\UI\Icons\money.paa",{nil},{playerSide == WEST}] call ace_interact_menu_fnc_createAction;
+[_unit, 0, ["ACE_MainActions"], _shopMenu] call ace_interact_menu_fnc_addActionToObject; 
 
-// Rework this logic
-/*
-[_unit,"westShop",BLUFOR_ARSENAL,BLUFOR_HELIPAD,"Барахолка","Барахолка",{
-	playerSide == WEST
-}] call grad_lbm_fnc_addInteraction;
-*/
+_vehicleShop = ["VehicleShop", localize "STR_HG_VEHICLES_SHOP", "modules\hoverguy\UI\Icons\money.paa",
+	{
+		[_unit, player, nil, "HG_WESTShop"] call HG_fnc_dialogOnLoadVehicles;
+	},
+	{playerSide == WEST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  
+[_unit, 0, ["ACE_MainActions", "ShopMenu"], _vehicleShop] call ace_interact_menu_fnc_addActionToObject;
+
+_gearShop = ["GearShop", localize "STR_HG_GEAR_SHOP", "modules\hoverguy\UI\Icons\money.paa",
+	{
+		[_unit, player, nil, "HG_WESTShop"] call HG_fnc_dialogOnLoadGear;
+	},
+	{playerSide == WEST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  
+[_unit, 0, ["ACE_MainActions", "ShopMenu"], _gearShop] call ace_interact_menu_fnc_addActionToObject;
 
 _saveProgress = ["SaveProgress","Сохранить прогресс","\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa",
 	{
-		// Rework this logic to use extDB3
 		// [true, 30, "BLUFOR_BASE"] call grad_persistence_fnc_saveMission;
 	},
 	{playerSide == WEST},{},[_unit],[0,0,0], 100] call ace_interact_menu_fnc_createAction;  

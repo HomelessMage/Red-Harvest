@@ -22,39 +22,6 @@
 	};
 */
 
-/*
-class HG_WESTShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
-{
-    conditionToAccess = "playerSide == WEST"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
-	
-    class Civilian
-	{
-	    displayName = "$STR_HG_SHOP_CIVILIAN";
-		vehicles[] =
-		{
-		    {"C_SUV_01_F",15000,"true"}
-		};
-	    spawnPoints[] =
-		{
-			{"$STR_HG_MARKER_2",{"BLUFOR_HELIPAD"}}
-		};
-	};
-	
-	class Military
-	{
-	    displayName = "$STR_HG_SHOP_MILITARY";
-		vehicles[] =
-		{
-		    {"B_MRAP_01_F",45000,"true"}
-	    };
-		spawnPoints[] =
-		{
-			{"$STR_HG_MARKER_2",{"BLUFOR_HELIPAD"}}
-		};
-	};
-};
-*/
-
 class HG_EASTShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
 {
     conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
@@ -63,17 +30,16 @@ class HG_EASTShop // HG_DefaultShop is just a placeholder for testing purposes, 
 	    displayName = "$STR_HG_SHOP_MILITARY";
 		vehicles[] =
 		{
-			{"ACM_O_SZAVB_Vehicle_UAZ", 5, "true"},
-			{"ACM_O_SZAVB_Vehicle_UAZ_open", 5, "true"},
-			{"ACM_O_SZAVB_Vehicle_UAZ_dshkm", 5, "true"},
-			{"ACM_O_SZAVB_Vehicle_UAZ_spg9", 5, "true"}
+			{"ACM_O_SZAVB_Vehicle_UAZ", 5000, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_open", 5000, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_dshkm", 6000, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_spg9", 7000, "true"}
 	    };
 		spawnPoints[] =
 		{
 			{"$STR_HG_MARKER_2", {"OPFOR_GARAGE_1", "OPFOR_GARAGE_2", "OPFOR_GARAGE_3", "OPFOR_GARAGE_4"}}
 		};
 	};
-	/*
     class Civilian
 	{
 	    displayName = "$STR_HG_SHOP_CIVILIAN";
@@ -86,5 +52,36 @@ class HG_EASTShop // HG_DefaultShop is just a placeholder for testing purposes, 
 			{"$STR_HG_MARKER_1", {"OPFOR_HELIPAD"}}
 		};
 	};
-	*/
+};
+
+class HG_WESTShop // HG_DefaultShop is just a placeholder for testing purposes, you can delete it completely and make your own
+{
+    conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
+	class Military
+	{
+	    displayName = "$STR_HG_SHOP_MILITARY";
+		vehicles[] =
+		{
+			{"ACM_O_SZAVB_Vehicle_UAZ", 5000, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_open", 5000, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_dshkm", 6000, "true"},
+			{"ACM_O_SZAVB_Vehicle_UAZ_spg9", 7000, "true"}
+	    };
+		spawnPoints[] =
+		{
+			{"$STR_HG_MARKER_2", {"OPFOR_GARAGE_1", "OPFOR_GARAGE_2", "OPFOR_GARAGE_3", "OPFOR_GARAGE_4"}}
+		};
+	};
+    class Civilian
+	{
+	    displayName = "$STR_HG_SHOP_CIVILIAN";
+		vehicles[] =
+		{
+		    {"C_SUV_01_F", 15000, "true"}
+		};
+	    spawnPoints[] =
+		{
+			{"$STR_HG_MARKER_1", {"BLUFOR_HELIPAD"}}
+		};
+	};
 };

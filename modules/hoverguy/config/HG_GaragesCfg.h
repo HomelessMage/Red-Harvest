@@ -28,6 +28,19 @@ class HG_EASTGarage
 	storePointRadius = 100;
 };
 
+class HG_WESTGarage
+{
+	conditionToAccess = "true"; // Example: "(playerSide in [west,independent]) AND ((rank player) isEqualTo 'COLONEL')"
+    allowedTypes[] = {"Car", "Truck", "Tank"};
+	spawnPoints[] = 
+	{
+		{"Гараж", {"BLUFOR_GARAGE_1", "BLUFOR_GARAGE_2", "BLUFOR_GARAGE_3", "BLUFOR_GARAGE_4"}}
+	};
+	storePoint = "BLUFOR_GARAGE_1";
+	storePointRadius = 100;
+};
+
+
 /*
 class HG_WESTGarage
 {

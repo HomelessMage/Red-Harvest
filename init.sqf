@@ -12,6 +12,7 @@
 
 // Инициализация гаражей
 [OPFOR_GARAGE_HANDLER] execVM "scripts\OPFOR\garage.sqf";
+[BLUFOR_GARAGE_HANDLER] execVM "scripts\BLUFOR\garage.sqf";
 
 // Чёрный список зданий для мебели
 _furnitureBlacklist = [BLUFOR_GARAGE, OPFOR_GARAGE];

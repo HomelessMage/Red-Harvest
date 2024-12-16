@@ -1,4 +1,4 @@
-// Инциализация HG
+// Инциализация сервера HG
 [] execVM "modules\hoverguy\setup\fn_serverInitialization.sqf";
 
 // Сохраняем прогресс

@@ -3,6 +3,7 @@ params ["_player", "_didJIP"];
 // Не выполняем код клиента на HC
 if(!hasInterface) exitWith {}; 
 
+// Инициализация клиента HG
 [] execVM "modules\hoverguy\setup\fn_clientInitialization.sqf";
 
 
